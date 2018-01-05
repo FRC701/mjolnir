@@ -1,2 +1,2 @@
-# mjolnir
-Code for Mjölnir for FIRST POWER UP
+# Mjölnir
+Code for Mjölnir the RoboVikes robot for FIRST POWER UP
