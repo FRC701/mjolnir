@@ -12,14 +12,11 @@
 #ifndef TANKDRIVE_H
 #define TANKDRIVE_H
 
-
-#include "Commands/Subsystem.h"
-#include "../Robot.h"
+#include "Commands/Command.h"
 
 /**
  *
  *
- * @author ExampleAuthor
  */
 class TankDrive: public frc::Command {
 public:
