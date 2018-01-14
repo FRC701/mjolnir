@@ -19,7 +19,7 @@ private:
   WPI_TalonSRX right1Wheel;
   WPI_TalonSRX right2Wheel;
 
-  void Chassis::SetUpTalons();
+  void SetUpTalons();
 
 public:
 	static std::shared_ptr<Chassis> getInstance();
