@@ -39,6 +39,9 @@ public:
 	  static const int kIDSlingForward = 1;
 	  static const int kIDSlingReverse = 6;
 
+	  static const int kIDRampForward = 2;
+	  static const int kIDRampReverse = 5;
+
 	static void init();
 };
 
