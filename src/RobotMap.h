@@ -20,6 +20,8 @@ public:
 	static const int kIDLeft2Wheel = 4;
 	static const int kIDLeftIntake = 5;
 	static const int kIDRightIntake = 6;
+	static const int kIDPullSling1 = 7;
+	static const int kIDPullSling2 = 8;
 
 	static void init();
 };
