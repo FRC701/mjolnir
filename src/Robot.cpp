@@ -8,6 +8,7 @@
 #include "Subsystems/Chassis.h"
 #include "Subsystems/Intake.h"
 #include "Commands/TankDrive.h"
+#include "SmartDashboard/SmartDashboard.h"
 
 std::unique_ptr<OI> Robot::oi;
 
@@ -60,12 +61,15 @@ void Robot::TeleopInit() {
 	// teleop starts running. If you want the autonomous to
 	// continue until interrupted by another command, remove
 	// these lines or comment it out.
-	if (autonomousCommand.get() != nullptr)
-		autonomousCommand->Cancel();
+	if (autonomousCommand.get() != nullptr) autonomousCommand->Cancel();
+
 }
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
+
+  SmartDashboard::PutNumber("LeftEncVelocity", Chassis::getInstance()->getLeftVelocity());
+  SmartDashboard::PutNumber("RightEncVelocity", Chassis::getInstance()->getRightVelocity());
 }
 
 void Robot::TestPeriodic() {

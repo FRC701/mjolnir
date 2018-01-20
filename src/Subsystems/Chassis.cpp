@@ -52,6 +52,14 @@ void Chassis::SetUpTalons(){
 
   left2Wheel.Follow(left1Wheel);
   right2Wheel.Follow(right1Wheel);
+}
 
+int Chassis::getLeftVelocity()
+{
+  return left1Wheel.GetSelectedSensorVelocity(kPID_PrimaryClosedLoop);
+}
 
+int Chassis::getRightVelocity()
+{
+  return right1Wheel.GetSelectedSensorVelocity(kPID_PrimaryClosedLoop);
 }
