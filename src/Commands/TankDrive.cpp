@@ -27,7 +27,7 @@ void TankDrive::Execute() {
 
 	std::shared_ptr<OI> oi = OI::getInstance();
 
-	double left = oi->getCoDriverLeftYAxis();
+	double left = oi->getDriverLeftYAxis();
 	double right = oi->getDriverRightYAxis();
 
 	chassis->SetTankDrive(left, right);
