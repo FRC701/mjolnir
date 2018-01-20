@@ -27,6 +27,10 @@ public:
 
 	void SetTankDrive(double left, double right);
 	void InitDefaultCommand();
+
+	int getLeftVelocity();
+	int getRightVelocity();
 };
+
 
 #endif

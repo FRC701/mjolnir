@@ -32,5 +32,6 @@ static const int kPID_CascadedClosedLoop = 1;
 
 // See TalanSRX::ConfigSelectedFeedbackSensor() timoutMs
 static const int kTimeout_DontBlock = 0;
+static const int kTimeout_10Millis = 10;
 
 #endif
