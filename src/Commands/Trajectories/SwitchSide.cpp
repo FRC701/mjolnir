@@ -1,6 +1,7 @@
 #include "../ChassisMotionProfileCommand.h"
 #include "../MotionProfile.h"
 
+namespace robovikes {
 namespace SwitchSideTrajectory {
 
 extern const unsigned int kTrajectoryLength = 93;
@@ -199,4 +200,5 @@ extern const robovikes::TrajectoryPoint rightTrajectory[] = {
 { 6.04795, 0.00000 }
 };
 
-}
+} // end namespace SwitchSide
+} // end namespace robovikes

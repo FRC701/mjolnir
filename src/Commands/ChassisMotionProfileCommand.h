@@ -10,8 +10,8 @@ public:
   typedef robovikes::TrajectoryPoint TrajectoryPoint;
 
   ChassisMotionProfileCommand(
-      const TrajectoryPoint* chassisRight,
       const TrajectoryPoint* chassisLeft,
+      const TrajectoryPoint* chassisRight,
       unsigned int trajectoryPointCount,
       unsigned int pointDurationMillis,
       bool velocityOnly = true);

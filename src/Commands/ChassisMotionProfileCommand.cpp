@@ -225,8 +225,8 @@ ChassisMotionProfileCommand::MotionProfileLoad::~MotionProfileLoad() {
 
 
 ChassisMotionProfileCommand::ChassisMotionProfileCommand(
-  const TrajectoryPoint* _chassisRight,
   const TrajectoryPoint* _chassisLeft,
+  const TrajectoryPoint* _chassisRight,
   unsigned int _trajectoryPointCount,
   unsigned int _pointDurationMillis,
   bool _velocityOnly)
