@@ -42,6 +42,8 @@ void Chassis::SetUpTalons() {
   left1Wheel.Config_kI(kSlot0, i, kTimeout_10Millis);
   left1Wheel.Config_kD(kSlot0, d, kTimeout_10Millis);
   left1Wheel.Config_kF(kSlot0, f, kTimeout_10Millis);
+  /* status 10 provides the trajectory target for motion profile AND motion magic */
+  left1Wheel.SetStatusFramePeriod(StatusFrameEnhanced::Status_10_MotionMagic, 10, kTimeout_10Millis);
 
   left1Wheel.ConfigMotionProfileTrajectoryPeriod(TrajectoryDuration_0ms, kTimeout_10Millis);
   /* status 10 provides the trajectory target for motion profile AND motion magic */
@@ -64,6 +66,8 @@ void Chassis::SetUpTalons() {
   right1Wheel.Config_kI(kSlot0, i, kTimeout_10Millis);
   right1Wheel.Config_kD(kSlot0, d, kTimeout_10Millis);
   right1Wheel.Config_kF(kSlot0, f, kTimeout_10Millis);
+  /* status 10 provides the trajectory target for motion profile AND motion magic */
+  right1Wheel.SetStatusFramePeriod(StatusFrameEnhanced::Status_10_MotionMagic, 10, kTimeout_10Millis);
 
   right1Wheel.ConfigMotionProfileTrajectoryPeriod(TrajectoryDuration_0ms, kTimeout_10Millis);
   /* status 10 provides the trajectory target for motion profile AND motion magic */
