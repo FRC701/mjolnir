@@ -19,6 +19,8 @@ private:
   WPI_TalonSRX right1Wheel;
   WPI_TalonSRX right2Wheel;
 
+  double p, i, d, f;
+
   void SetUpTalons();
 
 public:

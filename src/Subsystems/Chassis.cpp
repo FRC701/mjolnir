@@ -17,7 +17,8 @@ Chassis::Chassis() : Subsystem(kSubsystemName),
     left1Wheel(RobotMap::kIDLeft1Wheel),
     left2Wheel(RobotMap::kIDLeft2Wheel),
     right1Wheel(RobotMap::kIDRight1Wheel),
-    right2Wheel(RobotMap::kIDRight2Wheel)
+    right2Wheel(RobotMap::kIDRight2Wheel),
+    p(0.0), i(0.0), d(0.0), f(4.0)
 {
   SetUpTalons();
 }
@@ -37,15 +38,26 @@ void Chassis::SetUpTalons() {
                                           kTimeout_10Millis);
   left1Wheel.ConfigForwardSoftLimitEnable(false, kTimeout_10Millis);
   left1Wheel.ConfigReverseSoftLimitEnable(false, kTimeout_10Millis);
+  left1Wheel.Config_kP(kSlot0, p, kTimeout_10Millis);
+  left1Wheel.Config_kI(kSlot0, i, kTimeout_10Millis);
+  left1Wheel.Config_kD(kSlot0, d, kTimeout_10Millis);
+  left1Wheel.Config_kF(kSlot0, f, kTimeout_10Millis);
+
   left1Wheel.SetSensorPhase(true);
   left1Wheel.SetInverted(true);
   left2Wheel.SetInverted(true);
+
 
   right1Wheel.ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,
                                           kPID_PrimaryClosedLoop,
                                           kTimeout_10Millis);
   right1Wheel.ConfigForwardSoftLimitEnable(false, kTimeout_10Millis);
   right1Wheel.ConfigReverseSoftLimitEnable(false, kTimeout_10Millis);
+  right1Wheel.Config_kP(kSlot0, p, kTimeout_10Millis);
+  right1Wheel.Config_kI(kSlot0, i, kTimeout_10Millis);
+  right1Wheel.Config_kD(kSlot0, d, kTimeout_10Millis);
+  right1Wheel.Config_kF(kSlot0, f, kTimeout_10Millis);
+
   right1Wheel.SetSensorPhase(true);
   right1Wheel.SetInverted(false);
   right2Wheel.SetInverted(false);
