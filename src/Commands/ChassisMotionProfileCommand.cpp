@@ -24,8 +24,10 @@
 
 using frc::Notifier;
 
-// todo: How to set time duration?
-// todo: How to set velocityOnly?
+
+// Velocity only is achieved by removed PID. When there are no PID factors, but still and F (feedforward) factor
+// then only velocity is used.
+
 // todo: Better logging. See CTRE Instrumentation example.
 
 namespace {
@@ -54,9 +56,10 @@ namespace {
       ctre_TrajectoryPoint rightTrajectoryPoint;
       rightTrajectoryPoint.position = chassisRight[point].position;
       rightTrajectoryPoint.velocity = chassisRight[point].velocity;
-      rightTrajectoryPoint.profileSlotSelect = 1;   // always slot 1
+      rightTrajectoryPoint.profileSlotSelect0 = 0;
       rightTrajectoryPoint.isLastPoint = (point == lastPoint);
       rightTrajectoryPoint.zeroPos = (point == 0);
+      rightTrajectoryPoint.timeDur = static_cast<TrajectoryDuration>(pointDurationMillis);
 
       ctre_TrajectoryPoint leftTrajectoryPoint = rightTrajectoryPoint;
       leftTrajectoryPoint.position = chassisLeft[point].position;
@@ -207,6 +210,7 @@ namespace {
 
 void ChassisMotionProfileCommand::MotionProfileLoad::run(const ChassisMotionProfileCommand* motionProfile) {
   std::cout << "MotionProfileLoad" << std::endl;
+  Chassis::getInstance()->ConfigMotionProfileTrajectoryPeriod(motionProfile->pointDurationMillis);
   LoadPoints(motionProfile->chassisRight, motionProfile->chassisLeft,
              motionProfile->trajectoryPointCount, motionProfile->pointDurationMillis, motionProfile->velocityOnly);
 }

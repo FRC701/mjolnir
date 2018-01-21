@@ -38,6 +38,7 @@ public:
 	void SetModeMotionProfile();
 	void ClearMotionProfileTrajectories();
 	void SetMotionProfileSetValue(SetValueMotionProfile setValue);
+	void ConfigMotionProfileTrajectoryPeriod(int pointDurationMillis);
 	void PushMotionProfileTrajectory(const TrajectoryPoint& leftTrajectoryPoint,
 	                                 const TrajectoryPoint& rightTrajectoryPoint);
 	void ProcessMotionProfileBuffer();
