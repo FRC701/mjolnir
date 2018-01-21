@@ -267,14 +267,14 @@ bool ChassisMotionProfileCommand::IsFinished() {
 void ChassisMotionProfileCommand::End() {
   std::cout << "ChassisMotionProfileCommand::End" << std::endl;
   notifier.Stop();
-  Chassis::getInstance()->SetModePercentVBus();
+  Chassis::getInstance()->SetModePercentOutput();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ChassisMotionProfileCommand::Interrupted() {
   notifier.Stop();
-  Chassis::getInstance()->SetModePercentVBus();
+  Chassis::getInstance()->SetModePercentOutput();
 }
 
 void ChassisMotionProfileCommand::PeriodicTask() {

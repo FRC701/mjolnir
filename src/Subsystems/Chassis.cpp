@@ -63,3 +63,49 @@ int Chassis::getRightVelocity()
 {
   return right1Wheel.GetSelectedSensorVelocity(kPID_PrimaryClosedLoop);
 }
+
+// Motion Profile Support
+
+void Chassis::SetModePercentOutput()
+{
+  left1Wheel.Set(ControlMode::PercentOutput, 0.0);
+  right1Wheel.Set(ControlMode::PercentOutput, 0.0);
+}
+
+void Chassis::SetModeMotionProfile()
+{
+  left1Wheel.Set(ControlMode::MotionProfile, 0.0);
+  right1Wheel.Set(ControlMode::MotionProfile, 0.0);
+}
+
+void Chassis::ClearMotionProfileTrajectories()
+{
+  left1Wheel.ClearMotionProfileTrajectories();
+  right1Wheel.ClearMotionProfileTrajectories();
+}
+
+void Chassis::SetMotionProfileSetValue(SetValueMotionProfile setValue)
+{
+  left1Wheel.Set(ControlMode::MotionProfile, setValue);
+  right1Wheel.Set(ControlMode::MotionProfile, setValue);
+}
+
+void Chassis::PushMotionProfileTrajectory(const TrajectoryPoint& leftTrajectoryPoint,
+                                          const TrajectoryPoint& rightTrajectoryPoint)
+{
+  left1Wheel.PushMotionProfileTrajectory(leftTrajectoryPoint);
+  right1Wheel.PushMotionProfileTrajectory(rightTrajectoryPoint);
+}
+
+void Chassis::ProcessMotionProfileBuffer()
+{
+  left1Wheel.ProcessMotionProfileBuffer();
+  right1Wheel.ProcessMotionProfileBuffer();
+}
+
+void Chassis::GetMotionProfileStatus(MotionProfileStatus* leftStatus,
+                                     MotionProfileStatus* rightStatus)
+{
+  left1Wheel.GetMotionProfileStatus(*leftStatus);
+  right1Wheel.GetMotionProfileStatus(*rightStatus);
+}

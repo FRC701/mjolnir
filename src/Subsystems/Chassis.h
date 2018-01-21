@@ -30,6 +30,17 @@ public:
 
 	int getLeftVelocity();
 	int getRightVelocity();
+
+	// Motion Profile Support
+	void SetModePercentOutput();
+	void SetModeMotionProfile();
+	void ClearMotionProfileTrajectories();
+	void SetMotionProfileSetValue(SetValueMotionProfile setValue);
+	void PushMotionProfileTrajectory(const TrajectoryPoint& leftTrajectoryPoint,
+	                                 const TrajectoryPoint& rightTrajectoryPoint);
+	void ProcessMotionProfileBuffer();
+	void GetMotionProfileStatus(MotionProfileStatus* leftStatus,
+	                            MotionProfileStatus* rightStatus);
 };
 
 
