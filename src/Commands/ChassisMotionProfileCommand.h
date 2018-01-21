@@ -1,16 +1,13 @@
-#ifndef ChasisMotionProfileCommand_H
+#ifndef ChassisMotionProfileCommand_H
 #define ChassisMotionProfileCommand_H
 
 #include <Commands/Command.h>
 #include <Notifier.h>
+#include "MotionProfile.h"
 
 class ChassisMotionProfileCommand : public frc::Command {
 public:
-  struct TrajectoryPoint
-  {
-    double position;
-    double velocity;
-  };
+  typedef robovikes::TrajectoryPoint TrajectoryPoint;
 
   ChassisMotionProfileCommand(
       const TrajectoryPoint* chassisRight,

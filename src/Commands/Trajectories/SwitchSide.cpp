@@ -1,10 +1,11 @@
 #include "../ChassisMotionProfileCommand.h"
+#include "../MotionProfile.h"
 
-namespace CenterGear {
+namespace SwitchSideTrajectory {
 
 extern const unsigned int kTrajectoryLength = 93;
 
-extern const ChassisMotionProfileCommand::TrajectoryPoint leftTrajectory[] = {
+extern const robovikes::TrajectoryPoint leftTrajectory[] = {
 // { position (R), velocity (RPM) },
 { 0.00238732, 5.72958 },
 { 0.00954930, 8.59437 },
@@ -101,7 +102,7 @@ extern const ChassisMotionProfileCommand::TrajectoryPoint leftTrajectory[] = {
 { 6.04795, 0.00000 }
 };
 
-extern const ChassisMotionProfileCommand::TrajectoryPoint rightTrajectory[] = {
+extern const robovikes::TrajectoryPoint rightTrajectory[] = {
 // { position (R), velocity (RPM) },
 { 0.00238732, 5.72958 },
 { 0.00954930, 8.59437 },

@@ -2,13 +2,15 @@
 #include "Subsystems/Chassis.h"
 #include <iostream>
 
+#include "ctre/Phoenix.h"
+
 /**
  * Notes about Talon Motion Profile
  *
  * The trajectory point buffer in the Talon Driver (RoboRio) is 2048 points.
  * The typical trajectory point is 10ms. 2048 represents 20.48 seconds of motion profile.
  *
- * Important -- The code in this implemenation does not support more than 2048 trajectory points.
+ * Important -- The code in this implementation does not support more than 2048 trajectory points.
  *
  * The trajectory point buffer in the Talon (bottom buffer) holds 128 points.
  *
@@ -22,18 +24,23 @@
 
 using frc::Notifier;
 
+// todo: How to set time duration?
+// todo: How to set velocityOnly?
+// todo: Better logging. See CTRE Instrumentation example.
+
 namespace {
 
   const double kSecondsToMillis = 1000.0;
   const double kMillisToSeconds = ( 1.0 / kSecondsToMillis );
 
+  typedef ctre::phoenix::motion::TrajectoryPoint ctre_TrajectoryPoint;
+
   void LoadPoints(
-    const ChassisMotionProfileCommand::TrajectoryPoint* chassisRight,
-    const ChassisMotionProfileCommand::TrajectoryPoint* chassisLeft,
+    const robovikes::TrajectoryPoint* chassisRight,
+    const robovikes::TrajectoryPoint* chassisLeft,
     unsigned int trajectoryPointCount,
     unsigned int pointDurationMillis,
     bool velocityOnly)
-
   {
     std::cout << "Load Points:" << trajectoryPointCount << std::endl;
     unsigned int lastPoint = trajectoryPointCount - 1;
@@ -44,16 +51,14 @@ namespace {
     for (unsigned int point = 0; point < trajectoryPointCount; ++point) {
       std::cout << "LoadPoints:" << point << "," << chassisRight[point].velocity << "," << chassisLeft[point].velocity<< std::endl;
 
-      CANTalon::TrajectoryPoint rightTrajectoryPoint;
+      ctre_TrajectoryPoint rightTrajectoryPoint;
       rightTrajectoryPoint.position = chassisRight[point].position;
       rightTrajectoryPoint.velocity = chassisRight[point].velocity;
-      rightTrajectoryPoint.timeDurMs = pointDurationMillis;
       rightTrajectoryPoint.profileSlotSelect = 1;   // always slot 1
-      rightTrajectoryPoint.velocityOnly = velocityOnly;    // always both velocity and position
       rightTrajectoryPoint.isLastPoint = (point == lastPoint);
       rightTrajectoryPoint.zeroPos = (point == 0);
 
-      CANTalon::TrajectoryPoint leftTrajectoryPoint = rightTrajectoryPoint;
+      ctre_TrajectoryPoint leftTrajectoryPoint = rightTrajectoryPoint;
       leftTrajectoryPoint.position = chassisLeft[point].position;
       leftTrajectoryPoint.velocity = chassisLeft[point].velocity;
 
@@ -78,7 +83,7 @@ namespace {
   public:
     void run(const ChassisMotionProfileCommand* motionProfile) {
       Chassis::getInstance()->ClearMotionProfileTrajectories();
-      Chassis::getInstance()->SetMotionProfileSetValue(CANTalon::SetValueMotionProfileDisable);
+      Chassis::getInstance()->SetMotionProfileSetValue(SetValueMotionProfile::Disable);
       std::cout << "MotionProfileStart" << std::endl;
     }
 
@@ -97,7 +102,7 @@ namespace {
     static const int kMinPointsInTalon = 5;
 
     void run(const ChassisMotionProfileCommand* motionProfile) {
-      Chassis::getInstance()->SetMotionProfileSetValue(CANTalon::SetValueMotionProfileDisable);
+      Chassis::getInstance()->SetMotionProfileSetValue(SetValueMotionProfile::Disable);
     }
 
     bool isFinished() const {
@@ -114,7 +119,7 @@ namespace {
   public:
     void run(const ChassisMotionProfileCommand* motionProfile) {
       std::cout << "MotionProfileRun" << std::endl;
-      Chassis::getInstance()->SetMotionProfileSetValue(CANTalon::SetValueMotionProfileEnable);
+      Chassis::getInstance()->SetMotionProfileSetValue(SetValueMotionProfile::Enable);
     }
 
     bool isFinished() const {
@@ -131,7 +136,7 @@ namespace {
   public:
     void run(const ChassisMotionProfileCommand* motionProfile) {
       std::cout << "MotionProfileFinished" << std::endl;
-      Chassis::getInstance()->SetMotionProfileSetValue(CANTalon::SetValueMotionProfileHold);
+      Chassis::getInstance()->SetMotionProfileSetValue(SetValueMotionProfile::Hold);
     }
 
     bool isFinished() const {
@@ -150,7 +155,7 @@ namespace {
   MotionProfileFinished motionProfileFinished;
 
   /**
-   * The flyweight instances must be defined in order to implement the getNextState methods.
+   * The fly weight instances must be defined in order to implement the getNextState methods.
    */
 
   ChassisMotionProfileCommand::MotionProfileState*
@@ -166,7 +171,7 @@ namespace {
      * points in the Talon bottom buffer.
      */
     std::cout << "MotionProfileLoadTalon::getNextState" << std::endl;
-    CANTalon::MotionProfileStatus rightStatus, leftStatus;
+    MotionProfileStatus rightStatus, leftStatus;
     Chassis::getInstance()->GetMotionProfileStatus(&rightStatus, &leftStatus);
     std::cout << "MotionProfileStatus" << rightStatus.btmBufferCnt << " " << leftStatus.btmBufferCnt << std::endl;
     if (leftStatus.btmBufferCnt > kMinPointsInTalon
@@ -180,12 +185,12 @@ namespace {
 
   ChassisMotionProfileCommand::MotionProfileState*
   MotionProfileRun::getNextState() {
-    CANTalon::MotionProfileStatus rightStatus, leftStatus;
+    MotionProfileStatus rightStatus, leftStatus;
     Chassis::getInstance()->GetMotionProfileStatus(&rightStatus, &leftStatus);
     // activePointValid must precede isLastPoint.
     std::cout << "MotionProfileRun" << rightStatus.activePointValid << " " << leftStatus.activePointValid << std::endl;
-    if (rightStatus.activePointValid && rightStatus.activePoint.isLastPoint
-        && leftStatus.activePointValid && leftStatus.activePoint.isLastPoint) {
+    if (rightStatus.activePointValid && rightStatus.isLast
+        && leftStatus.activePointValid && leftStatus.isLast) {
       return &motionProfileFinished;
     }
     else {
