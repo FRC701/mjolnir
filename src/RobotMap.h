@@ -15,6 +15,7 @@ class RobotMap {
 public:
 
 //..........Motors..........
+
   //..........Chassis..........
 	  static const int kIDRight1Wheel = 1;
 	  static const int kIDRight2Wheel = 2;
@@ -27,6 +28,7 @@ public:
 	  static const int kIDLeftArm = 50;
 	  static const int kIDRightArm = 51;
 //..........Solenoids..........
+
 	//..........Arm..........
 	  static const int kIDBrakeForward = 0;
 	  static const int kIDBrakeReverse = 7;
