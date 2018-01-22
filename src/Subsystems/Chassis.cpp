@@ -31,24 +31,24 @@ void Chassis::SetTankDrive(double left, double right) {
   right1Wheel.Set(right);
 }
 
-void Chassis::SetUpTalons(){
-  left1Wheel.SetInverted(false);
-  // left1Wheel.SetControlMode() is now part of Set().
-  // If we need control modes, we need to track the control mode as a member variable
+void Chassis::SetUpTalons() {
   left1Wheel.ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,
                                           kPID_PrimaryClosedLoop,
                                           kTimeout_10Millis);
   left1Wheel.ConfigForwardSoftLimitEnable(false, kTimeout_10Millis);
   left1Wheel.ConfigReverseSoftLimitEnable(false, kTimeout_10Millis);
-  // left1Wheel.SetSensorDirection() MIA?
+  left1Wheel.SetSensorPhase(true);
+  left1Wheel.SetInverted(true);
+  left2Wheel.SetInverted(true);
 
-  right1Wheel.SetInverted(true);
-  right2Wheel.SetInverted(true);
   right1Wheel.ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,
                                           kPID_PrimaryClosedLoop,
                                           kTimeout_10Millis);
   right1Wheel.ConfigForwardSoftLimitEnable(false, kTimeout_10Millis);
   right1Wheel.ConfigReverseSoftLimitEnable(false, kTimeout_10Millis);
+  right1Wheel.SetSensorPhase(true);
+  right1Wheel.SetInverted(false);
+  right2Wheel.SetInverted(false);
 
   left2Wheel.Follow(left1Wheel);
   right2Wheel.Follow(right1Wheel);
