@@ -2,6 +2,26 @@
 #include "Commands/TankDrive.h"
 #include "RobotMap.h"
 
+namespace {
+
+#if 0
+static const double kGearRatioNumerator = 36.0;
+static const double kGearRatioDenominator = 26.0;
+// todo Use this for a ft/sec display on the dashboard
+static const double kWheelGearRatio = kGearRatioNumerator  / kGearRatioDenominator;
+#endif
+
+double calcFeedforward() {
+  static const double kMaxUnitsPer100ms = 5500.0;
+  // static const double kUnitsPerRev = 4096.0;
+  // double rpm = (kMaxUnitsPer100ms * 600.0) / kUnitsPerRev;
+  double feedforward = 1023.0 / kMaxUnitsPer100ms;
+  return feedforward;
+}
+
+}
+
+
 const char Chassis::kSubsystemName[] = "Chassis";
 std::shared_ptr<Chassis> Chassis::self;
 
@@ -18,7 +38,7 @@ Chassis::Chassis() : Subsystem(kSubsystemName),
     left2Wheel(RobotMap::kIDLeft2Wheel),
     right1Wheel(RobotMap::kIDRight1Wheel),
     right2Wheel(RobotMap::kIDRight2Wheel),
-    p(0.0), i(0.0), d(0.0), f(4.0)
+    p(0.0), i(0.0), d(0.0), f(calcFeedforward())
 {
   SetUpTalons();
 }
@@ -33,6 +53,8 @@ void Chassis::SetTankDrive(double left, double right) {
 }
 
 void Chassis::SetUpTalons() {
+  // left1Wheel.SetControlMode() is now part of Set().
+  // If we need control modes, we need to track the control mode as a member variable
   left1Wheel.ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,
                                           kPID_PrimaryClosedLoop,
                                           kTimeout_10Millis);
@@ -44,6 +66,9 @@ void Chassis::SetUpTalons() {
   left1Wheel.Config_kF(kSlot0, f, kTimeout_10Millis);
   /* status 10 provides the trajectory target for motion profile AND motion magic */
   left1Wheel.SetStatusFramePeriod(StatusFrameEnhanced::Status_10_MotionMagic, 10, kTimeout_10Millis);
+  left1Wheel.SetSensorPhase(true);
+  left1Wheel.SetInverted(true);
+  left2Wheel.SetInverted(true);
 
   left1Wheel.ConfigMotionProfileTrajectoryPeriod(TrajectoryDuration_0ms, kTimeout_10Millis);
   /* status 10 provides the trajectory target for motion profile AND motion magic */
@@ -68,6 +93,9 @@ void Chassis::SetUpTalons() {
   right1Wheel.Config_kF(kSlot0, f, kTimeout_10Millis);
   /* status 10 provides the trajectory target for motion profile AND motion magic */
   right1Wheel.SetStatusFramePeriod(StatusFrameEnhanced::Status_10_MotionMagic, 10, kTimeout_10Millis);
+  right1Wheel.SetSensorPhase(true);
+  right1Wheel.SetInverted(false);
+  right2Wheel.SetInverted(false);
 
   right1Wheel.ConfigMotionProfileTrajectoryPeriod(TrajectoryDuration_0ms, kTimeout_10Millis);
   /* status 10 provides the trajectory target for motion profile AND motion magic */
