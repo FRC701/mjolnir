@@ -4,6 +4,8 @@
 #include "RobotMap.h"
 
 
+
+
 const char Ramp::kSubsystemName[] = "Ramp";
 
 std::shared_ptr<Ramp> Ramp::self;
@@ -21,5 +23,9 @@ Ramp::Ramp() : Subsystem(kSubsystemName),
   p(7.0), i(0), d(0)
 {
 
+}
+
+void Ramp::SetRamp(RampValue value) {
+  actuator.Set(static_cast<DoubleSolenoid::Value>(value));
 }
 

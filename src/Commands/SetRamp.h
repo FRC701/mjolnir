@@ -4,10 +4,10 @@
 #include "Commands/InstantCommand.h"
 #include "../Subsystems/Ramp.h"
 
-class SetRamp : public InstantCommand {
+class SetRamp : public frc::InstantCommand {
 public:
-        SetRamp(Ramp::RampValue value);
-        void Initialize();
+      SetRamp(Ramp::RampValue value);
+      void Initialize();
 private:
         Ramp::RampValue mValue;
 };

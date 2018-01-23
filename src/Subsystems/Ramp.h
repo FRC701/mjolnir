@@ -5,27 +5,26 @@
 #include "DoubleSolenoid.h"
 
 
-class Ramp : public Subsystem {
+class Ramp : public frc::Subsystem {
 private:
 
   static const char kSubsystemName[];
   static std::shared_ptr<Ramp> self;
-
   Ramp();
   //Command goes here
 
-  DoubleSolenoid actuator;
+ frc::DoubleSolenoid actuator;
   double p;
   double i;
   double d;
 
 public:
-  enum RampValue{kArmIn = DoubleSolenoid::kForward, kArmOut = DoubleSolenoid::kReverse};
+  enum RampValue{kArmIn = frc::DoubleSolenoid::kForward, kArmOut = frc::DoubleSolenoid::kReverse};
 
   static std::shared_ptr<Ramp> getInstance();
 
 
-  void SetRamp();
+  void SetRamp(enum RampValue);
 
 
 };

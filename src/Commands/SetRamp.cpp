@@ -1,5 +1,4 @@
 #include <Commands/SetRamp.h>
-#include "../Subsystems/Ramp.h"
 
 SetRamp::SetRamp(Ramp::RampValue value) :
   mValue(value) {
@@ -7,7 +6,6 @@ SetRamp::SetRamp(Ramp::RampValue value) :
   Requires(Ramp::getInstance().get());
 }
 
-
 void SetRamp::Initialize() {
-  Ramp::getInstance()->SetRamp();
+  Ramp::getInstance()->SetRamp(mValue);
 }
