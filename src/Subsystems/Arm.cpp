@@ -12,7 +12,7 @@ std::shared_ptr<Arm> Arm::getInstance() {
         return self;
 }
 
-Arm::Arm() : Subsystem("ExampleSubsystem"),
+Arm::Arm() : Subsystem(kSubsystemName),
   leftArmMotor(RobotMap::kIDLeftArm),
   rightArmMotor(RobotMap::kIDRightArm),
   brake(RobotMap::kIDBrakeForward, RobotMap::kIDBrakeReverse)
