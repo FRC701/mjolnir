@@ -14,13 +14,24 @@
 class RobotMap {
 public:
 
-	static const int kIDRight1Wheel = 1;
-	static const int kIDRight2Wheel = 2;
-	static const int kIDLeft1Wheel = 3;
-	static const int kIDLeft2Wheel = 4;
-	static const int kIDLeftIntake = 5;
-	static const int kIDRightIntake = 6;
+//..........Motors..........
 
+  //..........Chassis..........
+	  static const int kIDRight1Wheel = 1;
+	  static const int kIDRight2Wheel = 2;
+	  static const int kIDLeft1Wheel = 3;
+	  static const int kIDLeft2Wheel = 4;
+	//..........Intake..........
+	  static const int kIDLeftIntake = 5;
+	  static const int kIDRightIntake = 6;
+	//..........Arm..........
+	  static const int kIDLeftArm = 50;
+	  static const int kIDRightArm = 51;
+//..........Solenoids..........
+
+	//..........Arm..........
+	  static const int kIDBrakeForward = 0;
+	  static const int kIDBrakeReverse = 7;
 	static void init();
 };
 
