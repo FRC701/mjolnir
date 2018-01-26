@@ -2,7 +2,7 @@
 #include "DoubleSolenoid.h"
 #include "Commands/SetRamp.h"
 #include "RobotMap.h"
-
+#include "Commands/SetRampMotor.h"
 
 
 
@@ -20,12 +20,15 @@ std::shared_ptr<Ramp> Ramp::getInstance() {
 
 Ramp::Ramp() : Subsystem(kSubsystemName),
   actuator(RobotMap::kIDActuatorForward, RobotMap::kIDActuatorReverse),
-  p(7.0), i(0), d(0)
+  RampMotor(RobotMap::kIDRampMotor)
 {
-
+  SetUpTalons();
 }
 
 void Ramp::SetRamp(RampValue value) {
   actuator.Set(static_cast<DoubleSolenoid::Value>(value));
 }
 
+void Ramp::RampMotor(double speed){
+  RampMotor.Set(speed);
+}
