@@ -3,7 +3,7 @@
 #include "Commands/Subsystem.h"
 #include "RobotMap.h"
 #include "DoubleSolenoid.h"
-
+#include "ctre/Phoenix.h"
 
 class Ramp : public frc::Subsystem {
 private:
@@ -13,10 +13,11 @@ private:
   Ramp();
   //Command goes here
 
+ WPI_TalonSRX RampMotor;
+
  frc::DoubleSolenoid actuator;
-  double p;
-  double i;
-  double d;
+
+ void SetUpTalons();
 
 public:
   enum RampValue{kArmIn = frc::DoubleSolenoid::kForward, kArmOut = frc::DoubleSolenoid::kReverse};
@@ -25,6 +26,8 @@ public:
 
 
   void SetRamp(enum RampValue);
+
+  void SetRampMotor();
 
 
 };

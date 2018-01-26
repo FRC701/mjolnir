@@ -8,6 +8,7 @@ class SetRamp : public frc::InstantCommand {
 public:
       SetRamp(Ramp::RampValue value);
       void Initialize();
+
 private:
         Ramp::RampValue mValue;
 };
