@@ -12,6 +12,8 @@
 #include "OI.h"
 #include "Commands/SlingShot.h"
 #include "Commands/SetIntake.h"
+#include "Commands/SetSlingEngagement.h"
+#include "Commands/SetSlingDisengagement.h"
 
 #include "SmartDashboard/SmartDashboard.h"
 using frc::Joystick;
@@ -45,6 +47,9 @@ OI::OI()
 
 {
   dA.WhenPressed(new SlingShot(1.0));
+  dB.WhenPressed(new SlingShot(0.0));
+  dX.WhenPressed(new SetSlingEngagement);
+  dY.WhenPressed(new SetSlingDisengagement);
 
   SmartDashboard::PutData("PuncherButton", new SlingShot(1.0));
 }

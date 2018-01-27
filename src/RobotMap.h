@@ -37,6 +37,9 @@ public:
 	  static const int kIDBrakeForward = 0;
 	  static const int kIDBrakeReverse = 7;
 
+	  static const int kIDSlingForward = 1;
+	  static const int kIDSlingReverse = 6;
+
 	static void init();
 };
 
