@@ -19,8 +19,8 @@ std::shared_ptr<Ramp> Ramp::getInstance() {
 
 
 Ramp::Ramp() : Subsystem(kSubsystemName),
-  actuator(RobotMap::kIDActuatorForward, RobotMap::kIDActuatorReverse),
-  RampMotor(RobotMap::kIDRampMotor)
+    rampMotor(RobotMap::kIDRampMotor),
+    actuator(RobotMap::kIDActuatorForward, RobotMap::kIDActuatorReverse)
 {
   SetUpTalons();
 }
@@ -29,6 +29,11 @@ void Ramp::SetRamp(RampValue value) {
   actuator.Set(static_cast<DoubleSolenoid::Value>(value));
 }
 
-void Ramp::RampMotor(double speed){
-  RampMotor.Set(speed);
+void Ramp::SetRampMotor(double speed){
+  rampMotor.Set(speed);
+}
+
+void Ramp::SetUpTalons()
+{
+
 }

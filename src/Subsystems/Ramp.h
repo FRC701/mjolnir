@@ -13,7 +13,7 @@ private:
   Ramp();
   //Command goes here
 
- WPI_TalonSRX RampMotor;
+ WPI_TalonSRX rampMotor;
 
  frc::DoubleSolenoid actuator;
 
@@ -25,9 +25,9 @@ public:
   static std::shared_ptr<Ramp> getInstance();
 
 
-  void SetRamp(enum RampValue);
+  void SetRamp(RampValue value);
 
-  void SetRampMotor();
+  void SetRampMotor(double speed);
 
 
 };
