@@ -10,7 +10,8 @@
 
 #include "Commands/Subsystem.h"
 #include "ctre/Phoenix.h"
-
+#include "DoubleSolenoid.h"
+#include "RobotMap.h"
 
 class Puncher: public frc::Subsystem {
 private:
@@ -19,13 +20,20 @@ private:
 
   WPI_TalonSRX pullSling1;
   WPI_TalonSRX pullSling2;
+  frc::DoubleSolenoid releaseSling;
+
 
 public:
+
   static std::shared_ptr<Puncher> getInstance();
   Puncher();
 
+
   void InitDefaultCommand();
-  void SlingShot(double speed);
+  void SetSlingShot(double speed);
+  double GetPuncherLimit();
+  void MotorDisengage();
+  void MotorEngage();
 };
 
 

@@ -11,11 +11,11 @@ void SlingShot::Initialize() {
 }
 
 void SlingShot::Execute() {
-  Puncher::getInstance()->SlingShot(mSpeed);
+  Puncher::getInstance()->SetSlingShot(mSpeed);
 }
 
 bool SlingShot::IsFinished() {
-    return false;
+    return Puncher::getInstance()->GetPuncherLimit();
 }
 
 void SlingShot::End() {
