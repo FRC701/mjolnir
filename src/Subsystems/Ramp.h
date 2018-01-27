@@ -13,28 +13,15 @@ private:
   Ramp();
   //Command goes here
 
- WPI_TalonSRX rampMotor;
-
  frc::DoubleSolenoid actuator;
-
- void SetUpTalons();
 
 public:
   enum RampValue{kArmIn = frc::DoubleSolenoid::kForward, kArmOut = frc::DoubleSolenoid::kReverse};
 
   static std::shared_ptr<Ramp> getInstance();
 
-
   void SetRamp(RampValue value);
 
-  void SetRampMotor(double speed);
-
-
 };
-
-
-
-
-
 
 #endif /* SRC_SUBSYSTEMS_RAMP_H_ */
