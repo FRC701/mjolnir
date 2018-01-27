@@ -2,9 +2,6 @@
 #include "DoubleSolenoid.h"
 #include "Commands/SetRamp.h"
 #include "RobotMap.h"
-#include "Commands/SetRampMotor.h"
-
-
 
 const char Ramp::kSubsystemName[] = "Ramp";
 
