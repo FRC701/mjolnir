@@ -15,7 +15,7 @@ void SlingShot::Execute() {
 }
 
 bool SlingShot::IsFinished() {
-    return false;
+    return Puncher::getInstance()->GetPuncherLimit();
 }
 
 void SlingShot::End() {

@@ -22,7 +22,8 @@ public:
 	static const int kIDRightIntake = 6;
 	static const int kIDPullSling1 = 7;
 	static const int kIDPullSling2 = 8;
-
+	static const int kIDReleaseSling = 9;
+	static const int kIDGetSling = 10;
 	static void init();
 };
 
