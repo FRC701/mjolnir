@@ -10,12 +10,31 @@
 #include "Subsystems/Intake.h"
 #include "Commands/TankDrive.h"
 #include "SmartDashboard/SmartDashboard.h"
+#include "GameData.h"
+
+using robovikes::GameData;
 
 std::unique_ptr<OI> Robot::oi;
 
 Robot::Robot():
     autonomousCommand(nullptr) {
 
+}
+
+std::string SideToString(robovikes::GameData::Side side){
+  std::string sideString = "Left";
+  switch(side) {
+    case GameData::Left:
+      sideString = "Left";
+      break;
+    case GameData::Right:
+      sideString = "Right";
+      break;
+    default:
+      sideString = "Unknown";
+      break;
+      }
+  return sideString;
 }
 
 void Robot::RobotInit() {
@@ -55,6 +74,10 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
+	SmartDashboard::PutString("Our Switch", SideToString(robovikes::GameData::GetOurSwitchSide()));
+	SmartDashboard::PutString("Scale", SideToString(robovikes::GameData::GetScaleSide()));
+	SmartDashboard::PutString("Their Switch", SideToString(robovikes::GameData::GetTheirSwitchSide()));
+
 }
 
 void Robot::TeleopInit() {
@@ -64,7 +87,9 @@ void Robot::TeleopInit() {
 	// these lines or comment it out.
 	if (autonomousCommand.get() != nullptr) autonomousCommand->Cancel();
 
+
 }
+
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
@@ -73,6 +98,11 @@ void Robot::TeleopPeriodic() {
   SmartDashboard::PutNumber("Right Velocity", Chassis::getInstance()->getRightVelocity());
 
   SmartDashboard::PutNumber("Arm Velocity", Arm::getInstance()->GetVelocity());
+
+  SmartDashboard::PutString("Our Switch", SideToString(robovikes::GameData::GetOurSwitchSide()));
+  SmartDashboard::PutString("Scale", SideToString(robovikes::GameData::GetScaleSide()));
+  SmartDashboard::PutString("Their Switch", SideToString(robovikes::GameData::GetTheirSwitchSide()));
+
 }
 
 void Robot::TestPeriodic() {
