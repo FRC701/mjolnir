@@ -20,7 +20,7 @@ std::shared_ptr<Puncher> Puncher::getInstance() {
 }
 
 Puncher::Puncher() : Subsystem(kSubsystemName),
-    pullSling1(RobotMap::kIDPullSling1),
+    pullSling(RobotMap::kIDPullSling),
     pullSling2(RobotMap::kIDPullSling2),
     releaseSling(RobotMap::kIDSlingForward, RobotMap::kIDSlingReverse)
 {
@@ -35,13 +35,13 @@ void Puncher::InitDefaultCommand() {
 }
 void Puncher::SetSlingShot(double mSpeed)
 {
-  pullSling1.Set(mSpeed);
+  pullSling.Set(mSpeed);
   pullSling2.Set(mSpeed);
 
 }
 
 double Puncher::GetPuncherLimit() {
-  return pullSling1.GetSensorCollection().IsFwdLimitSwitchClosed();
+  return pullSling.GetSensorCollection().IsFwdLimitSwitchClosed();
 }
 
 void Puncher::MotorDisengage() {
