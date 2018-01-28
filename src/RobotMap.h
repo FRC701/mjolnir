@@ -27,11 +27,19 @@ public:
 	//..........Arm..........
 	  static const int kIDLeftArm = 50;
 	  static const int kIDRightArm = 51;
+	//.........Sling.........
+	  static const int kIDPullSling1 = 7;
+	  static const int kIDPullSling2 = 8;
+
 //..........Solenoids..........
 
 	//..........Arm..........
 	  static const int kIDBrakeForward = 0;
 	  static const int kIDBrakeReverse = 7;
+
+	  static const int kIDSlingForward = 1;
+	  static const int kIDSlingReverse = 6;
+
 	static void init();
 };
 
