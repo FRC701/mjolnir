@@ -7,6 +7,6 @@ SetSlingEngagement::SetSlingEngagement()
 
 // Called just before this Command runs the first time
 void SetSlingEngagement::Initialize() {
-  Puncher::getInstance()->MotorEngage(Puncher::kMotorEngage);
+  Puncher::getInstance()->MotorEngage();
 
 }

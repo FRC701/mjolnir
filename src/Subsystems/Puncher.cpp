@@ -19,17 +19,16 @@ Puncher::Puncher() : Subsystem(kSubsystemName),
     pullSling2(RobotMap::kIDPullSling2),
     releaseSling(RobotMap::kIDReleaseSling, RobotMap::kIDGetSling)
 {
-  MotorEngage(Puncher::kMotorEngage);
-  MotorDisengage(Puncher::kMotorDisengage);
+  MotorEngage();
 
 }
 
 void Puncher::InitDefaultCommand() {
     // Set the default command for a subsystem here.
     // SetDefaultCommand(new MySpecialCommand());
-  SetDefaultCommand(new::SlingShot(0.0));
+  SetDefaultCommand(new SlingShot(0.0));
 }
-void Puncher::SlingShot(double mSpeed)
+void Puncher::SetSlingShot(double mSpeed)
 {
   pullSling1.Set(mSpeed);
   pullSling2.Set(mSpeed);
@@ -40,12 +39,12 @@ double Puncher::GetPuncherLimit() {
   return pullSling1.GetSensorCollection().GetPulseWidthPosition();
 }
 
-void Puncher::MotorDisengage(EngageValue value) {
-  releaseSling.Set(static_cast<DoubleSolenoid::Value>(value*-1));
+void Puncher::MotorDisengage() {
+  releaseSling.Set(static_cast<frc::DoubleSolenoid::Value>(kMotorEngage));
 }
 
-void Puncher::MotorEngage(EngageValue value) {
-  releaseSling.Set(static_cast<DoubleSolenoid::Value>(value));
+void Puncher::MotorEngage() {
+  releaseSling.Set(static_cast<frc::DoubleSolenoid::Value>(kMotorDisengage));
 }
 
 // Put methods for controlling this subsystem

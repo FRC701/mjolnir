@@ -7,6 +7,6 @@ SetSlingDisengagement::SetSlingDisengagement()
 
 // Called once when the command executes
 void SetSlingDisengagement::Initialize() {
-  Puncher::getInstance()->MotorDisengage(Puncher::kMotorDisengage);
+  Puncher::getInstance()->MotorDisengage();
 
 }

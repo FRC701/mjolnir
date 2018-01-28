@@ -11,7 +11,7 @@ void SlingShot::Initialize() {
 }
 
 void SlingShot::Execute() {
-  Puncher::getInstance()->SlingShot(mSpeed);
+  Puncher::getInstance()->SetSlingShot(mSpeed);
 }
 
 bool SlingShot::IsFinished() {

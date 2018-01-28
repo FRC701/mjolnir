@@ -25,17 +25,17 @@ private:
 
 public:
 
-  enum EngageValue{kMotorEngage = frc::DoubleSolenoid::kForward,kMotorDisengage = frc::DoubleSolenoid::kReverse};
+  enum EngageValue{kMotorEngage = frc::DoubleSolenoid::kForward, kMotorDisengage = frc::DoubleSolenoid::kReverse};
 
   static std::shared_ptr<Puncher> getInstance();
   Puncher();
 
 
   void InitDefaultCommand();
-  void SlingShot(double speed);
+  void SetSlingShot(double speed);
   double GetPuncherLimit();
-  void MotorDisengage(EngageValue value);
-  void MotorEngage(EngageValue value);
+  void MotorDisengage();
+  void MotorEngage();
 };
 
 
