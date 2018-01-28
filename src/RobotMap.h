@@ -28,8 +28,7 @@ public:
 	  static const int kIDLeftArm = 50;
 	  static const int kIDRightArm = 51;
 	//.........Sling.........
-	  static const int kIDPullSling1 = 7;
-	  static const int kIDPullSling2 = 8;
+	  static const int kIDPullSling = 7;
 
 //..........Solenoids..........
 

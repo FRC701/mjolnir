@@ -17,8 +17,7 @@ private:
   static const char kSubsystemName[];
   static std::shared_ptr<Puncher> self;
 
-  WPI_TalonSRX pullSling1;
-  WPI_TalonSRX pullSling2;
+  WPI_TalonSRX pullSling;
   frc::DoubleSolenoid releaseSling;
 
 
