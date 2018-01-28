@@ -6,6 +6,7 @@
 #include <ctre/phoenix.h>
 
 class Arm : public frc::Subsystem {
+
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -17,6 +18,7 @@ private:
   WPI_TalonSRX leftArmMotor;
   WPI_TalonSRX rightArmMotor;
   frc::DoubleSolenoid brake;
+  void SetUpTalons();
 
 
 
@@ -25,9 +27,13 @@ public:
 
 
   Arm();
-;
+
 
 	void InitDefaultCommand();
+	int GetVelocity();
+	void SetArmMove(double speed);
+
+
 };
 
 #endif  // Arm_H

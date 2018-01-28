@@ -5,6 +5,7 @@
 
 #include "OI.h"
 #include <iostream>
+#include "Subsystems/Arm.h"
 #include "Subsystems/Chassis.h"
 #include "Subsystems/Intake.h"
 #include "Commands/TankDrive.h"
@@ -68,8 +69,10 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 
-  SmartDashboard::PutNumber("LeftEncVelocity", Chassis::getInstance()->getLeftVelocity());
-  SmartDashboard::PutNumber("RightEncVelocity", Chassis::getInstance()->getRightVelocity());
+  SmartDashboard::PutNumber("Left Velocity", Chassis::getInstance()->getLeftVelocity());
+  SmartDashboard::PutNumber("Right Velocity", Chassis::getInstance()->getRightVelocity());
+
+  SmartDashboard::PutNumber("Arm Velocity", Arm::getInstance()->GetVelocity());
 }
 
 void Robot::TestPeriodic() {

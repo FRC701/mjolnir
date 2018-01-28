@@ -1,5 +1,7 @@
 #include "Arm.h"
-#include "../RobotMap.h"
+#include "Commands/ArmMove.h"
+#include "RobotMap.h"
+
 
 const char Arm::kSubsystemName[] = "Arm";
 
@@ -18,13 +20,38 @@ Arm::Arm() : Subsystem(kSubsystemName),
   brake(RobotMap::kIDBrakeForward, RobotMap::kIDBrakeReverse)
 {
 
+  SetUpTalons();
 
 }
 
 void Arm::InitDefaultCommand() {
-	// Set the default command for a subsystem here.
-	// SetDefaultCommand(new MySpecialCommand());
+ SetDefaultCommand(new ArmMove);
+}
+
+void Arm::SetArmMove(double speed) {
+ leftArmMotor.Set(speed);
+}
+
+void Arm::SetUpTalons() {
+  leftArmMotor.ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative,
+                                         kPID_PrimaryClosedLoop,
+                                         kTimeout_10Millis);
+ leftArmMotor.ConfigForwardSoftLimitEnable(false, kTimeout_10Millis);
+ leftArmMotor.ConfigReverseSoftLimitEnable(false, kTimeout_10Millis);
+ leftArmMotor.SetSensorPhase(true);
+ leftArmMotor.SetInverted(true);
+ rightArmMotor.SetInverted(true);
+
+
+ rightArmMotor.Follow(leftArmMotor);
 
 }
+
+int Arm::GetVelocity()
+{
+ return leftArmMotor.GetSelectedSensorVelocity(kPID_PrimaryClosedLoop);
+}
+
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
