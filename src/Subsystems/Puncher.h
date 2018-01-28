@@ -25,8 +25,6 @@ private:
 
 public:
 
-  enum EngageValue{kMotorEngage = frc::DoubleSolenoid::kForward, kMotorDisengage = frc::DoubleSolenoid::kReverse};
-
   static std::shared_ptr<Puncher> getInstance();
   Puncher();
 

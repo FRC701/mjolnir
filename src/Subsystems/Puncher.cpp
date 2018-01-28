@@ -3,6 +3,11 @@
 #include "RobotMap.h"
 #include "DoubleSolenoid.h"
 
+
+static frc::DoubleSolenoid::Value kMotorEngage = frc::DoubleSolenoid::kForward;
+static frc::DoubleSolenoid::Value kMotorDisengage = frc::DoubleSolenoid::kReverse;
+
+
 const char Puncher::kSubsystemName[] = "Puncher";
 
 std::shared_ptr<Puncher> Puncher::self;
@@ -40,11 +45,11 @@ double Puncher::GetPuncherLimit() {
 }
 
 void Puncher::MotorDisengage() {
-  releaseSling.Set(static_cast<frc::DoubleSolenoid::Value>(kMotorEngage));
+  releaseSling.Set(kMotorEngage);
 }
 
 void Puncher::MotorEngage() {
-  releaseSling.Set(static_cast<frc::DoubleSolenoid::Value>(kMotorDisengage));
+  releaseSling.Set(kMotorDisengage);
 }
 
 // Put methods for controlling this subsystem
