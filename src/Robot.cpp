@@ -10,6 +10,7 @@
 #include "Subsystems/Intake.h"
 #include "Commands/TankDrive.h"
 #include "SmartDashboard/SmartDashboard.h"
+#include "GameData.h"
 
 std::unique_ptr<OI> Robot::oi;
 
@@ -64,6 +65,7 @@ void Robot::TeleopInit() {
 	// these lines or comment it out.
 	if (autonomousCommand.get() != nullptr) autonomousCommand->Cancel();
 
+
 }
 
 void Robot::TeleopPeriodic() {
@@ -73,6 +75,7 @@ void Robot::TeleopPeriodic() {
   SmartDashboard::PutNumber("Right Velocity", Chassis::getInstance()->getRightVelocity());
 
   SmartDashboard::PutNumber("Arm Velocity", Arm::getInstance()->GetVelocity());
+
 }
 
 void Robot::TestPeriodic() {
