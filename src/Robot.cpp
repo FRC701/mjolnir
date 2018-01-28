@@ -30,7 +30,7 @@ std::string SideToString(robovikes::GameData::Side side){
     case GameData::Right:
       sideString = "Right";
       break;
-    case GameData::Unknown:
+    default:
       sideString = "Unknown";
       break;
       }
@@ -99,10 +99,10 @@ void Robot::TeleopPeriodic() {
 
   SmartDashboard::PutNumber("Arm Velocity", Arm::getInstance()->GetVelocity());
 
- /* SmartDashboard::PutString("Our Switch", SideToString(robovikes::GameData::GetOurSwitchSide()));
+  SmartDashboard::PutString("Our Switch", SideToString(robovikes::GameData::GetOurSwitchSide()));
   SmartDashboard::PutString("Scale", SideToString(robovikes::GameData::GetScaleSide()));
   SmartDashboard::PutString("Their Switch", SideToString(robovikes::GameData::GetTheirSwitchSide()));
-*/
+
 }
 
 void Robot::TestPeriodic() {
