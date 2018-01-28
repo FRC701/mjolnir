@@ -21,7 +21,6 @@ std::shared_ptr<Puncher> Puncher::getInstance() {
 
 Puncher::Puncher() : Subsystem(kSubsystemName),
     pullSling(RobotMap::kIDPullSling),
-    pullSling2(RobotMap::kIDPullSling2),
     releaseSling(RobotMap::kIDSlingForward, RobotMap::kIDSlingReverse)
 {
   MotorEngage();
@@ -36,7 +35,6 @@ void Puncher::InitDefaultCommand() {
 void Puncher::SetSlingShot(double mSpeed)
 {
   pullSling.Set(mSpeed);
-  pullSling2.Set(mSpeed);
 
 }
 

@@ -18,7 +18,6 @@ private:
   static std::shared_ptr<Puncher> self;
 
   WPI_TalonSRX pullSling;
-  WPI_TalonSRX pullSling2;
   frc::DoubleSolenoid releaseSling;
 
 
