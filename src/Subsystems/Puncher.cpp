@@ -36,7 +36,7 @@ void Puncher::SetSlingShot(double mSpeed)
 }
 
 double Puncher::GetPuncherLimit() {
-  return pullSling1.GetSensorCollection().GetPulseWidthPosition();
+  return pullSling1.GetSensorCollection().IsFwdLimitSwitchClosed();
 }
 
 void Puncher::MotorDisengage() {
