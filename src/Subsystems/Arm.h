@@ -4,6 +4,7 @@
 #include <Commands/Subsystem.h>
 #include <DoubleSolenoid.h>
 #include <ctre/phoenix.h>
+#include <AnalogInput.h>
 
 class Arm : public frc::Subsystem {
 private:
@@ -18,14 +19,17 @@ private:
   WPI_TalonSRX rightArmMotor;
   frc::DoubleSolenoid brake;
 
-
+  frc::AnalogInput pot;
 
 public:
   static std::shared_ptr<Arm> getInstance();
 
 
   Arm();
-;
+
+  int GetArmPotValue() const;
+
+  double GetArmPotVoltage() const;
 
 	void InitDefaultCommand();
 };

@@ -15,7 +15,8 @@ std::shared_ptr<Arm> Arm::getInstance() {
 Arm::Arm() : Subsystem(kSubsystemName),
   leftArmMotor(RobotMap::kIDLeftArm),
   rightArmMotor(RobotMap::kIDRightArm),
-  brake(RobotMap::kIDBrakeForward, RobotMap::kIDBrakeReverse)
+  brake(RobotMap::kIDBrakeForward, RobotMap::kIDBrakeReverse),
+  pot(RobotMap::kIDArmPot)
 {
 
 
@@ -26,5 +27,11 @@ void Arm::InitDefaultCommand() {
 	// SetDefaultCommand(new MySpecialCommand());
 
 }
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+
+int Arm::GetArmPotValue() const {
+  return pot.GetValue();
+}
+
+double Arm::GetArmPotVoltage() const {
+  return pot.GetVoltage();
+}

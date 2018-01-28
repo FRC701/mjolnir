@@ -7,6 +7,7 @@
 #include <iostream>
 #include "Subsystems/Chassis.h"
 #include "Subsystems/Intake.h"
+#include "Subsystems/Arm.h"
 #include "Commands/TankDrive.h"
 #include "SmartDashboard/SmartDashboard.h"
 
@@ -70,6 +71,8 @@ void Robot::TeleopPeriodic() {
 
   SmartDashboard::PutNumber("LeftEncVelocity", Chassis::getInstance()->getLeftVelocity());
   SmartDashboard::PutNumber("RightEncVelocity", Chassis::getInstance()->getRightVelocity());
+  SmartDashboard::PutNumber("Pot Value", Arm::getInstance()->GetArmPotValue());
+  SmartDashboard::PutNumber("Pot Voltage", Arm::getInstance()->GetArmPotVoltage());
 }
 
 void Robot::TestPeriodic() {

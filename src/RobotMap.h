@@ -32,6 +32,8 @@ public:
 	//..........Arm..........
 	  static const int kIDBrakeForward = 0;
 	  static const int kIDBrakeReverse = 7;
+
+	  static const int kIDArmPot = 0;
 	static void init();
 };
 
