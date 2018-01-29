@@ -40,6 +40,9 @@ public:
   int GetArmPotValue();
   int GetArmPotVoltage();
   void ResetArmPos();
+	bool IsForwardLimitSwitchClosed();
+	bool IsReverseLimitSwitchClosed();
+
 
 };
 
