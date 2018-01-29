@@ -99,10 +99,18 @@ void Arm::SetUpMotionMagic() {
   leftArmMotor.Config_kP(kSlotIndex, kP, kTimeout_10Millis);
   leftArmMotor.Config_kI(kSlotIndex, kI, kTimeout_10Millis);
   leftArmMotor.Config_kD(kSlotIndex, kD, kTimeout_10Millis);
-
   leftArmMotor.ConfigMotionCruiseVelocity(kCruiseVelocity, kTimeout_10Millis);
   leftArmMotor.ConfigMotionAcceleration(kMotionAcceleration, kTimeout_10Millis);
+}
 
+bool Arm::IsForwardLimitSwitchClosed()
+{
+  return leftArmMotor.GetSensorCollection().IsFwdLimitSwitchClosed();
+}
+
+bool Arm::IsReverseLimitSwitchClosed()
+{
+  return leftArmMotor.GetSensorCollection().IsRevLimitSwitchClosed();
 }
 
 void Arm::EngageBrake(){
