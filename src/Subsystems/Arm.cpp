@@ -52,6 +52,16 @@ int Arm::GetVelocity()
  return leftArmMotor.GetSelectedSensorVelocity(kPID_PrimaryClosedLoop);
 }
 
+bool Arm::IsForwardLimitSwitchClosed()
+{
+  return leftArmMotor.GetSensorCollection().IsFwdLimitSwitchClosed();
+}
+
+bool Arm::IsReverseLimitSwitchClosed()
+{
+  return leftArmMotor.GetSensorCollection().IsRevLimitSwitchClosed();
+}
+
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

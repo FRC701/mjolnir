@@ -32,6 +32,8 @@ public:
 	void InitDefaultCommand();
 	int GetVelocity();
 	void SetArmMove(double speed);
+	bool IsForwardLimitSwitchClosed();
+	bool IsReverseLimitSwitchClosed();
 
 
 };
