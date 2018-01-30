@@ -44,6 +44,7 @@ public:
     static const int kIDBrakeForward = 2;
     static const int kIDBrakeReverse = 5;
 
+	//........Analog Inputs...........
 	  static const int kIDArmPot = 0;
 
 	  static void init();
