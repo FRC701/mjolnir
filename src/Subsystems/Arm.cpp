@@ -17,7 +17,8 @@ std::shared_ptr<Arm> Arm::getInstance() {
 Arm::Arm() : Subsystem(kSubsystemName),
   leftArmMotor(RobotMap::kIDLeftArm),
   rightArmMotor(RobotMap::kIDRightArm),
-  brake(RobotMap::kIDBrakeForward, RobotMap::kIDBrakeReverse)
+  brake(RobotMap::kIDBrakeForward, RobotMap::kIDBrakeReverse),
+  armPot(RobotMap::kIDArmPot)
 {
 
   SetUpTalons();
@@ -62,6 +63,20 @@ bool Arm::IsReverseLimitSwitchClosed()
   return leftArmMotor.GetSensorCollection().IsRevLimitSwitchClosed();
 }
 
+int Arm::GetArmPotValue()
+{
+  return armPot.GetValue();
+}
+
+double Arm::GetArmPotVoltage()
+{
+  return armPot.GetVoltage();
+}
+
+int Arm::GetPosition()
+{
+  return leftArmMotor.GetSelectedSensorPosition(kPID_PrimaryClosedLoop);
+}
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

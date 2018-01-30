@@ -39,6 +39,9 @@ public:
 	  static const int kIDSlingForward = 1;
 	  static const int kIDSlingReverse = 6;
 
+	//........Analog Inputs...........
+	  static const int kIDArmPot = 0;
+
 	static void init();
 };
 
