@@ -129,6 +129,11 @@ int Arm::GetArmPotValue(){
   return armPot.GetValue();
 }
 
+int Arm::GetPosition()
+{
+  return leftArmMotor.GetSelectedSensorPosition(kPID_PrimaryClosedLoop);
+}
+
 int Arm::GetArmPotVoltage(){
   return armPot.GetVoltage();
 }

@@ -18,12 +18,11 @@ private:
 
   WPI_TalonSRX leftArmMotor;
   WPI_TalonSRX rightArmMotor;
-  DoubleSolenoid brake;
-  AnalogInput armPot;
+  frc::DoubleSolenoid brake;
+  frc::AnalogInput armPot;
 
   void SetUpTalons();
   void SetUpMotionMagic();
-
 
 public:
   static std::shared_ptr<Arm> getInstance();
@@ -42,7 +41,8 @@ public:
   void ResetArmPos();
 	bool IsForwardLimitSwitchClosed();
 	bool IsReverseLimitSwitchClosed();
-
+	double GetArmPotVoltage();
+	int GetArmPotValue();
 
 };
 
