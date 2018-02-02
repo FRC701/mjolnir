@@ -17,22 +17,21 @@ private:
 
   WPI_TalonSRX leftArmMotor;
   WPI_TalonSRX rightArmMotor;
-  frc::DoubleSolenoid brake;
-  void SetUpTalons();
+  DoubleSolenoid brake;
 
+  void SetUpTalons();
+  void SetUpMotionMagic();
 
 
 public:
   static std::shared_ptr<Arm> getInstance();
 
-
   Arm();
 
-
 	void InitDefaultCommand();
-	int GetVelocity();
 	void SetArmMove(double speed);
-
+  int GetVelocity();
+  void SetArmPos(int position);
 
 };
 
