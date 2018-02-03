@@ -32,6 +32,8 @@ public:
 	void SetArmMove(double speed);
   int GetVelocity();
   void SetArmPos(int position);
+  void EngageBrake();
+  void DisengageBrake();
 
 };
 
