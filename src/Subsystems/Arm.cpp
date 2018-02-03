@@ -2,6 +2,8 @@
 #include "Commands/BrakeOn.h"
 #include "RobotMap.h"
 
+static const int kSlotIndex = 0;
+
 const char Arm::kSubsystemName[] = "Arm";
 
 std::shared_ptr<Arm> Arm::self;
@@ -64,7 +66,6 @@ void Arm::SetUpMotionMagic() {
   static const double kP = 0;
   static const double kI = 0;
   static const double kD = 0;
-  static const int kSlotIndex = 0;
   static const int kCruiseVelocity = 6000; //Sensor Units per 100ms
   static const int kMotionAcceleration = 6000; //Sensor Units per 100ms/sec
 
@@ -85,6 +86,10 @@ void Arm::EngageBrake(){
 
 void Arm::DisengageBrake(){
   brake.Set(frc::DoubleSolenoid::kReverse);
+}
+
+int Arm::GetPositionError(){
+  return leftArmMotor.GetClosedLoopError(kSlotIndex);
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

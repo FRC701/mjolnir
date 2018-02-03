@@ -2,7 +2,6 @@
 #include "Subsystems/Arm.h"
 #include "OI.h"
 
-
 ArmMove::ArmMove() {
   Requires(Arm::getInstance().get());
 
@@ -10,7 +9,7 @@ ArmMove::ArmMove() {
 
 // Called just before this Command runs the first time
 void ArmMove::Initialize() {
-
+  Arm::getInstance()->DisengageBrake();
 }
 
 // Called repeatedly when this Command is scheduled to run

@@ -34,6 +34,7 @@ public:
   void SetArmPos(int position);
   void EngageBrake();
   void DisengageBrake();
+  int GetPositionError();
 
 };
 
