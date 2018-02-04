@@ -4,6 +4,7 @@
 #include <Commands/Subsystem.h>
 #include <DoubleSolenoid.h>
 #include <ctre/phoenix.h>
+#include <AnalogInput.h>
 
 class Arm : public frc::Subsystem {
 
@@ -18,6 +19,7 @@ private:
   WPI_TalonSRX leftArmMotor;
   WPI_TalonSRX rightArmMotor;
   DoubleSolenoid brake;
+  AnalogInput armPot;
 
   void SetUpTalons();
   void SetUpMotionMagic();
@@ -35,6 +37,8 @@ public:
   void EngageBrake();
   void DisengageBrake();
   int GetPositionError();
+  int GetArmPotValue();
+  int GetArmPotVoltage();
 
 };
 

@@ -42,6 +42,7 @@ public:
 	  static const int kIDRampForward = 2;
 	  static const int kIDRampReverse = 5;
 
+	  static const int kIDArmPot = 0;
 	static void init();
 };
 

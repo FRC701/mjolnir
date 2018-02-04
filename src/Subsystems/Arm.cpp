@@ -19,7 +19,8 @@ std::shared_ptr<Arm> Arm::getInstance() {
 Arm::Arm() : Subsystem(kSubsystemName),
   leftArmMotor(RobotMap::kIDLeftArm),
   rightArmMotor(RobotMap::kIDRightArm),
-  brake(RobotMap::kIDBrakeForward, RobotMap::kIDBrakeReverse)
+  brake(RobotMap::kIDBrakeForward, RobotMap::kIDBrakeReverse),
+  armPot(RobotMap::kIDArmPot)
 {
   SetUpTalons();
   SetUpMotionMagic();
@@ -42,6 +43,8 @@ void Arm::SetUpTalons() {
                                          kTimeout_10Millis);
   leftArmMotor.ConfigForwardSoftLimitEnable(false, kTimeout_10Millis);
   leftArmMotor.ConfigReverseSoftLimitEnable(false, kTimeout_10Millis);
+  leftArmMotor.ConfigForwardLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyOpen, kTimeout_10Millis);
+  leftArmMotor.ConfigReverseLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyOpen, kTimeout_10Millis);
   leftArmMotor.SetSensorPhase(true);
   leftArmMotor.SetInverted(true);
 
@@ -73,8 +76,9 @@ void Arm::SetUpMotionMagic() {
   static const double kP = 0;
   static const double kI = 0;
   static const double kD = 0;
-  static const int kCruiseVelocity = 6000; //Sensor Units per 100ms
-  static const int kMotionAcceleration = 6000; //Sensor Units per 100ms/sec
+  static const double kMaxVelocity = 3675;
+  static const int kCruiseVelocity = .8 * kMaxVelocity; //Sensor Units per 100ms
+  static const int kMotionAcceleration = kCruiseVelocity * 1; //Sensor Units per 100ms/sec
 
   leftArmMotor.SelectProfileSlot(kSlotIndex, kPID_PrimaryClosedLoop);
   leftArmMotor.Config_kF(kSlotIndex, kF, kTimeout_10Millis);
@@ -97,6 +101,14 @@ void Arm::DisengageBrake(){
 
 int Arm::GetPositionError(){
   return leftArmMotor.GetClosedLoopError(kSlotIndex);
+}
+
+int Arm::GetArmPotValue(){
+  return armPot.GetValue();
+}
+
+int Arm::GetArmPotVoltage(){
+  return armPot.GetVoltage();
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
