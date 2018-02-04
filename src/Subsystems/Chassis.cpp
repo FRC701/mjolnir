@@ -5,8 +5,8 @@
 namespace {
 
 #if 0
-static const double kGearRatioNumerator = 36.0;
-static const double kGearRatioDenominator = 26.0;
+static const double kGearRatioNumerator = 26.0;
+static const double kGearRatioDenominator = 36.0;
 // todo Use this for a ft/sec display on the dashboard
 static const double kWheelGearRatio = kGearRatioNumerator  / kGearRatioDenominator;
 #endif
