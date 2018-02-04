@@ -14,8 +14,12 @@ void ArmMove::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ArmMove::Execute() {
-    double right = OI::getInstance()->getCoDriverRightYAxis();
-    Arm::getInstance()->SetArmMove(-right);
+  std::shared_ptr<Arm> arm = Arm::getInstance();
+
+  std::shared_ptr<OI> oi = OI::getInstance();
+
+  double left = oi->getCoDriverLeftYAxis();
+  arm->SetArmMove(-left);
 }
 
 // Make this return true when this Command no longer needs to run execute()
