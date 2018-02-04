@@ -27,10 +27,10 @@ public:
   static std::shared_ptr<Arm> getInstance();
 
   Arm();
-
 	void InitDefaultCommand();
-	void SetArmMove(double speed);
   int GetVelocity();
+  int GetPosition();
+  void SetArmMove(double speed);
   void SetArmPos(int position);
   void EngageBrake();
   void DisengageBrake();

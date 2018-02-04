@@ -98,6 +98,7 @@ void Robot::TeleopPeriodic() {
   SmartDashboard::PutNumber("Right Velocity", Chassis::getInstance()->getRightVelocity());
 
   SmartDashboard::PutNumber("Arm Velocity", Arm::getInstance()->GetVelocity());
+  SmartDashboard::PutNumber("Arm Position", Arm::getInstance()->GetPosition());
 
   SmartDashboard::PutString("Our Switch", SideToString(robovikes::GameData::GetOurSwitchSide()));
   SmartDashboard::PutString("Scale", SideToString(robovikes::GameData::GetScaleSide()));

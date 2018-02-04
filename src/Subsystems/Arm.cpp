@@ -1,4 +1,5 @@
 #include "Arm.h"
+#include "Commands/ArmMove.h"
 #include "Commands/BrakeOn.h"
 #include "RobotMap.h"
 
@@ -25,7 +26,8 @@ Arm::Arm() : Subsystem(kSubsystemName),
 }
 
 void Arm::InitDefaultCommand() {
-  SetDefaultCommand(new BrakeOn());
+//  SetDefaultCommand(new BrakeOn());
+  SetDefaultCommand(new ArmMove());
 }
 
 void Arm::SetArmMove(double speed) {
@@ -42,15 +44,20 @@ void Arm::SetUpTalons() {
   leftArmMotor.ConfigReverseSoftLimitEnable(false, kTimeout_10Millis);
   leftArmMotor.SetSensorPhase(true);
   leftArmMotor.SetInverted(true);
-  rightArmMotor.SetInverted(true);
 
- rightArmMotor.Follow(leftArmMotor);
+  rightArmMotor.SetInverted(true);
+  rightArmMotor.Follow(leftArmMotor);
 
 }
 
 int Arm::GetVelocity()
 {
  return leftArmMotor.GetSelectedSensorVelocity(kPID_PrimaryClosedLoop);
+}
+
+int Arm::GetPosition()
+{
+  return leftArmMotor.GetSelectedSensorPosition(kPID_PrimaryClosedLoop);
 }
 
 void Arm::SetUpMotionMagic() {
@@ -62,7 +69,7 @@ void Arm::SetUpMotionMagic() {
   leftArmMotor.ConfigPeakOutputForward(1, kTimeout_10Millis);
   leftArmMotor.ConfigPeakOutputReverse(-1, kTimeout_10Millis);
 
-  static const double kF = 0.2;
+  static const double kF = 0;
   static const double kP = 0;
   static const double kI = 0;
   static const double kD = 0;

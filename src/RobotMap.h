@@ -25,8 +25,8 @@ public:
 	  static const int kIDLeftIntake = 5;
 	  static const int kIDRightIntake = 6;
 	//..........Arm..........
-	  static const int kIDLeftArm = 50;
-	  static const int kIDRightArm = 51;
+	  static const int kIDLeftArm = 10;
+	  static const int kIDRightArm = 9;
 	//.........Sling.........
 	  static const int kIDPullSling = 7;
 
