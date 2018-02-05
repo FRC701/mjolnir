@@ -32,6 +32,8 @@ public:
 
 	int getLeftVelocity();
 	int getRightVelocity();
+	int GetLeftPosition();
+	int GetRightPosition();
 
 	// Motion Profile Support
 	void SetModePercentOutput();

@@ -117,7 +117,13 @@ int Chassis::getRightVelocity()
 {
   return right1Wheel.GetSelectedSensorVelocity(kPID_PrimaryClosedLoop);
 }
+int Chassis::GetLeftPosition(){
+  return left1Wheel.GetSelectedSensorPosition(kSlot0);
+}
 
+int Chassis::GetRightPosition(){
+  return right1Wheel.GetSelectedSensorPosition(kSlot0);
+}
 // Motion Profile Support
 
 void Chassis::SetModePercentOutput()

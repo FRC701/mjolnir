@@ -99,6 +99,8 @@ void Robot::TeleopPeriodic() {
 
   SmartDashboard::PutNumber("Left Velocity (u/100ms)", Chassis::getInstance()->getLeftVelocity());
   SmartDashboard::PutNumber("Right Velocity (u/100ms)", Chassis::getInstance()->getRightVelocity());
+  SmartDashboard::PutNumber("Left Position", Chassis::getInstance()->GetLeftPosition());
+  SmartDashboard::PutNumber("Right Position", Chassis::getInstance()->GetRightPosition());
 
   SmartDashboard::PutNumber("Arm Velocity (u/100ms)", Arm::getInstance()->GetVelocity());
   SmartDashboard::PutNumber("Arm Position", Arm::getInstance()->GetPosition());
