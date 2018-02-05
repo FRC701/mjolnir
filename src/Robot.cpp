@@ -101,6 +101,7 @@ void Robot::TeleopPeriodic() {
   SmartDashboard::PutNumber("Arm Position", Arm::getInstance()->GetPosition());
   SmartDashboard::PutNumber("Pot Value", Arm::getInstance()->GetArmPotValue());
   SmartDashboard::PutNumber("Arm Voltage", Arm::getInstance()->GetArmPotVoltage());
+  SmartDashboard::PutNumber("Motion Magic Error", Arm::getInstance()->GetPositionError());
 
   SmartDashboard::PutString("Our Switch", SideToString(robovikes::GameData::GetOurSwitchSide()));
   SmartDashboard::PutString("Scale", SideToString(robovikes::GameData::GetScaleSide()));

@@ -39,6 +39,7 @@ public:
   int GetPositionError();
   int GetArmPotValue();
   int GetArmPotVoltage();
+  void ResetArmPos();
 
 };
 

@@ -6,6 +6,7 @@
 class SetArmPosition : public frc::Command{
 private:
   int mPosition;
+  int counter;
 public:
 	SetArmPosition(int position);
 	void Initialize();
