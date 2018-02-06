@@ -1,16 +1,12 @@
 #ifndef ResetArmPosition_H
 #define ResetArmPosition_H
 
-#include "Commands/Command.h"
+#include "Commands/InstantCommand.h"
 
-class ResetArmPosition : public frc::Command {
+class ResetArmPosition : public frc::InstantCommand {
 public:
 	ResetArmPosition();
 	void Initialize();
-	void Execute();
-	bool IsFinished();
-	void End();
-	void Interrupted();
 };
 
 #endif  // ResetArmPosition_H

@@ -23,7 +23,7 @@ double calcFeedforward() {
   return feedforward;
 }
 double calcP(){
-  static const double kEigthUnitsPerRev = 512.0;
+  static const double kEigthUnitsPerRev = 4096.0/ 8.0;
   double pGain = 0.5* 1023.0/kEigthUnitsPerRev;
   return pGain;
 }
