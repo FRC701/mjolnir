@@ -2,7 +2,7 @@
 #include "Subsystems/Arm.h"
 
 BrakeOn::BrakeOn() {
-
+  Requires(Arm::getInstance().get());
 }
 
 // Called just before this Command runs the first time

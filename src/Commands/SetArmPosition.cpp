@@ -1,7 +1,7 @@
 #include "SetArmPosition.h"
 #include "Subsystems/Arm.h"
 
-SetArmPosition::SetArmPosition(int position) : mPosition(position) {
+SetArmPosition::SetArmPosition(int position) : mPosition(position), counter(0) {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
   Requires(Arm::getInstance().get());
@@ -19,11 +19,24 @@ void SetArmPosition::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool SetArmPosition::IsFinished() {
- static const int kAcceptableError = 100;
-
- return abs(Arm::getInstance()->GetPositionError()) < kAcceptableError;
-
+ static const int kAcceptableError = 40;
+ if(abs(Arm::getInstance()->GetPositionError()) < kAcceptableError){
+   if (counter > 30)
+   {
+     counter = 0;
+     return true;
+   }
+   else {
+     ++counter;
+     return false;
+     }
+   }
+   else {
+     counter = 0;
+     return false;
+     }
 }
+
 
 // Called once after isFinished returns true
 void SetArmPosition::End() {
