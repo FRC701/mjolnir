@@ -4,6 +4,7 @@
 
 
 const char Arm::kSubsystemName[] = "Arm";
+const std::string kKey = "ArmScale";
 
 std::shared_ptr<Arm> Arm::self;
 
@@ -18,7 +19,9 @@ Arm::Arm() : Subsystem(kSubsystemName),
   leftArmMotor(RobotMap::kIDLeftArm),
   rightArmMotor(RobotMap::kIDRightArm),
   brake(RobotMap::kIDBrakeForward, RobotMap::kIDBrakeReverse),
-  armPot(RobotMap::kIDArmPot)
+  armPot(RobotMap::kIDArmPot),
+  calibrateEncoderDown(0),
+  calibratePotDown(0)
 {
 
   SetUpTalons();
@@ -45,6 +48,8 @@ void Arm::SetUpTalons() {
 
 
  rightArmMotor.Follow(leftArmMotor);
+
+ leftArmMotor.SetSelectedSensorPosition(CalculateEncoderPos(), kPID_PrimaryClosedLoop, kTimeout_10Millis);
 
 }
 
@@ -76,6 +81,23 @@ double Arm::GetArmPotVoltage()
 int Arm::GetPosition()
 {
   return leftArmMotor.GetSelectedSensorPosition(kPID_PrimaryClosedLoop);
+}
+
+void Arm::SetArmPositionDown(int potentiometer, int encoder)
+{
+  calibrateEncoderDown = encoder;
+  calibratePotDown = potentiometer;
+}
+
+void Arm::SetArmPositionUp(int potentiometer, int encoder)
+{
+  double scaleFactor = (encoder - calibrateEncoderDown) / (potentiometer - calibratePotDown);
+  Preferences::GetInstance()->PutDouble(kKey, scaleFactor);
+}
+
+int Arm::CalculateEncoderPos()
+{
+  return Preferences::GetInstance()->GetDouble(kKey,0) * GetPosition();
 }
 
 // Put methods for controlling this subsystem

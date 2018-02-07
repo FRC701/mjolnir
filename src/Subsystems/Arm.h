@@ -5,6 +5,7 @@
 #include <DoubleSolenoid.h>
 #include <ctre/phoenix.h>
 #include <AnalogInput.h>
+#include <Preferences.h>
 
 class Arm : public frc::Subsystem {
 
@@ -21,6 +22,8 @@ private:
   frc::DoubleSolenoid brake;
   frc::AnalogInput armPot;
   void SetUpTalons();
+  int calibrateEncoderDown;
+  int calibratePotDown;
 
 
 
@@ -39,7 +42,9 @@ public:
 	bool IsReverseLimitSwitchClosed();
 	double GetArmPotVoltage();
 	int GetArmPotValue();
-
+	void SetArmPositionDown(int potentiometer, int encoder);
+	void SetArmPositionUp(int potentiometer, int encoder);
+	int CalculateEncoderPos();
 
 
 };
