@@ -1,12 +1,15 @@
+#include "Commands/GetArmPositionUp.h"
+#include "Commands/GetArmPositionDown.h"
 #include "Calibrate.h"
 #include "ArmUp.h"
 #include "ArmDown.h"
 
 Calibrate::Calibrate() {
 	// Add Commands here:
-  AddSequential(new ArmUp(1.0));
-  AddSequential(new GetArmPositions());
   AddSequential(new ArmDown(1.0));
+  AddSequential(new GetArmPositionDown);
+  AddSequential(new ArmUp(1.0));
+  AddSequential(new GetArmPositionUp);
 
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

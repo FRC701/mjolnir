@@ -3,10 +3,11 @@
 
 #include "Commands/InstantCommand.h"
 #include "Subsystems/Arm.h"
+#include "Preferences.h"
 
-class GetArmPositions : public frc::InstantCommand {
+class GetArmPositionUp : public frc::InstantCommand {
 public:
-	GetArmPositions();
+	GetArmPositionUp();
 	void Initialize();
 };
 
