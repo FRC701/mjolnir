@@ -73,6 +73,8 @@ void Robot::TeleopPeriodic() {
   SmartDashboard::PutNumber("Right Velocity", Chassis::getInstance()->getRightVelocity());
 
   SmartDashboard::PutNumber("Arm Velocity", Arm::getInstance()->GetVelocity());
+
+  SmartDashboard::PutNumber("Encoder Position", Arm::getInstance()->CalculateEncoderPos());
 }
 
 void Robot::TestPeriodic() {
