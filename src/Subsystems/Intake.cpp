@@ -14,8 +14,7 @@ std::shared_ptr<Intake> Intake::getInstance() {
 }
 
 Intake::Intake() : Subsystem(kSubsystemName),
-    leftIntake(RobotMap::kIDLeftIntake),
-    rightIntake(RobotMap::kIDRightIntake)
+    intakeMotor(RobotMap::kIDIntakeMotor)
 {
 
 }
@@ -26,7 +25,7 @@ void Intake::InitDefaultCommand() {
 	SetDefaultCommand(new ::SetIntake(0.0));
 }
 void Intake::SetIntake(double speed){
-
+  intakeMotor.Set(speed);
 }
 
 // Put methods for controlling this subsystem
