@@ -21,7 +21,7 @@ public:
   static std::shared_ptr<Ramp> getInstance();
 
   void InitDefaultCommand();
-  void SetUpRamp(RampValue value);
+  void SetRamp(RampValue value);
 
 };
 

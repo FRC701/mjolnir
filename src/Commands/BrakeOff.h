@@ -1,17 +1,16 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
+#ifndef BrakeOff_H
+#define BrakeOff_H
 
-#pragma once
+#include "Commands/Command.h"
 
-#include "Commands/InstantCommand.h"
-
-class BrakeOff : public frc::InstantCommand {
+class BrakeOff : public frc::Command {
 public:
-	BrakeOff();
-	void Initialize() override;
+  BrakeOff();
+  void Initialize();
+  void Execute();
+  bool IsFinished();
+  void End();
+  void Interrupted();
 };
 
+#endif

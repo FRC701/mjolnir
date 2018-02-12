@@ -22,9 +22,9 @@ Ramp::Ramp() : Subsystem(kSubsystemName),
 }
 
 void Ramp::InitDefaultCommand(){
-   SetDefaultCommand(new SetRamp(kRelease));
+   SetDefaultCommand(new ::SetRamp(kRelease));
 }
 
-void Ramp::SetUpRamp(RampValue value) {
+void Ramp::SetRamp(RampValue value) {
   actuator.Set(static_cast<DoubleSolenoid::Value>(value));
 }
