@@ -14,9 +14,10 @@ std::shared_ptr<Intake> Intake::getInstance() {
 }
 
 Intake::Intake() : Subsystem(kSubsystemName),
-    intakeMotor(RobotMap::kIDIntakeMotor)
+    intakeMotor(RobotMap::kIDIntakeMotor),
+    intakeSolenoid(RobotMap::kIDIntakeForward, RobotMap::kIDIntakeReverse)
 {
-
+    intakeSolenoid.Set(DoubleSolenoid::kForward);
 }
 
 void Intake::InitDefaultCommand() {

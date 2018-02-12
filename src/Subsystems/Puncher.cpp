@@ -24,7 +24,7 @@ Puncher::Puncher() : Subsystem(kSubsystemName),
     releaseSling(RobotMap::kIDSlingForward, RobotMap::kIDSlingReverse)
 {
   MotorEngage();
-
+  releaseSling.Set(DoubleSolenoid::kForward);
 }
 
 void Puncher::InitDefaultCommand() {

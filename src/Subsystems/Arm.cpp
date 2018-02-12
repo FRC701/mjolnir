@@ -33,13 +33,14 @@ Arm::Arm() : Subsystem(kSubsystemName),
   brake(RobotMap::kIDBrakeForward, RobotMap::kIDBrakeReverse),
   armPot(RobotMap::kIDArmPot)
 {
+  EngageBrake();
   SetUpTalons();
   SetUpMotionMagic();
 }
 
 void Arm::InitDefaultCommand() {
 //  SetDefaultCommand(new BrakeOn());
-  SetDefaultCommand(new ArmMove());
+  SetDefaultCommand(new BrakeOn());
 }
 
 void Arm::SetArmMove(double speed) {
@@ -58,6 +59,7 @@ void Arm::SetUpTalons() {
   leftArmMotor.ConfigReverseLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyOpen, kTimeout_10Millis);
   leftArmMotor.SetSensorPhase(true);
   leftArmMotor.SetInverted(true);
+  leftArmMotor.ConfigPeakOutputForward(0.4, kTimeout_10Millis);
 
   rightArmMotor.SetInverted(true);
   rightArmMotor.Follow(leftArmMotor);

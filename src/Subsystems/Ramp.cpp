@@ -18,9 +18,13 @@ std::shared_ptr<Ramp> Ramp::getInstance() {
 Ramp::Ramp() : Subsystem(kSubsystemName),
     actuator(RobotMap::kIDRampForward, RobotMap::kIDRampReverse)
 {
-
+  actuator.Set(DoubleSolenoid::kForward);
 }
 
-void Ramp::SetRamp(RampValue value) {
+void Ramp::InitDefaultCommand(){
+   SetDefaultCommand(new SetRamp(kRelease));
+}
+
+void Ramp::SetUpRamp(RampValue value) {
   actuator.Set(static_cast<DoubleSolenoid::Value>(value));
 }

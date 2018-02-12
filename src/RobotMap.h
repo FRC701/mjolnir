@@ -31,18 +31,21 @@ public:
 
 //..........Solenoids..........
 
-	//..........Arm..........
-	  static const int kIDBrakeForward = 0;
-	  static const int kIDBrakeReverse = 7;
+	  static const int kIDRampForward = 0;
+	  static const int kIDRampReverse = 7;
 
-	  static const int kIDSlingForward = 1;
-	  static const int kIDSlingReverse = 6;
+	  static const int kIDIntakeForward = 1;
+	  static const int kIDIntakeReverse = 6;
 
-	  static const int kIDRampForward = 2;
-	  static const int kIDRampReverse = 5;
+    static const int kIDSlingForward = 2;
+    static const int kIDSlingReverse = 5;
+
+    static const int kIDBrakeForward = 3;
+    static const int kIDBrakeReverse = 4;
 
 	  static const int kIDArmPot = 0;
-	static void init();
+
+	  static void init();
 };
 
 // TODO Refactor to a constants.h?
