@@ -6,9 +6,9 @@
 
 Calibrate::Calibrate() {
 	// Add Commands here:
-  AddSequential(new ArmDown(1.0));
+  AddSequential(new ArmDown(0.25));
   AddSequential(new GetArmPositionDown);
-  AddSequential(new ArmUp(1.0));
+  AddSequential(new ArmUp(0.25));
   AddSequential(new GetArmPositionUp);
 
 	// e.g. AddSequential(new Command1());
