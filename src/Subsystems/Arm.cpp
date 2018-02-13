@@ -60,6 +60,7 @@ void Arm::SetUpTalons() {
   leftArmMotor.SetSensorPhase(true);
   leftArmMotor.SetInverted(true);
   leftArmMotor.ConfigPeakOutputForward(0.4, kTimeout_10Millis);
+  leftArmMotor.ConfigPeakOutputReverse(-0.4, kTimeout_10Millis);
 
   rightArmMotor.SetInverted(true);
   rightArmMotor.Follow(leftArmMotor);
