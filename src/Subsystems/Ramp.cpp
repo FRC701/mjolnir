@@ -25,6 +25,6 @@ void Ramp::InitDefaultCommand(){
    SetDefaultCommand(new ::SetRamp(kRelease));
 }
 
-void Ramp::SetRamp(RampValue value) {
+void Ramp::SetUpRamp(RampValue value) {
   actuator.Set(static_cast<DoubleSolenoid::Value>(value));
 }

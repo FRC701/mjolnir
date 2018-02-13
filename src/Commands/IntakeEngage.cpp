@@ -5,37 +5,37 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "BrakeOff.h"
-#include "Subsystems/Arm.h"
+#include "IntakeEngage.h"
+#include "Subsystems/Intake.h"
 
-BrakeOff::BrakeOff() {
+IntakeEngage::IntakeEngage() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
-  Requires(Arm::getInstance().get());
+  Requires(Intake::getInstance().get());
 }
 
 // Called just before this Command runs the first time
-void BrakeOff::Initialize() {
+void IntakeEngage::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void BrakeOff::Execute() {
-  Arm::getInstance()->DisengageBrake();
+void IntakeEngage::Execute() {
+  Intake::getInstance()->IntakeEngage();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool BrakeOff::IsFinished() {
-	return true;
+bool IntakeEngage::IsFinished() {
+	return false;
 }
 
 // Called once after isFinished returns true
-void BrakeOff::End() {
+void IntakeEngage::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void BrakeOff::Interrupted() {
+void IntakeEngage::Interrupted() {
 
 }

@@ -35,13 +35,14 @@ public:
 	  static const int kIDRampReverse = 7;
 
 	  static const int kIDIntakeForward = 1;
+
 	  static const int kIDIntakeReverse = 6;
 
-    static const int kIDSlingForward = 2;
-    static const int kIDSlingReverse = 5;
+    static const int kIDSlingForward = 3;
+    static const int kIDSlingReverse = 4;
 
-    static const int kIDBrakeForward = 3;
-    static const int kIDBrakeReverse = 4;
+    static const int kIDBrakeForward = 2;
+    static const int kIDBrakeReverse = 5;
 
 	  static const int kIDArmPot = 0;
 

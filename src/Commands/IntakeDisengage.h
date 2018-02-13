@@ -9,9 +9,9 @@
 
 #include <Commands/Command.h>
 
-class BrakeOff : public frc::Command {
+class IntakeDisengage : public frc::Command {
 public:
-	BrakeOff();
+	IntakeDisengage();
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;

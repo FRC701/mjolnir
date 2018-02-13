@@ -19,6 +19,8 @@ public:
 
 	void InitDefaultCommand();
 	void SetIntake(double speed);
+	void IntakeEngage();
+	void IntakeDisengage();
 
 };
 

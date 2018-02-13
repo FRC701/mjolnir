@@ -7,5 +7,5 @@ SetRamp::SetRamp(Ramp::RampValue value) :
 }
 
 void SetRamp::Initialize() {
-  Ramp::getInstance()->SetRamp(mValue);
+  Ramp::getInstance()->SetUpRamp(mValue);
 }
