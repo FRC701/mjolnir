@@ -19,7 +19,7 @@ void SetArmPosition::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool SetArmPosition::IsFinished() {
- static const int kAcceptableError = 40;
+ static const int kAcceptableError = 1000;
  if(abs(Arm::getInstance()->GetPositionError()) < kAcceptableError){
    if (counter > 30)
    {

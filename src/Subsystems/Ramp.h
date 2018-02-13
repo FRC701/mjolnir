@@ -11,16 +11,17 @@ private:
   static const char kSubsystemName[];
   static std::shared_ptr<Ramp> self;
   Ramp();
-  //Command goes here
 
- frc::DoubleSolenoid actuator;
+  frc::DoubleSolenoid actuator;
 
 public:
-  enum RampValue{kArmIn = frc::DoubleSolenoid::kForward, kArmOut = frc::DoubleSolenoid::kReverse};
+  enum RampValue{kRelease = frc::DoubleSolenoid::kForward,
+                 kDontRelease = frc::DoubleSolenoid::kReverse};
 
   static std::shared_ptr<Ramp> getInstance();
 
-  void SetRamp(RampValue value);
+  void InitDefaultCommand();
+  void SetUpRamp(RampValue value);
 
 };
 

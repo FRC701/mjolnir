@@ -2,6 +2,7 @@
 #include "Commands/SlingShot.h"
 #include "RobotMap.h"
 #include "DoubleSolenoid.h"
+#include "Commands/SetSlingDisengagement.h"
 
 
 static frc::DoubleSolenoid::Value kMotorEngage = frc::DoubleSolenoid::kForward;
@@ -24,13 +25,13 @@ Puncher::Puncher() : Subsystem(kSubsystemName),
     releaseSling(RobotMap::kIDSlingForward, RobotMap::kIDSlingReverse)
 {
   MotorEngage();
-
+  releaseSling.Set(DoubleSolenoid::kForward);
 }
 
 void Puncher::InitDefaultCommand() {
     // Set the default command for a subsystem here.
     // SetDefaultCommand(new MySpecialCommand());
-  SetDefaultCommand(new SlingShot(0.0));
+  SetDefaultCommand(new SetSlingDisengagement());
 }
 void Puncher::SetSlingShot(double mSpeed)
 {

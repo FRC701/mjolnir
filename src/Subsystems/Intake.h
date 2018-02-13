@@ -3,13 +3,14 @@
 
 #include "Commands/Subsystem.h"
 #include "ctre/Phoenix.h"
+#include "DoubleSolenoid.h"
 
 class Intake: public frc::Subsystem {
 private:
 	static const char kSubsystemName[];
 	static std::shared_ptr<Intake> self;
-  WPI_TalonSRX leftIntake;
-  WPI_TalonSRX rightIntake;
+  WPI_TalonSRX intakeMotor;
+  DoubleSolenoid intakeSolenoid;
 
 public:
   static std::shared_ptr<Intake> getInstance();
@@ -18,6 +19,8 @@ public:
 
 	void InitDefaultCommand();
 	void SetIntake(double speed);
+	void IntakeEngage();
+	void IntakeDisengage();
 
 };
 

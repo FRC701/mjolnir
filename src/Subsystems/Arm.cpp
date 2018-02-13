@@ -23,7 +23,7 @@ double calcFeedforward() {
   return feedforward;
 }
 double calcP(){
-  static const double kEigthUnitsPerRev = 4096.0/ 8.0;
+  static const double kEigthUnitsPerRev = 4096.0/ 1.0;
   double pGain = 0.5* 1023.0/kEigthUnitsPerRev;
   return pGain;
 }
@@ -33,6 +33,7 @@ Arm::Arm() : Subsystem(kSubsystemName),
   brake(RobotMap::kIDBrakeForward, RobotMap::kIDBrakeReverse),
   armPot(RobotMap::kIDArmPot)
 {
+  EngageBrake();
   SetUpTalons();
   SetUpMotionMagic();
 }
@@ -54,10 +55,12 @@ void Arm::SetUpTalons() {
                                          kTimeout_10Millis);
   leftArmMotor.ConfigForwardSoftLimitEnable(false, kTimeout_10Millis);
   leftArmMotor.ConfigReverseSoftLimitEnable(false, kTimeout_10Millis);
-  leftArmMotor.ConfigForwardLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyOpen, kTimeout_10Millis);
-  leftArmMotor.ConfigReverseLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyOpen, kTimeout_10Millis);
+  leftArmMotor.ConfigForwardLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyClosed, kTimeout_10Millis);
+  leftArmMotor.ConfigReverseLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyClosed, kTimeout_10Millis);
   leftArmMotor.SetSensorPhase(true);
   leftArmMotor.SetInverted(true);
+  leftArmMotor.ConfigPeakOutputForward(0.4, kTimeout_10Millis);
+  leftArmMotor.ConfigPeakOutputReverse(-0.4, kTimeout_10Millis);
 
   rightArmMotor.SetInverted(true);
   rightArmMotor.Follow(leftArmMotor);
