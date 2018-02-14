@@ -53,11 +53,13 @@ OI::OI()
 , coRB(driver.get(), kButtonRB_ID)
 
 {
-  dA.WhenPressed(new BrakeOff());
-  dB.WhenPressed(new BrakeOn());//SlingShot(0.0));
+  dA.WhenPressed(new SlingShot(1.0));
+  dB.WhenPressed(new //BrakeOn());
+      SlingShot(0.0));
   dX.WhenPressed(new SetSlingEngagement);
   dY.WhenPressed(new SetSlingDisengagement);
-
+  dLB.WhenPressed(new SetIntake(1.0));
+  dRB.WhenPressed(new SetIntake(0.0));
 
   SmartDashboard::PutData("PuncherButton", new SlingShot(1.0));
   SmartDashboard::PutData("Half Arm", new SetArmPosition(10430));

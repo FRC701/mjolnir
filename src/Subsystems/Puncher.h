@@ -32,6 +32,7 @@ public:
   double GetPuncherLimit();
   void MotorDisengage();
   void MotorEngage();
+  void SetUpTalon();
 };
 
 

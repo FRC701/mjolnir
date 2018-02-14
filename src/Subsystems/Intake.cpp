@@ -21,6 +21,7 @@ Intake::Intake() : Subsystem(kSubsystemName),
     intakeSolenoid(RobotMap::kIDIntakeForward, RobotMap::kIDIntakeReverse)
 {
     intakeSolenoid.Set(DoubleSolenoid::kForward);
+    intakeMotor.SetInverted(true);
 }
 
 void Intake::InitDefaultCommand() {
