@@ -6,6 +6,7 @@
 static const int kSlotIndex = 0;
 
 const char Arm::kSubsystemName[] = "Arm";
+const std::string kKey = "ArmScale";
 
 std::shared_ptr<Arm> Arm::self;
 
@@ -31,7 +32,9 @@ Arm::Arm() : Subsystem(kSubsystemName),
   leftArmMotor(RobotMap::kIDLeftArm),
   rightArmMotor(RobotMap::kIDRightArm),
   brake(RobotMap::kIDBrakeForward, RobotMap::kIDBrakeReverse),
-  armPot(RobotMap::kIDArmPot)
+  armPot(RobotMap::kIDArmPot),
+  calibrateEncoderDown(0),
+  calibratePotDown(0)
 {
   EngageBrake();
   SetUpTalons();
@@ -64,6 +67,8 @@ void Arm::SetUpTalons() {
 
   rightArmMotor.SetInverted(true);
   rightArmMotor.Follow(leftArmMotor);
+
+ leftArmMotor.SetSelectedSensorPosition(CalculateEncoderPos(), kPID_PrimaryClosedLoop, kTimeout_10Millis);
 
 }
 
@@ -99,10 +104,18 @@ void Arm::SetUpMotionMagic() {
   leftArmMotor.Config_kP(kSlotIndex, kP, kTimeout_10Millis);
   leftArmMotor.Config_kI(kSlotIndex, kI, kTimeout_10Millis);
   leftArmMotor.Config_kD(kSlotIndex, kD, kTimeout_10Millis);
-
   leftArmMotor.ConfigMotionCruiseVelocity(kCruiseVelocity, kTimeout_10Millis);
   leftArmMotor.ConfigMotionAcceleration(kMotionAcceleration, kTimeout_10Millis);
+}
 
+bool Arm::IsForwardLimitSwitchClosed()
+{
+  return leftArmMotor.GetSensorCollection().IsFwdLimitSwitchClosed();
+}
+
+bool Arm::IsReverseLimitSwitchClosed()
+{
+  return leftArmMotor.GetSensorCollection().IsRevLimitSwitchClosed();
 }
 
 void Arm::EngageBrake(){
@@ -128,5 +141,23 @@ int Arm::GetArmPotVoltage(){
 void Arm::ResetArmPos(){
   leftArmMotor.SetSelectedSensorPosition(0, kPID_PrimaryClosedLoop, kTimeout_10Millis);
 }
+
+void Arm::SetArmPositionDown(int potentiometer, int encoder)
+{
+  calibrateEncoderDown = encoder;
+  calibratePotDown = potentiometer;
+}
+
+void Arm::SetArmPositionUp(int potentiometer, int encoder)
+{
+  double scaleFactor = (encoder - calibrateEncoderDown) / (potentiometer - calibratePotDown);
+  Preferences::GetInstance()->PutDouble(kKey, scaleFactor);
+}
+
+int Arm::CalculateEncoderPos()
+{
+  return Preferences::GetInstance()->GetDouble(kKey,0) * GetPosition();
+}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

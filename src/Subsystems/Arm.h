@@ -5,6 +5,7 @@
 #include <DoubleSolenoid.h>
 #include <ctre/phoenix.h>
 #include <AnalogInput.h>
+#include <Preferences.h>
 
 class Arm : public frc::Subsystem {
 
@@ -18,12 +19,13 @@ private:
 
   WPI_TalonSRX leftArmMotor;
   WPI_TalonSRX rightArmMotor;
-  DoubleSolenoid brake;
-  AnalogInput armPot;
+  frc::DoubleSolenoid brake;
+  frc::AnalogInput armPot;
+  int calibrateEncoderDown;
+  int calibratePotDown;
 
   void SetUpTalons();
   void SetUpMotionMagic();
-
 
 public:
   static std::shared_ptr<Arm> getInstance();
@@ -40,6 +42,12 @@ public:
   int GetArmPotValue();
   int GetArmPotVoltage();
   void ResetArmPos();
+	bool IsForwardLimitSwitchClosed();
+	bool IsReverseLimitSwitchClosed();
+
+	void SetArmPositionDown(int potentiometer, int encoder);
+	void SetArmPositionUp(int potentiometer, int encoder);
+	int CalculateEncoderPos();
 
 };
 
