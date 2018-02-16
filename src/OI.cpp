@@ -54,8 +54,7 @@ OI::OI()
 
 {
   dA.WhenPressed(new SlingShot(1.0));
-  dB.WhenPressed(new //BrakeOn());
-      SlingShot(0.0));
+  dB.WhenPressed(new SlingShot(0.0));
   dX.WhenPressed(new SetSlingEngagement);
   dY.WhenPressed(new SetSlingDisengagement);
   dLB.WhenPressed(new SetIntake(1.0));

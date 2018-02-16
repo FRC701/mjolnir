@@ -40,14 +40,14 @@ void Puncher::SetSlingShot(double mSpeed)
 }
 
 void Puncher::SetUpTalon(){
-  pullSling.ConfigForwardLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyClosed, kTimeout_10Millis);
+  pullSling.ConfigForwardLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyOpen, kTimeout_10Millis);
   pullSling.ConfigReverseLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyClosed, kTimeout_10Millis);
   pullSling.SetInverted(true);
   pullSling.SetSensorPhase(true);
 
 }
 double Puncher::GetPuncherLimit() {
-  return !pullSling.GetSensorCollection().IsFwdLimitSwitchClosed();
+  return pullSling.GetSensorCollection().IsFwdLimitSwitchClosed();
 }
 
 void Puncher::MotorDisengage() {
