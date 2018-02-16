@@ -28,6 +28,6 @@ public:
 
 	Climber();
 	void InitDefaultCommand() override;
-	void SetClimberMove(double speed);
+	void Climb(double speed);
 };
 

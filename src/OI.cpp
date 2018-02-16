@@ -22,6 +22,7 @@
 #include "Commands/IntakeDisengage.h"
 #include "Commands/IntakeEngage.h"
 #include "Commands/Calibrate.h"
+#include "Commands/SetClimber.h"
 
 #include "SmartDashboard/SmartDashboard.h"
 using frc::Joystick;
@@ -45,7 +46,7 @@ OI::OI()
 , dLB(driver.get(), kButtonLB_ID)
 , dRB(driver.get(), kButtonRB_ID)
 
-,coDriver(new Joystick(1))
+, coDriver(new Joystick(1))
 , coA(driver.get(), kButtonA_ID)
 , coB(driver.get(), kButtonB_ID)
 , coX(driver.get(), kButtonX_ID)
@@ -54,18 +55,17 @@ OI::OI()
 , coRB(driver.get(), kButtonRB_ID)
 
 {
-  dA.WhenPressed(new SlingShot(1.0));
-  dB.WhenPressed(new SlingShot(0.0));
-  dX.WhenPressed(new SetSlingEngagement);
-  dY.WhenPressed(new SetSlingDisengagement);
-  dLB.WhenPressed(new SetIntake(1.0));
-  dRB.WhenPressed(new SetIntake(0.0));
+  coA.WhenPressed(new SlingShot(1.0));
+  coB.WhenPressed(new SlingShot(0.0));
+  coX.WhenPressed(new SetSlingEngagement);
+  coY.WhenPressed(new SetSlingDisengagement);
+  coLB.WhenPressed(new SetIntake(1.0));
+  coRB.WhenPressed(new SetIntake(0.0));
 
-  /*
-   *dX.WhenPressed(new SetClimber(1.0));
-   *dY.WhenPressed(new SetClimber(-1.0));
-   *dB.WhenPressed(new SetClimber(0.0));
-   */
+
+   dX.WhenPressed(new SetClimber(1.0));
+   dY.WhenPressed(new SetClimber(-1.0));
+   //dB is being used by Climber don't use!
 
 
 
@@ -103,6 +103,10 @@ double OI::getDriverRightXAxis() const{
 }
 double OI::getDriverRightYAxis() const{
 	return driver->GetRawAxis(kRightYAxis_ID);
+}
+
+bool OI::isDriverBPressed() const {
+  return dB.Get();
 }
 
 std::shared_ptr<Joystick> OI::getCoDriver() {
