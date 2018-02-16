@@ -58,8 +58,8 @@ void Arm::SetUpTalons() {
                                          kTimeout_10Millis);
   leftArmMotor.ConfigForwardSoftLimitEnable(false, kTimeout_10Millis);
   leftArmMotor.ConfigReverseSoftLimitEnable(false, kTimeout_10Millis);
-  leftArmMotor.ConfigForwardLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyClosed, kTimeout_10Millis);
-  leftArmMotor.ConfigReverseLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyClosed, kTimeout_10Millis);
+  leftArmMotor.ConfigForwardLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyOpen, kTimeout_10Millis);
+  leftArmMotor.ConfigReverseLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyOpen, kTimeout_10Millis);
   leftArmMotor.SetSensorPhase(true);
   leftArmMotor.SetInverted(true);
   leftArmMotor.ConfigPeakOutputForward(0.4, kTimeout_10Millis);

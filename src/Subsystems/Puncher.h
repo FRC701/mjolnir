@@ -33,6 +33,7 @@ public:
   void MotorDisengage();
   void MotorEngage();
   void SetUpTalon();
+  int GetVelocity();
 };
 
 
