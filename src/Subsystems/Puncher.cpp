@@ -25,13 +25,13 @@ Puncher::Puncher() : Subsystem(kSubsystemName),
     releaseSling(RobotMap::kIDSlingForward, RobotMap::kIDSlingReverse)
 {
   MotorEngage();
-  releaseSling.Set(DoubleSolenoid::kForward);
+  SetUpTalon();
 }
 
 void Puncher::InitDefaultCommand() {
     // Set the default command for a subsystem here.
     // SetDefaultCommand(new MySpecialCommand());
-  SetDefaultCommand(new SetSlingDisengagement());
+  SetDefaultCommand(new SlingShot(0.0));
 }
 void Puncher::SetSlingShot(double mSpeed)
 {
@@ -39,6 +39,13 @@ void Puncher::SetSlingShot(double mSpeed)
 
 }
 
+void Puncher::SetUpTalon(){
+  pullSling.ConfigForwardLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyOpen, kTimeout_10Millis);
+  pullSling.ConfigReverseLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyClosed, kTimeout_10Millis);
+  pullSling.SetInverted(true);
+  pullSling.SetSensorPhase(true);
+
+}
 double Puncher::GetPuncherLimit() {
   return pullSling.GetSensorCollection().IsFwdLimitSwitchClosed();
 }
