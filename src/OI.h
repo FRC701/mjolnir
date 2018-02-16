@@ -40,7 +40,7 @@ public:
   double getCoDriverRightXAxis() const;
   double getCoDriverRightYAxis() const;
 
-  bool isDriverBPressed() const;
+  bool isDriverBPressed();
 
   static const int kButtonA_ID = 1;
   static const int kButtonB_ID = 2;

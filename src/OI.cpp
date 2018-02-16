@@ -105,7 +105,7 @@ double OI::getDriverRightYAxis() const{
 	return driver->GetRawAxis(kRightYAxis_ID);
 }
 
-bool OI::isDriverBPressed() const {
+bool OI::isDriverBPressed() {
   return dB.Get();
 }
 

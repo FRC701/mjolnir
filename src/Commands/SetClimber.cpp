@@ -22,7 +22,7 @@ void SetClimber::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SetClimber::Execute() {
-  Climber::getInstance()->SetClimberMove(mSpeed);
+  Climber::getInstance()->Climb(mSpeed);
 }
 
 // Make this return true when this Command no longer needs to run execute()

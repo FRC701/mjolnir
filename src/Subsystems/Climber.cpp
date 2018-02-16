@@ -18,7 +18,7 @@ std::shared_ptr<Climber> Climber::getInstance() {
   return self;
 }
 
-Climber::Climber() : Subsystem("kSusystemName"),
+Climber::Climber() : Subsystem(kSubsystemName),
     leftClimber(RobotMap::kIDLeftClimber),
     rightClimber(RobotMap::kIDRightClimber)
 {
