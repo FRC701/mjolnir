@@ -29,6 +29,10 @@ public:
 	//.........Sling.........
 	  static const int kIDPullSling = 7;
 
+	//........Climber.............
+	  static const int kIDLeftClimber = 6;
+	  static const int kIDRightClimber = 8;
+
 //..........Solenoids..........
 
 	  static const int kIDRampForward = 0;
