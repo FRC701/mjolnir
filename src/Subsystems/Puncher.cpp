@@ -58,6 +58,11 @@ void Puncher::MotorEngage() {
   releaseSling.Set(kMotorDisengage);
 }
 
+int Puncher::GetVelocity()
+{
+ return pullSling.GetSelectedSensorVelocity(kPID_PrimaryClosedLoop);
+}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 

@@ -12,6 +12,7 @@
 #include "Commands/TankDrive.h"
 #include "SmartDashboard/SmartDashboard.h"
 #include "GameData.h"
+#include "Subsystems/Puncher.h"
 
 using robovikes::GameData;
 
@@ -110,6 +111,8 @@ void Robot::TeleopPeriodic() {
   SmartDashboard::PutString("Our Switch", SideToString(robovikes::GameData::GetOurSwitchSide()));
   SmartDashboard::PutString("Scale", SideToString(robovikes::GameData::GetScaleSide()));
   SmartDashboard::PutString("Their Switch", SideToString(robovikes::GameData::GetTheirSwitchSide()));
+
+  SmartDashboard::PutNumber("Puncher velocity", Puncher::getInstance()->GetVelocity());
 }
 
 void Robot::TestPeriodic() {
