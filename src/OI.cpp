@@ -61,6 +61,14 @@ OI::OI()
   dLB.WhenPressed(new SetIntake(1.0));
   dRB.WhenPressed(new SetIntake(0.0));
 
+  /*
+   *dX.WhenPressed(new SetClimber(1.0));
+   *dY.WhenPressed(new SetClimber(-1.0));
+   *dB.WhenPressed(new SetClimber(0.0));
+   */
+
+
+
   SmartDashboard::PutData("PuncherButton", new SlingShot(1.0));
   SmartDashboard::PutData("Half Arm", new SetArmPosition(10430));
   SmartDashboard::PutData("Quarter Arm", new SetArmPosition(5125));
