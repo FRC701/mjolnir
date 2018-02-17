@@ -34,6 +34,12 @@ public:
   void MotorEngage();
   void SetUpTalon();
   int GetVelocity();
+  int GetPosition();
+  void SetUpMotionMagic();
+  void SetPosition(double position);
+  int GetPositionError();
+  void ResetPuncherPos();
+  double GetCurrent();
 };
 
 
