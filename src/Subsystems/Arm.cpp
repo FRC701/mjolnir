@@ -16,14 +16,14 @@ std::shared_ptr<Arm> Arm::getInstance() {
         }
         return self;
 }
-double calcFeedforward() {
+static double calcFeedforward() {
   static const double kMaxUnitsPer100ms = 3675.0;
   // static const double kUnitsPerRev = 4096.0;
   // double rpm = (kMaxUnitsPer100ms * 600.0) / kUnitsPerRev;
   double feedforward = 1023.0 / kMaxUnitsPer100ms;
   return feedforward;
 }
-double calcP(){
+static double calcP(){
   static const double kEigthUnitsPerRev = 4096.0/ 1.0;
   double pGain = 0.5* 1023.0/kEigthUnitsPerRev;
   return pGain;
@@ -62,8 +62,8 @@ void Arm::SetUpTalons() {
   leftArmMotor.ConfigReverseLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyOpen, kTimeout_10Millis);
   leftArmMotor.SetSensorPhase(true);
   leftArmMotor.SetInverted(true);
-  leftArmMotor.ConfigPeakOutputForward(0.4, kTimeout_10Millis);
-  leftArmMotor.ConfigPeakOutputReverse(-0.4, kTimeout_10Millis);
+  leftArmMotor.ConfigPeakOutputForward(0.1, kTimeout_10Millis);
+  leftArmMotor.ConfigPeakOutputReverse(-0.02, kTimeout_10Millis);
 
   rightArmMotor.SetInverted(true);
   rightArmMotor.Follow(leftArmMotor);
