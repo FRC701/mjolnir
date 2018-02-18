@@ -1,5 +1,6 @@
 #include "SetIntake.h"
 #include "Subsystems/Intake.h"
+#include "OI.h"
 
 SetIntake::SetIntake(double speed): mSpeed(speed) {
 	// Use Requires() here to declare subsystem dependencies
@@ -19,7 +20,7 @@ void SetIntake::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool SetIntake::IsFinished() {
-	return false;
+	return OI::getInstance()->isCodriverLBPressed();
 }
 
 // Called once after isFinished returns true

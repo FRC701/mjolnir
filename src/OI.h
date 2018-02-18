@@ -41,6 +41,7 @@ public:
   double getCoDriverRightYAxis() const;
 
   bool isDriverBPressed();
+  bool isCodriverLBPressed();
 
   static const int kButtonA_ID = 1;
   static const int kButtonB_ID = 2;
