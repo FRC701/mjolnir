@@ -127,6 +127,10 @@ void Puncher::ResetPuncherPos(){
 double Puncher::GetCurrent(){
   return pullSling.GetOutputCurrent();
 }
+
+double Puncher::IsCubeIn() {
+  return pullSling.GetSensorCollection().IsRevLimitSwitchClosed();
+}
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 

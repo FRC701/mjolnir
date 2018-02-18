@@ -1,5 +1,6 @@
 #include "SetIntake.h"
 #include "Subsystems/Intake.h"
+#include "Subsystems/Puncher.h"
 
 SetIntake::SetIntake(double speed): mSpeed(speed) {
 	// Use Requires() here to declare subsystem dependencies
@@ -19,7 +20,8 @@ void SetIntake::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool SetIntake::IsFinished() {
-	return false;
+	return Puncher::getInstance()->IsCubeIn();
+
 }
 
 // Called once after isFinished returns true

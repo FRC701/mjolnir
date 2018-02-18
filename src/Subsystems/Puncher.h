@@ -40,6 +40,7 @@ public:
   int GetPositionError();
   void ResetPuncherPos();
   double GetCurrent();
+  double IsCubeIn();
 };
 
 
