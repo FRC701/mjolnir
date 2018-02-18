@@ -78,8 +78,8 @@ OI::OI()
    //dB is being used by Climber don't use!
 
 
-
-  SmartDashboard::PutData("PuncherButton", new SlingShot(1.0));
+  SmartDashboard::PutData("Far Shooting Position", new SetArmPosition(13344));
+  SmartDashboard::PutData("PuncherButton", new SlingShot(0.5));
   SmartDashboard::PutData("Half Arm", new SetArmPosition(10430));
   SmartDashboard::PutData("Quarter Arm", new SetArmPosition(5125));
   SmartDashboard::PutData("Full Arm", new SetArmPosition(20860));
