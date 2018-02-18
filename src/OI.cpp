@@ -69,13 +69,13 @@ OI::OI()
   coB.WhenPressed(new SlingShot(0.0));
   coX.WhenPressed(new SetSlingEngagement);
   coY.WhenPressed(new SetSlingDisengagement);
-  coLB.WhenPressed(new SetIntake(1.0));
-  coRB.WhenPressed(new SetIntake(0.0));
+  coRB.WhenPressed(new SetIntake(1.0));
+  //coLB is being used to stop intake don't use!
 
 
    dX.WhenPressed(new SetClimber(1.0));
    dY.WhenPressed(new SetClimber(-1.0));
-   //dB is being used by Climber don't use!
+   //dB is being used to stop Climber don't use!
 
 
   SmartDashboard::PutData("Far Shooting Position", new SetArmPosition(13344));
@@ -102,7 +102,7 @@ OI::OI()
   SmartDashboard::PutData("Auto Left Switch", new AutoLeftSwitch());
   SmartDashboard::PutData("Auto Switch Side", new AutoSwitchSide());
 
-  static const double kMaxPuncher = 28209;
+  static const double kMaxPuncher = 28209;//number used in group commands if changed here change in PrepSwitch
   SmartDashboard::PutData("Quarter Puncher", new DrawSling(kMaxPuncher/4.0));
   SmartDashboard::PutData("Half Puncher", new DrawSling(kMaxPuncher/2.0));
   SmartDashboard::PutData("Full Puncher", new DrawSling(kMaxPuncher));
@@ -139,6 +139,10 @@ double OI::getDriverRightYAxis() const{
 
 bool OI::isDriverBPressed() {
   return dB.Get();
+}
+
+bool OI::isCodriverLBPressed() {
+  return coLB.Get();
 }
 
 std::shared_ptr<Joystick> OI::getCoDriver() {
