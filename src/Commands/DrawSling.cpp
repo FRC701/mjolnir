@@ -21,6 +21,7 @@ DrawSling::DrawSling(int position) {
   AddSequential(new Delay(0.3));
   AddSequential(new ZeroPuncher);
   AddSequential(new ResetPuncherPosition);
+  AddSequential(new Delay(0.5));
   AddSequential(new SetPuncherPos(position));
 	// To run multiple commands at the same time,
 	// use AddParallel()
