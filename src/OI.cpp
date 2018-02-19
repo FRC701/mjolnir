@@ -32,6 +32,7 @@
 #include "Commands/Vault.h"
 #include "Commands/Scale.h"
 #include "Commands/Switch.h"
+#include "Commands/ScaleBackwards.h"
 
 #include "SmartDashboard/SmartDashboard.h"
 using frc::Joystick;
@@ -62,6 +63,7 @@ OI::OI()
 , coY(coDriver.get(), kButtonY_ID)
 , coLB(coDriver.get(), kButtonLB_ID)
 , coRB(coDriver.get(), kButtonRB_ID)
+, coStart(coDriver.get(), kButtonStart_ID)
 
 {
   dX.WhenPressed(new SetClimber(1.0));
@@ -75,6 +77,8 @@ OI::OI()
   coY.WhenPressed(new Scale);
   coLB.WhenPressed(new SetIntake(0.0));
   coRB.WhenPressed(new SetSlingDisengagement);
+  coStart.WhenPressed(new ScaleBackwards);
+
 
 
 
