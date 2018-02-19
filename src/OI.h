@@ -22,6 +22,7 @@ private:
   frc::JoystickButton coY;
   frc::JoystickButton coLB;
   frc::JoystickButton coRB;
+  frc::JoystickButton coStart;
 
 public:
   static std::shared_ptr<OI> getInstance();
@@ -53,6 +54,7 @@ public:
   static const int kLeftYAxis_ID = 1;
   static const int kRightXAxis_ID = 4;
   static const int kRightYAxis_ID = 5;
+  static const int kButtonStart_ID = 8;
 };
 
 #endif

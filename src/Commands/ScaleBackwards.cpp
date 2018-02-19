@@ -5,21 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Intaking.h"
+#include "ScaleBackwards.h"
 #include "SetArmPosition.h"
-#include "IntakeEngage.h"
-#include "SetIntake.h"
 #include "DrawSling.h"
+#include "IntakeDisengage.h"
 
-Intaking::Intaking() {
-
-  AddSequential(new SetArmPosition(5325));
-  AddSequential(new SetArmPosition(0.0));
-  AddSequential(new IntakeEngage());
-  AddSequential(new SetIntake(1.0));
-  AddSequential(new DrawSling(7052));
-  AddSequential(new SetArmPosition(7700));
-  AddSequential(new SetIntake(0.0));
+ScaleBackwards::ScaleBackwards() {
+  AddSequential(new SetArmPosition(16000));
+  AddSequential(new SetArmPosition(20860));
+  AddSequential(new IntakeDisengage);
+  AddSequential(new DrawSling(28209/2));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -30,6 +25,7 @@ Intaking::Intaking() {
 	// e.g. AddParallel(new Command1());
 	//      AddSequential(new Command2());
 	// Command1 and Command2 will run in parallel.
+
 	// A command group will require all of the subsystems that each member
 	// would require.
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
