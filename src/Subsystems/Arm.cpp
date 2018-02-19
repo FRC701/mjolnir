@@ -25,7 +25,7 @@ static double calcFeedforward() {
 }
 static double calcP(){
   static const double kEigthUnitsPerRev = 4096.0/ 1.0;
-  double pGain = 0.5* 1023.0/kEigthUnitsPerRev;
+  double pGain = 1* 1023.0/kEigthUnitsPerRev;
   return pGain;
 }
 Arm::Arm() : Subsystem(kSubsystemName),
@@ -42,8 +42,7 @@ Arm::Arm() : Subsystem(kSubsystemName),
 }
 
 void Arm::InitDefaultCommand() {
-//  SetDefaultCommand(new BrakeOn());
-  SetDefaultCommand(new ArmMove());
+  SetDefaultCommand(new BrakeOn());
 }
 
 void Arm::SetArmMove(double speed) {

@@ -28,6 +28,10 @@
 #include "Commands/PrepShoot.h"
 #include "Commands/PuncherVoltage.h"
 #include "Commands/DrawSling.h"
+#include "Commands/Intaking.h"
+#include "Commands/Vault.h"
+#include "Commands/Scale.h"
+#include "Commands/Switch.h"
 
 #include "SmartDashboard/SmartDashboard.h"
 using frc::Joystick;
@@ -52,31 +56,33 @@ OI::OI()
 , dRB(driver.get(), kButtonRB_ID)
 
 , coDriver(new Joystick(1))
-, coA(driver.get(), kButtonA_ID)
-, coB(driver.get(), kButtonB_ID)
-, coX(driver.get(), kButtonX_ID)
-, coY(driver.get(), kButtonY_ID)
-, coLB(driver.get(), kButtonLB_ID)
-, coRB(driver.get(), kButtonRB_ID)
+, coA(coDriver.get(), kButtonA_ID)
+, coB(coDriver.get(), kButtonB_ID)
+, coX(coDriver.get(), kButtonX_ID)
+, coY(coDriver.get(), kButtonY_ID)
+, coLB(coDriver.get(), kButtonLB_ID)
+, coRB(coDriver.get(), kButtonRB_ID)
 
 {
-  coA.WhenPressed(new SlingShot(1.0));
-  coB.WhenPressed(new SlingShot(0.0));
-  coX.WhenPressed(new SetSlingEngagement);
-  coY.WhenPressed(new SetSlingDisengagement);
-  coRB.WhenPressed(new SetIntake(1.0));
-  //coLB is being used to stop intake don't use!
+  dX.WhenPressed(new SetClimber(1.0));
+  dY.WhenPressed(new SetClimber(-1.0));
+  //dB is being used to stop Climber don't use!
 
 
-   dX.WhenPressed(new SetClimber(1.0));
-   dY.WhenPressed(new SetClimber(-1.0));
-   //dB is being used to stop Climber don't use!
+  coA.WhenPressed(new Switch);
+  coB.WhenPressed(new Vault);
+  coX.WhenPressed(new Intaking);
+  coY.WhenPressed(new Scale);
+  coLB.WhenPressed(new SetIntake(0.0));
+  coRB.WhenPressed(new SetSlingDisengagement);
+
+
 
 
   SmartDashboard::PutData("Far Shooting Position", new SetArmPosition(13344));
   SmartDashboard::PutData("PuncherButton", new SlingShot(0.5));
   SmartDashboard::PutData("Half Arm", new SetArmPosition(10430));
-  SmartDashboard::PutData("Quarter Arm", new SetArmPosition(5125));
+  SmartDashboard::PutData("Quarter Arm", new SetArmPosition(7525));
   SmartDashboard::PutData("Full Arm", new SetArmPosition(20860));
   SmartDashboard::PutData("Reset Arm", new ResetArmPosition());
   SmartDashboard::PutData("Three Quarter Arm", new SetArmPosition(15645));

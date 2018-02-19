@@ -6,8 +6,16 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Vault.h"
+#include "SetArmPosition.h"
+#include "SetPuncherPos.h"
+#include "DrawSling.h"
+#include "IntakeDisengage.h"
 
 Vault::Vault() {
+  AddSequential(new SetArmPosition(0.0));
+  AddSequential(new IntakeDisengage);
+  AddSequential(new DrawSling(28209/2));
+
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
