@@ -5,23 +5,21 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "DrawSling.h"
-#include "ZeroPuncher.h"
+#include "Scale.h"
+#include "SetArmPosition.h"
 #include "SetPuncherPos.h"
-#include "Delay.h"
-#include "SetSlingEngagement.h"
-#include "ResetPuncherPosition.h"
+#include "DrawSling.h"
+#include "IntakeDisengage.h"
 
-DrawSling::DrawSling(int position) {
+Scale::Scale() {
+  AddSequential(new SetArmPosition(14500));//16000 too high & 13000 too low
+  AddSequential(new IntakeDisengage);
+  AddSequential(new DrawSling(21156));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
-  AddSequential(new SetSlingEngagement());
-  AddSequential(new Delay(0.3));
-  AddSequential(new ZeroPuncher);
-  AddSequential(new ResetPuncherPosition);
-  AddSequential(new SetPuncherPos(position));
+
 	// To run multiple commands at the same time,
 	// use AddParallel()
 	// e.g. AddParallel(new Command1());
