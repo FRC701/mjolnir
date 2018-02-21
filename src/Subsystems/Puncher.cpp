@@ -63,7 +63,8 @@ void Puncher::SetUpTalon(){
   pullSling.ConfigForwardLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyOpen, kTimeout_10Millis);
   pullSling.ConfigReverseLimitSwitchSource(LimitSwitchSource_FeedbackConnector, LimitSwitchNormal_NormallyClosed, kTimeout_10Millis);
   pullSling.SetInverted(true);
-  pullSling.SetSensorPhase(true);
+ // pullSling.SetSensorPhase(true); THIS IS FOR PRACTICE BOT
+  pullSling.SetSensorPhase(false); //THIS IS FOR COMP BOT
 
 }
 

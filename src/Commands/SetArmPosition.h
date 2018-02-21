@@ -4,7 +4,7 @@
 #include "Commands/Command.h"
 
 class SetArmPosition : public frc::Command{
-private:
+protected:
   int mPosition;
   int counter;
 public:

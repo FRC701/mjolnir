@@ -12,14 +12,13 @@
 #include "DrawSling.h"
 #include "IntakingCondition.h"
 #include "Delay.h"
+#include "SetArmPosConditional.h"
 
 Intaking::Intaking() {
 
-  //AddSequential(new IntakingCondition());
-  AddSequential(new SetArmPosition(5325));
-  AddSequential(new SetArmPosition(0.0));
+  AddSequential(new IntakingCondition(5500));
+  AddSequential(new SetArmPosition(0));
   AddSequential(new IntakeEngage());
-  AddSequential(new DrawSling(7052));
   AddSequential(new SetIntake(1.0));
   AddSequential(new Delay(1.0));
   AddSequential(new SetArmPosition(7700));

@@ -12,8 +12,8 @@
 #include "IntakeDisengage.h"
 
 Vault::Vault() {
-  AddSequential(new SetArmPosition(0.0));
-  AddSequential(new IntakeDisengage);
+  AddParallel(new SetArmPosition(0.0));
+  AddParallel(new IntakeDisengage);
   AddSequential(new DrawSling(28209/2));
 
 	// Add Commands here:
