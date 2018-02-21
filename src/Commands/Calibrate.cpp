@@ -3,12 +3,16 @@
 #include "Calibrate.h"
 #include "ArmUp.h"
 #include "ArmDown.h"
+#include "BrakeOn.h"
+#include "BrakeOff.h"
 
 Calibrate::Calibrate() {
 	// Add Commands here:
+  AddSequential(new BrakeOff);
   AddSequential(new ArmDown(0.25));
   AddSequential(new GetArmPositionDown);
   AddSequential(new ArmUp(0.25));
+  AddSequential(new BrakeOn);
   AddSequential(new GetArmPositionUp);
 
 	// e.g. AddSequential(new Command1());

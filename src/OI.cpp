@@ -33,6 +33,8 @@
 #include "Commands/Scale.h"
 #include "Commands/Switch.h"
 #include "Commands/ScaleBackwards.h"
+#include "Commands/IntakingCondition.h"
+#include "Commands/SlingShot.h"
 
 #include "Commands/AutoRun.h"
 #include "Commands/AutoLeftSwitch.h"
@@ -125,6 +127,9 @@ OI::OI()
   SmartDashboard::PutData("Prep Shoot", new PrepShoot());
   SmartDashboard::PutNumber("Puncher zeroing Voltage", 0);
   SmartDashboard::PutData("Puncher Voltage", new PuncherVoltage());
+  SmartDashboard::PutData("Intake on", new SetIntake(1.0));
+  SmartDashboard::PutData("Inkaking", new Intaking);
+  SmartDashboard::PutData("Puncher Move", new SlingShot(0.5));
 
 }
 

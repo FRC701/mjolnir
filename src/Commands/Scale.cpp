@@ -12,9 +12,9 @@
 #include "IntakeDisengage.h"
 
 Scale::Scale() {
-  AddSequential(new SetArmPosition(14500));//16000 too high & 13000 too low
-  AddSequential(new IntakeDisengage);
+  AddParallel(new SetArmPosition(15500));//16000 too high & 13000 too low
   AddSequential(new DrawSling(21156));
+  AddSequential(new IntakeDisengage());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

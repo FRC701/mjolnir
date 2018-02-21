@@ -13,10 +13,13 @@
 #include "IntakingCondition.h"
 #include "Delay.h"
 #include "Subsystems/Arm.h"
+#include "SetSlingDisengagement.h"
 
 IntakingCondition::IntakingCondition() {
   if(Arm::getInstance()->GetPosition() <= 0)
   {
+    AddSequential(new DrawSling(3500));
+    AddSequential(new SetSlingDisengagement());
     AddSequential(new DrawSling(7500));
     AddSequential(new IntakeEngage);
     AddSequential(new SetIntake(1.0));
@@ -27,6 +30,8 @@ IntakingCondition::IntakingCondition() {
   else if(Arm::getInstance()->GetPosition() > 0 && Arm::getInstance()->GetPosition() < 7000)
   {
     AddSequential(new SetArmPosition(0.0));
+    AddSequential(new DrawSling(3500));
+    AddSequential(new SetSlingDisengagement());
     AddSequential(new DrawSling(7500));
     AddSequential(new IntakeEngage);
     AddSequential(new SetIntake(1.0));
@@ -38,6 +43,8 @@ IntakingCondition::IntakingCondition() {
   {
     AddSequential(new SetArmPosition(7000));
     AddSequential(new SetArmPosition(0));
+    AddSequential(new DrawSling(3500));
+    AddSequential(new SetSlingDisengagement());
     AddSequential(new DrawSling(7500));
     AddSequential(new IntakeEngage);
     AddSequential(new SetIntake(1.0));
