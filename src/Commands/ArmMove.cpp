@@ -9,17 +9,18 @@ ArmMove::ArmMove() {
 
 // Called just before this Command runs the first time
 void ArmMove::Initialize() {
-  //Arm::getInstance()->DisengageBrake();
+  Arm::getInstance()->DisengageBrake();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ArmMove::Execute() {
-  std::shared_ptr<Arm> arm = Arm::getInstance();
+  /*std::shared_ptr<Arm> arm = Arm::getInstance();
 
   std::shared_ptr<OI> oi = OI::getInstance();
 
   double left = oi->getCoDriverLeftYAxis();
   arm->SetArmMove(-left);
+  */
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -23,6 +23,7 @@ bool SetArmPosition::IsFinished() {
  if(abs(Arm::getInstance()->GetPositionError()) < kAcceptableError){
    if (counter > 30)
    {
+     Arm::getInstance()->EngageBrake();
      counter = 0;
      return true;
    }
@@ -40,7 +41,6 @@ bool SetArmPosition::IsFinished() {
 
 // Called once after isFinished returns true
 void SetArmPosition::End() {
-  Arm::getInstance()->EngageBrake();
 }
 
 // Called when another command which requires one or more of the same

@@ -5,37 +5,30 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "IntakeDisengage.h"
-#include "Subsystems/Intake.h"
+#include "Delay.h"
 
-IntakeDisengage::IntakeDisengage() {
+Delay::Delay(double timeout) : TimedCommand(timeout) {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
-  Requires(Intake::getInstance().get());
 }
 
 // Called just before this Command runs the first time
-void IntakeDisengage::Initialize() {
+void Delay::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void IntakeDisengage::Execute() {
-  Intake::getInstance()->IntakeDisengage();
+void Delay::Execute() {
+
 }
 
-// Make this return true when this Command no longer needs to run execute()
-bool IntakeDisengage::IsFinished() {
-	return true;
-}
-
-// Called once after isFinished returns true
-void IntakeDisengage::End() {
+// Called once after command times out
+void Delay::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void IntakeDisengage::Interrupted() {
+void Delay::Interrupted() {
 
 }
