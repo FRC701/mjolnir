@@ -12,11 +12,15 @@ static const double kWheelGearRatio = kGearRatioNumerator  / kGearRatioDenominat
 #endif
 
 double calcFeedforward() {
+/*
   static const double kMaxUnitsPer100ms = 5500.0;
   // static const double kUnitsPerRev = 4096.0;
   // double rpm = (kMaxUnitsPer100ms * 600.0) / kUnitsPerRev;
   double feedforward = 1023.0 / kMaxUnitsPer100ms;
   return feedforward;
+*/
+
+  return 0.25;  // Determined experimentally
 }
 
 }
@@ -38,7 +42,7 @@ Chassis::Chassis() : Subsystem(kSubsystemName),
     left2Wheel(RobotMap::kIDLeft2Wheel),
     right1Wheel(RobotMap::kIDRight1Wheel),
     right2Wheel(RobotMap::kIDRight2Wheel),
-    p(0.0), i(0.0), d(0.0), f(calcFeedforward())
+    p(0.0625), i(0.0), d(0.0), f(calcFeedforward())
 {
   SetUpTalons();
 }
