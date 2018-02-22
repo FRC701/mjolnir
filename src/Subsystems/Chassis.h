@@ -19,6 +19,8 @@ private:
   WPI_TalonSRX right1Wheel;
   WPI_TalonSRX right2Wheel;
 
+  double p, i, d, f;
+
   void SetUpTalons();
 
 public:
@@ -30,6 +32,20 @@ public:
 
 	int getLeftVelocity();
 	int getRightVelocity();
+	int GetLeftPosition();
+	int GetRightPosition();
+
+	// Motion Profile Support
+	void SetModePercentOutput();
+	void SetModeMotionProfile();
+	void ClearMotionProfileTrajectories();
+	void SetMotionProfileSetValue(SetValueMotionProfile setValue);
+	void ConfigMotionProfileTrajectoryPeriod(int pointDurationMillis);
+	void PushMotionProfileTrajectory(const TrajectoryPoint& leftTrajectoryPoint,
+	                                 const TrajectoryPoint& rightTrajectoryPoint);
+	void ProcessMotionProfileBuffer();
+	void GetMotionProfileStatus(MotionProfileStatus* leftStatus,
+	                            MotionProfileStatus* rightStatus);
 };
 
 
