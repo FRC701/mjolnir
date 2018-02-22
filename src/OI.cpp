@@ -25,6 +25,8 @@
 #include "Commands/SetClimber.h"
 
 #include "Commands/AutoRun.h"
+#include "Commands/AutoLeftSwitch.h"
+#include "Commands/AutoRightSwitch.h"
 #include "Commands/AutoSwitchSide.h"
 #include "SmartDashboard/SmartDashboard.h"
 using frc::Joystick;
@@ -90,6 +92,8 @@ OI::OI()
 
   // Setup AutoCommands on the Dashboard
   SmartDashboard::PutData("Auto Run", new AutoRun());
+  SmartDashboard::PutData("Auto Right Switch", new AutoRightSwitch());
+  SmartDashboard::PutData("Auto Left Switch", new AutoLeftSwitch());
   SmartDashboard::PutData("Auto Switch Side", new AutoSwitchSide());
 }
 
