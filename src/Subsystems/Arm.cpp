@@ -7,6 +7,7 @@ static const int kSlotIndex = 0;
 
 const char Arm::kSubsystemName[] = "Arm";
 const std::string kKey = "ArmScale";
+const std::string kKeyPot = "ArmPotBottom";
 
 std::shared_ptr<Arm> Arm::self;
 
@@ -149,13 +150,14 @@ void Arm::SetArmPositionDown(int potentiometer, int encoder)
 
 void Arm::SetArmPositionUp(int potentiometer, int encoder)
 {
-  double scaleFactor = (encoder - calibrateEncoderDown) / (potentiometer - calibratePotDown);
+  double scaleFactor = (calibrateEncoderDown - encoder) / (calibratePotDown - potentiometer);
   Preferences::GetInstance()->PutDouble(kKey, scaleFactor);
+  Preferences::GetInstance()->PutDouble(kKeyPot, calibratePotDown);
 }
 
 int Arm::CalculateEncoderPos()
 {
-  return Preferences::GetInstance()->GetDouble(kKey,0) * GetPosition();
+  return Preferences::GetInstance()->GetDouble(kKey,0) * (Arm::GetArmPotValue() - Preferences::GetInstance()->GetDouble(kKeyPot,0));
 }
 
 // Put methods for controlling this subsystem

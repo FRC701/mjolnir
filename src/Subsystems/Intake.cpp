@@ -17,11 +17,13 @@ std::shared_ptr<Intake> Intake::getInstance() {
 }
 
 Intake::Intake() : Subsystem(kSubsystemName),
-    intakeMotor(RobotMap::kIDIntakeMotor),
+    intakeMotorTop(RobotMap::kIDIntakeMotorTop),
+    intakeMotorBottom(RobotMap::kIDIntakeMotorBottom),
     intakeSolenoid(RobotMap::kIDIntakeForward, RobotMap::kIDIntakeReverse)
 {
     intakeSolenoid.Set(DoubleSolenoid::kForward);
-    intakeMotor.SetInverted(true);
+    intakeMotorTop.SetInverted(true);
+    intakeMotorBottom.SetInverted(false);
 }
 
 void Intake::InitDefaultCommand() {
@@ -30,7 +32,8 @@ void Intake::InitDefaultCommand() {
 	SetDefaultCommand(new ::SetIntake(0.0));
 }
 void Intake::SetIntake(double speed){
-  intakeMotor.Set(speed);
+  intakeMotorTop.Set(speed);
+  intakeMotorBottom.Set(-1*speed);
 }
 
 void Intake::IntakeEngage(){

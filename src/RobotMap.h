@@ -22,7 +22,8 @@ public:
 	  static const int kIDLeft1Wheel = 3;
 	  static const int kIDLeft2Wheel = 4;
 	//..........Intake..........
-	  static const int kIDIntakeMotor = 5;
+	  static const int kIDIntakeMotorTop = 5;
+	  static const int kIDIntakeMotorBottom = 8;
 	  static const int kIDBanner = 1;
 	//..........Arm..........
 	  static const int kIDLeftArm = 10;

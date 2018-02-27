@@ -9,7 +9,8 @@ class Intake: public frc::Subsystem {
 private:
 	static const char kSubsystemName[];
 	static std::shared_ptr<Intake> self;
-  WPI_TalonSRX intakeMotor;
+  WPI_TalonSRX intakeMotorTop;
+  WPI_TalonSRX intakeMotorBottom;
   DoubleSolenoid intakeSolenoid;
 
 public:
