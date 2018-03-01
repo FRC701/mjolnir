@@ -11,6 +11,6 @@
 
 class IntakingCondition : public frc::CommandGroup {
 public:
-	IntakingCondition();
+	IntakingCondition(int position);
 };
 

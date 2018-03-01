@@ -11,7 +11,7 @@
 #include "IntakeDisengage.h"
 
 PrepSwitch::PrepSwitch() {
-  AddSequential(new SetArmPosition(5125));
+  AddParallel(new SetArmPosition(5125));
   AddSequential(new SetPuncherPos(28209 / 4));
   AddSequential(new IntakeDisengage());
 	// Add Commands here:

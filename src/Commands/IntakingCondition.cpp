@@ -15,7 +15,7 @@
 #include "Subsystems/Arm.h"
 #include "SetSlingDisengagement.h"
 
-IntakingCondition::IntakingCondition() {
+IntakingCondition::IntakingCondition(int position) {
   if(Arm::getInstance()->GetPosition() <= 0)
   {
     AddSequential(new DrawSling(3500));
