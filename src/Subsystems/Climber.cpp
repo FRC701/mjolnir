@@ -35,5 +35,5 @@ void Climber::InitDefaultCommand() {
 // here. Call these from Commands.
 
 void Climber::Climb(double speed){
-  leftClimber.Set(speed);
+  ClimberMotor.Set(speed);
 }
