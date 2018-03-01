@@ -19,10 +19,10 @@ std::shared_ptr<Climber> Climber::getInstance() {
 }
 
 Climber::Climber() : Subsystem(kSubsystemName),
-    leftClimber(RobotMap::kIDLeftClimber),
-    rightClimber(RobotMap::kIDRightClimber)
+    ClimberMotor(RobotMap::kIDClimber)
 {
-  rightClimber.Follow(leftClimber);
+
+
 }
 
 void Climber::InitDefaultCommand() {
@@ -35,5 +35,5 @@ void Climber::InitDefaultCommand() {
 // here. Call these from Commands.
 
 void Climber::Climb(double speed){
-  leftClimber.Set(speed);
+  ClimberMotor.Set(speed);
 }

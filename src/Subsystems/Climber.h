@@ -19,8 +19,8 @@ private:
   static const char kSubsystemName[];
   static std::shared_ptr<Climber> self;
 
-  WPI_TalonSRX leftClimber;
-  WPI_TalonSRX rightClimber;
+  WPI_TalonSRX ClimberMotor;
+
 
 public:
   static std::shared_ptr<Climber> getInstance();
