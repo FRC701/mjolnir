@@ -9,12 +9,13 @@
 #include "SetArmPosition.h"
 #include "DrawSling.h"
 #include "IntakeDisengage.h"
+#include "Delay.h"
 
 ScaleBackwards::ScaleBackwards() {
-  AddSequential(new SetArmPosition(16000));
-  AddSequential(new SetArmPosition(20860));
-  AddSequential(new IntakeDisengage);
+  AddParallel(new SetArmPosition(15645));
   AddSequential(new DrawSling(28209/2));
+  AddSequential(new Delay(0.25));
+  AddSequential(new IntakeDisengage);
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

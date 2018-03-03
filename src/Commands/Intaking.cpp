@@ -13,12 +13,14 @@
 #include "IntakingCondition.h"
 #include "Delay.h"
 #include "SetArmPosConditional.h"
+#include "SetPuncherPos.h"
 
 Intaking::Intaking() {
 
+  AddParallel(new SetPuncherPos(7000));
   AddSequential(new IntakingCondition(5500));
-  AddSequential(new SetArmPosition(0));
-  AddSequential(new IntakeEngage());
+  AddParallel(new SetArmPosition(0));
+  AddParallel(new IntakeEngage());
   AddSequential(new SetIntake(1.0));
   AddSequential(new Delay(1.0));
   AddSequential(new SetArmPosition(7700));

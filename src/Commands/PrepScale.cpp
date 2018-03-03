@@ -9,10 +9,11 @@
 #include "SetArmPosition.h"
 #include "SetPuncherPos.h"
 #include "IntakeDisengage.h"
-
+#include "Delay.h"
 PrepScale::PrepScale() {
-  AddSequential(new SetArmPosition(15645));
+  AddParallel(new SetArmPosition(13000)); //Was 15645
   AddSequential(new SetPuncherPos(28209 * (3/4) ));
+  AddSequential(new Delay(0.25));
   AddSequential(new IntakeDisengage());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
