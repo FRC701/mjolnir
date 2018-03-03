@@ -11,8 +11,8 @@
 #include "IntakeDisengage.h"
 
 ScaleBackwards::ScaleBackwards() {
+  AddSequential(new SetArmPosition(12750));
   AddSequential(new SetArmPosition(16000));
-  AddSequential(new SetArmPosition(20860));
   AddSequential(new IntakeDisengage);
   AddSequential(new DrawSling(28209/2));
 	// Add Commands here:

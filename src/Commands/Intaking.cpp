@@ -16,7 +16,7 @@
 
 Intaking::Intaking() {
 
-  AddSequential(new IntakingCondition(5500));
+  AddSequential(new IntakingCondition(6250));
   AddSequential(new SetArmPosition(0));
   AddSequential(new IntakeEngage());
   AddSequential(new SetIntake(1.0));

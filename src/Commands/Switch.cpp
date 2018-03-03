@@ -12,7 +12,7 @@
 #include "IntakeDisengage.h"
 
 Switch::Switch() {
-  AddSequential(new SetArmPosition(10500));
+  AddSequential(new SetArmPosition(8500));
   AddSequential(new IntakeDisengage);
   AddSequential(new DrawSling(5500));
 	// Add Commands here:
