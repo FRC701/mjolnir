@@ -37,6 +37,7 @@
 #include "Commands/SlingShot.h"
 
 #include "Commands/AutoRun.h"
+#include "Commands/AutoLeftScale.h"
 #include "Commands/AutoLeftSwitch.h"
 #include "Commands/AutoRightSwitch.h"
 #include "Commands/AutoSwitchSide.h"
@@ -112,6 +113,7 @@ OI::OI()
   SmartDashboard::PutData("Auto Run", new AutoRun());
   SmartDashboard::PutData("Auto Right Switch", new AutoRightSwitch());
   SmartDashboard::PutData("Auto Left Switch", new AutoLeftSwitch());
+  SmartDashboard::PutData("Auto Left Scale", new AutoLeftScale());
   SmartDashboard::PutData("Auto Switch Side", new AutoSwitchSide());
 
   static const double kMaxPuncher = 28209;//number used in group commands if changed here change in PrepSwitch
