@@ -37,6 +37,7 @@
 #include "Commands/SlingShot.h"
 
 #include "Commands/AutoRun.h"
+#include "Commands/AutoLeftScale.h"
 #include "Commands/AutoLeftSwitch.h"
 #include "Commands/AutoRightSwitch.h"
 #include "Commands/AutoSwitchSide.h"
@@ -92,11 +93,11 @@ OI::OI()
 
   SmartDashboard::PutData("Far Shooting Position", new SetArmPosition(13344));
   SmartDashboard::PutData("PuncherButton", new SlingShot(0.5));
-  SmartDashboard::PutData("Half Arm", new SetArmPosition(10430));
-  SmartDashboard::PutData("Quarter Arm", new SetArmPosition(7525));
-  SmartDashboard::PutData("Full Arm", new SetArmPosition(20860));
+  SmartDashboard::PutData("Half Arm", new SetArmPosition(8500));
+  SmartDashboard::PutData("Quarter Arm", new SetArmPosition(6250));
+  SmartDashboard::PutData("Full Arm", new SetArmPosition(17000));
   SmartDashboard::PutData("Reset Arm", new ResetArmPosition());
-  SmartDashboard::PutData("Three Quarter Arm", new SetArmPosition(15645));
+  SmartDashboard::PutData("Three Quarter Arm", new SetArmPosition(12750));
   SmartDashboard::PutData("Zero Arm", new SetArmPosition(0));
   SmartDashboard::PutData("Brake Off", new BrakeOff());
   SmartDashboard::PutData("Brake On", new BrakeOn());
@@ -112,6 +113,7 @@ OI::OI()
   SmartDashboard::PutData("Auto Run", new AutoRun());
   SmartDashboard::PutData("Auto Right Switch", new AutoRightSwitch());
   SmartDashboard::PutData("Auto Left Switch", new AutoLeftSwitch());
+  SmartDashboard::PutData("Auto Left Scale", new AutoLeftScale());
   SmartDashboard::PutData("Auto Switch Side", new AutoSwitchSide());
 
   static const double kMaxPuncher = 28209;//number used in group commands if changed here change in PrepSwitch

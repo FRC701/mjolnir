@@ -42,7 +42,7 @@ Chassis::Chassis() : Subsystem(kSubsystemName),
     left2Wheel(RobotMap::kIDLeft2Wheel),
     right1Wheel(RobotMap::kIDRight1Wheel),
     right2Wheel(RobotMap::kIDRight2Wheel),
-    p(0.0625), i(0.0), d(0.0), f(calcFeedforward())
+    p(0.0625), i(0.0), d(p*10), f(calcFeedforward())
 {
   SetUpTalons();
 }

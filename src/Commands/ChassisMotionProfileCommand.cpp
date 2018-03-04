@@ -38,8 +38,8 @@ namespace {
   typedef ctre::phoenix::motion::TrajectoryPoint ctre_TrajectoryPoint;
 
   void LoadPoints(
-    const robovikes::TrajectoryPoint* chassisRight,
     const robovikes::TrajectoryPoint* chassisLeft,
+    const robovikes::TrajectoryPoint* chassisRight,
     unsigned int trajectoryPointCount,
     unsigned int pointDurationMillis,
     bool velocityOnly)
@@ -47,11 +47,11 @@ namespace {
     std::cout << "Load Points:" << trajectoryPointCount << std::endl;
     unsigned int lastPoint = trajectoryPointCount - 1;
 
-    std::cout << chassisRight << "," << chassisLeft << std::endl;
-    std::cout << chassisRight->velocity << "," << chassisLeft->velocity << std::endl;
+    std::cout << chassisLeft << "," << chassisRight << std::endl;
+    std::cout << chassisLeft->velocity << "," << chassisRight->velocity << std::endl;
 
     for (unsigned int point = 0; point < trajectoryPointCount; ++point) {
-      std::cout << "LoadPoints:" << point << "," << chassisRight[point].velocity << "," << chassisLeft[point].velocity<< std::endl;
+      std::cout << "LoadPoints:" << point << "," << chassisLeft[point].velocity << "," << chassisRight[point].velocity << std::endl;
 
       ctre_TrajectoryPoint rightTrajectoryPoint;
       rightTrajectoryPoint.position = chassisRight[point].position;
@@ -65,8 +65,8 @@ namespace {
       leftTrajectoryPoint.position = chassisLeft[point].position;
       leftTrajectoryPoint.velocity = chassisLeft[point].velocity;
 
-      Chassis::getInstance()->PushMotionProfileTrajectory(rightTrajectoryPoint, leftTrajectoryPoint);
-      std::cout << "LoadPoints:" << point << "," << chassisRight[point].velocity << "," << chassisLeft[point].velocity<< std::endl;
+      Chassis::getInstance()->PushMotionProfileTrajectory(leftTrajectoryPoint, rightTrajectoryPoint);
+      std::cout << "LoadPoints:" << point << "," << chassisLeft[point].velocity << "," << chassisRight[point].velocity<< std::endl;
     }
     std::cout << "Load Points Complete"<< std::endl;
   }
@@ -174,9 +174,9 @@ namespace {
      * points in the Talon bottom buffer.
      */
     std::cout << "MotionProfileLoadTalon::getNextState" << std::endl;
-    MotionProfileStatus rightStatus, leftStatus;
-    Chassis::getInstance()->GetMotionProfileStatus(&rightStatus, &leftStatus);
-    std::cout << "MotionProfileStatus" << rightStatus.btmBufferCnt << " " << leftStatus.btmBufferCnt << std::endl;
+    MotionProfileStatus leftStatus, rightStatus;
+    Chassis::getInstance()->GetMotionProfileStatus(&leftStatus, &rightStatus);
+    std::cout << "MotionProfileStatus" << leftStatus.btmBufferCnt << " " << rightStatus.btmBufferCnt << std::endl;
     if (leftStatus.btmBufferCnt > kMinPointsInTalon
         && rightStatus.btmBufferCnt > kMinPointsInTalon) {
       return &motionProfileRun;
@@ -188,10 +188,10 @@ namespace {
 
   ChassisMotionProfileCommand::MotionProfileState*
   MotionProfileRun::getNextState() {
-    MotionProfileStatus rightStatus, leftStatus;
-    Chassis::getInstance()->GetMotionProfileStatus(&rightStatus, &leftStatus);
+    MotionProfileStatus leftStatus, rightStatus;
+    Chassis::getInstance()->GetMotionProfileStatus(&leftStatus, &rightStatus);
     // activePointValid must precede isLastPoint.
-    std::cout << "MotionProfileRun" << rightStatus.activePointValid << " " << leftStatus.activePointValid << std::endl;
+    std::cout << "MotionProfileRun" << leftStatus.activePointValid << " " << rightStatus.activePointValid << std::endl;
     if (rightStatus.activePointValid && rightStatus.isLast
         && leftStatus.activePointValid && leftStatus.isLast) {
       return &motionProfileFinished;
@@ -211,7 +211,7 @@ namespace {
 void ChassisMotionProfileCommand::MotionProfileLoad::run(const ChassisMotionProfileCommand* motionProfile) {
   std::cout << "MotionProfileLoad" << std::endl;
   Chassis::getInstance()->ConfigMotionProfileTrajectoryPeriod(motionProfile->pointDurationMillis);
-  LoadPoints(motionProfile->chassisRight, motionProfile->chassisLeft,
+  LoadPoints(motionProfile->chassisLeft, motionProfile->chassisRight,
              motionProfile->trajectoryPointCount, motionProfile->pointDurationMillis, motionProfile->velocityOnly);
 }
 
@@ -234,8 +234,8 @@ ChassisMotionProfileCommand::ChassisMotionProfileCommand(
   unsigned int _trajectoryPointCount,
   unsigned int _pointDurationMillis,
   bool _velocityOnly)
-: chassisRight(_chassisRight),
-  chassisLeft(_chassisLeft),
+: chassisLeft(_chassisLeft),
+  chassisRight(_chassisRight),
   trajectoryPointCount(_trajectoryPointCount),
   pointDurationMillis(_pointDurationMillis),
   velocityOnly(_velocityOnly),
