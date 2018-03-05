@@ -35,6 +35,8 @@
 #include "Commands/ScaleBackwards.h"
 #include "Commands/IntakingCondition.h"
 #include "Commands/SlingShot.h"
+#include "Commands/AutoFullLeftSwitch.h"
+#include "Commands/AutoFullRightSwitch.h"
 
 #include "Commands/AutoRun.h"
 #include "Commands/AutoLeftScale.h"
@@ -116,8 +118,10 @@ OI::OI()
   SmartDashboard::PutData("Auto Left Switch", new AutoLeftSwitch());
   SmartDashboard::PutData("Auto Left Scale", new AutoLeftScale());
   SmartDashboard::PutData("Auto Switch Side", new AutoSwitchSide());
+  SmartDashboard::PutData("Auto Left Switch Full", new AutoFullLeftSwitch);
+  SmartDashboard::PutData("Auto Right Switch Full", new AutoFullRightSwitch);
 
-  SmartDashboard::PutData("Auto Switch", new AutoSwitchSelector(new AutoLeftSwitch(), new AutoRightSwitch()));
+  SmartDashboard::PutData("Auto Switch", new AutoSwitchSelector(new AutoFullLeftSwitch(), new AutoFullRightSwitch()));
 
   static const double kMaxPuncher = 28209;//number used in group commands if changed here change in PrepSwitch
   SmartDashboard::PutData("Quarter Puncher", new DrawSling(kMaxPuncher/4.0));
@@ -135,7 +139,6 @@ OI::OI()
   SmartDashboard::PutData("Intake on", new SetIntake(1.0));
   SmartDashboard::PutData("Inkaking", new Intaking);
   SmartDashboard::PutData("Puncher Move", new SlingShot(0.5));
-
 
 }
 
