@@ -43,8 +43,8 @@ public:
 private:
   friend class MotionProfileLoad;
 
-  const TrajectoryPoint* chassisRight;
   const TrajectoryPoint* chassisLeft;
+  const TrajectoryPoint* chassisRight;
   unsigned int trajectoryPointCount;
   unsigned int pointDurationMillis;
   bool velocityOnly;
