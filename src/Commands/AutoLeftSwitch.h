@@ -1,5 +1,5 @@
 #ifndef AutoLeftSwitch_H
-#define AutoLeftSwitchH
+#define AutoLeftSwitch_H
 
 #include "ChassisMotionProfileCommand.h"
 
