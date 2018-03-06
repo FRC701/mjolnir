@@ -35,6 +35,8 @@
 #include "Commands/ScaleBackwards.h"
 #include "Commands/IntakingCondition.h"
 #include "Commands/SlingShot.h"
+#include "Commands/AutoFullLeftSwitch.h"
+#include "Commands/AutoFullRightSwitch.h"
 
 #include "Commands/AutoRun.h"
 #include "Commands/AutoLeftScale.h"
@@ -132,6 +134,10 @@ OI::OI()
   SmartDashboard::PutData("Intake on", new SetIntake(1.0));
   SmartDashboard::PutData("Inkaking", new Intaking);
   SmartDashboard::PutData("Puncher Move", new SlingShot(0.5));
+
+  //Autonomous Commands
+  SmartDashboard::PutData("AutoLeftSwitch", new AutoFullLeftSwitch);
+  SmartDashboard::PutData("AutoRightSwitch", new AutoFullRightSwitch);
 
 }
 
