@@ -8,6 +8,7 @@
 #include "AutoLeftSwitchAll.h"
 #include "AutoLeftSwitch.h"
 #include "AutoReverseSwitch.h"
+#include "AutoPostSwitch.h"
 
 AutoLeftSwitchAll::AutoLeftSwitchAll() {
 	// Add Commands here:
@@ -16,6 +17,7 @@ AutoLeftSwitchAll::AutoLeftSwitchAll() {
 	// these will run in order.
   AddSequential(new AutoLeftSwitch());
   AddSequential(new AutoReverseSwitch());
+  AddSequential(new AutoPostSwitch());
 	// To run multiple commands at the same time,
 	// use AddParallel()
 	// e.g. AddParallel(new Command1());

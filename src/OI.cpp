@@ -39,6 +39,7 @@
 #include "Commands/AutoRun.h"
 #include "Commands/AutoLeftScale.h"
 #include "Commands/AutoLeftSwitch.h"
+#include "Commands/AutoPostSwitch.h"
 #include "Commands/AutoRightSwitch.h"
 #include "Commands/AutoSelector.h"
 #include "Commands/AutoSwitchSide.h"
@@ -116,6 +117,7 @@ OI::OI()
   SmartDashboard::PutData("Auto Left Switch", new AutoLeftSwitch());
   SmartDashboard::PutData("Auto Left Scale", new AutoLeftScale());
   SmartDashboard::PutData("Auto Switch Side", new AutoSwitchSide());
+  SmartDashboard::PutData("Auto Post Switch", new AutoPostSwitch());
 
   SmartDashboard::PutData("Auto Switch", new AutoSelector(new AutoLeftSwitch(), new AutoRightSwitch()));
 
