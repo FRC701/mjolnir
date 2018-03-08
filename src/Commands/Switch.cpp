@@ -13,8 +13,6 @@
 
 Switch::Switch() {
   AddSequential(new SetArmPosition(8500));
-  AddSequential(new IntakeDisengage);
-  AddSequential(new DrawSling(5500));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

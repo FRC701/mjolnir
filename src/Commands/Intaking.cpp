@@ -17,8 +17,9 @@
 
 Intaking::Intaking() {
 
-  AddParallel(new SetPuncherPos(7000));
-  AddSequential(new IntakingCondition(6250));
+  //AddParallel(new SetPuncherPos(7000));
+  //AddSequential(new IntakingCondition(6250));
+  AddParallel(new SetArmPosition(6250));
   AddParallel(new SetArmPosition(0));
   AddParallel(new IntakeEngage());
   AddSequential(new SetIntake(1.0));

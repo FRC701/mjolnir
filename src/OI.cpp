@@ -75,6 +75,7 @@ OI::OI()
 , coLB(coDriver.get(), kButtonLB_ID)
 , coRB(coDriver.get(), kButtonRB_ID)
 , coStart(coDriver.get(), kButtonStart_ID)
+, coSelect(coDriver.get(), kButtonSelect_ID)
 
 {
   dX.WhenPressed(new SetClimber(1.0));
@@ -86,9 +87,10 @@ OI::OI()
   coB.WhenPressed(new Vault);
   coX.WhenPressed(new Intaking);
   coY.WhenPressed(new Scale);
-  coLB.WhenPressed(new SetIntake(0.0));
+  coLB.WhenPressed(new SetIntake(-1.0));
   coRB.WhenPressed(new SetSlingDisengagement);
   coStart.WhenPressed(new ScaleBackwards);
+  coSelect.WhenPressed(new SetIntake(0.0));
 
 
 

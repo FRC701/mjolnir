@@ -12,8 +12,8 @@
 
 PrepSwitch::PrepSwitch() {
   AddParallel(new SetArmPosition(5125));
-  AddSequential(new SetPuncherPos(28209 / 4));
-  AddSequential(new IntakeDisengage());
+  //AddSequential(new SetPuncherPos(28209 / 4));
+  //AddSequential(new IntakeDisengage());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

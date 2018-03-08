@@ -5,11 +5,13 @@
 #include "ArmDown.h"
 #include "BrakeOn.h"
 #include "BrakeOff.h"
+#include "ResetArmPosition.h"
 
 Calibrate::Calibrate() {
 	// Add Commands here:
   AddSequential(new BrakeOff);
   AddSequential(new ArmDown(0.25));
+  AddSequential(new ResetArmPosition);
   AddSequential(new GetArmPositionDown);
   AddSequential(new ArmUp(0.25));
   AddSequential(new BrakeOn);

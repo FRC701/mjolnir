@@ -11,11 +11,12 @@
 #include "PrepSwitch.h"
 #include "SetSlingDisengagement.h"
 #include "AutoReverseSwitch.h"
+#include "SetIntake.h"
 
 AutoFullLeftSwitch::AutoFullLeftSwitch() {
   AddSequential(new PrepSwitch);
   AddSequential(new AutoLeftSwitch);
-  AddSequential(new SetSlingDisengagement);
+  AddSequential(new SetIntake(-1.0));
   AddSequential(new Delay(0.5));
   AddSequential(new AutoReverseSwitch);
 	// Add Commands here:
