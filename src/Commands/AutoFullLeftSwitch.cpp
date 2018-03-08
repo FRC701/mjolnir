@@ -7,7 +7,7 @@
 
 #include "AutoFullLeftSwitch.h"
 #include "AutoLeftSwitch.h"
-#incldue "Delay.h"
+#include "Delay.h"
 #include "PrepSwitch.h"
 #include "SetSlingDisengagement.h"
 #include "AutoReverseSwitch.h"
