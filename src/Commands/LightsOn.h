@@ -7,23 +7,15 @@
 
 #pragma once
 
-#include <Commands/Subsystem.h>
-#include "DigitalOutput.h"
-#include "Relay.h"
+#include <Commands/Command.h>
 
-class Lights : public frc::Subsystem {
-private:
-  static const char kSubsystemName[];
-  static std::shared_ptr<Lights> self;
-	// It's desirable that everything possible under private except
-	// for methods that implement subsystem capabilities
-  DigitalOutput light;
-
+class LightsOn : public frc::Command {
 public:
-  static std::shared_ptr<Lights> getInstance();
-	Lights();
-	void InitDefaultCommand() override;
-	void SetLights(Relay::Value value);
-
+	LightsOn();
+	void Initialize() override;
+	void Execute() override;
+	bool IsFinished() override;
+	void End() override;
+	void Interrupted() override;
 };
 

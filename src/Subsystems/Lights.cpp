@@ -7,6 +7,7 @@
 
 #include "Lights.h"
 #include "../RobotMap.h"
+#include "Commands/LightsOn.h"
 
 const char Lights::kSubsystemName[] = "Lights";
 
@@ -25,8 +26,12 @@ Lights::Lights() : Subsystem("Lights"), light(0) {
 void Lights::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
-light.Set(true);
+SetDefaultCommand(new LightsOn);
 }
 
+void Lights::SetLights(Relay::Value value)
+{
+  light.Set(static_cast<Relay::Value>(value));
+}
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
