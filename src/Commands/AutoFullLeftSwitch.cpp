@@ -7,6 +7,7 @@
 
 #include "AutoFullLeftSwitch.h"
 #include "AutoLeftSwitch.h"
+#incldue "Delay.h"
 #include "PrepSwitch.h"
 #include "SetSlingDisengagement.h"
 #include "AutoReverseSwitch.h"
@@ -15,6 +16,7 @@ AutoFullLeftSwitch::AutoFullLeftSwitch() {
   AddSequential(new PrepSwitch);
   AddSequential(new AutoLeftSwitch);
   AddSequential(new SetSlingDisengagement);
+  AddSequential(new Delay(0.5));
   AddSequential(new AutoReverseSwitch);
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
