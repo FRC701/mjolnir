@@ -7,17 +7,16 @@ BrakeOn::BrakeOn() {
 
 // Called just before this Command runs the first time
 void BrakeOn::Initialize() {
-  Arm::getInstance()->EngageBrake();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void BrakeOn::Execute() {
-  Arm::getInstance()->SetArmMove(0.0);
+  Arm::getInstance()->EngageBrake();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool BrakeOn::IsFinished() {
-	return true;
+	return false;
 }
 
 // Called once after isFinished returns true

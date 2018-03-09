@@ -17,12 +17,12 @@
 Intaking::Intaking() {
 
   //AddParallel(new SetPuncherPos(7000));
+  AddParallel(new IntakeEngage());
   AddSequential(new SetArmPosConditional(6250));
   AddParallel(new SetArmPosition(0));
-  AddParallel(new IntakeEngage());
   AddSequential(new SetIntake(1.0));
   AddSequential(new Delay(1.0));
-  AddParallel(new SetArmPosition(7700));
+  AddParallel(new SetArmPosition(9500)); //7700
   AddSequential(new SetIntake(0.0));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

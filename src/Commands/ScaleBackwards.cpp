@@ -12,10 +12,10 @@
 #include "Delay.h"
 
 ScaleBackwards::ScaleBackwards() {
-  AddParallel(new SetArmPosition(16000));
-  AddSequential(new DrawSling(28209/2));
-  AddSequential(new Delay(0.25));
-  AddSequential(new IntakeDisengage);
+  AddSequential(new SetArmPosition(8500));
+  //AddSequential(new DrawSling(28209/2));
+  //AddSequential(new Delay(0.25));
+  //AddSequential(new IntakeDisengage);
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
