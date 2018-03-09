@@ -7,10 +7,14 @@
 
 #pragma once
 
-#include <Commands/CommandGroup.h>
+#include <Commands/Command.h>
+#include "SetArmPosition.h"
+#include "Subsystems/Arm.h"
 
-class IntakingCondition : public frc::CommandGroup {
+class SetArmPosConditional : public SetArmPosition {
 public:
-	IntakingCondition(int position);
+  SetArmPosConditional(int position);
+  void Execute() override;
+  bool IsFinished() override;
 };
 

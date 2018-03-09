@@ -5,68 +5,31 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "IntakingCondition.h"
-#include "SetArmPosition.h"
-#include "IntakeEngage.h"
-#include "SetIntake.h"
-#include "DrawSling.h"
-#include "IntakingCondition.h"
-#include "Delay.h"
-#include "Subsystems/Arm.h"
-#include "SetSlingDisengagement.h"
+#include "SetArmPosConditional.h"
 
-IntakingCondition::IntakingCondition(int position) {
-  if(Arm::getInstance()->GetPosition() <= 0)
+SetArmPosConditional::SetArmPosConditional(int position)
+: SetArmPosition(position)
+{
+
+}
+
+// Called repeatedly when this Command is scheduled to run
+void SetArmPosConditional::Execute() {
+  if(Arm::getInstance()->GetPosition() >= mPosition)
   {
-    AddSequential(new DrawSling(3500));
-    AddSequential(new SetSlingDisengagement());
-    AddSequential(new DrawSling(7500));
-    AddSequential(new IntakeEngage);
-    AddSequential(new SetIntake(1.0));
-    AddSequential(new Delay(1.0));
-    AddSequential(new SetArmPosition(7500));
-    AddSequential(new SetIntake(0.0));
+    SetArmPosition::Execute();
   }
-  else if(Arm::getInstance()->GetPosition() > 0 && Arm::getInstance()->GetPosition() < 7000)
-  {
-    AddSequential(new SetArmPosition(0.0));
-    AddSequential(new DrawSling(3500));
-    AddSequential(new SetSlingDisengagement());
-    AddSequential(new DrawSling(7500));
-    AddSequential(new IntakeEngage);
-    AddSequential(new SetIntake(1.0));
-    AddSequential(new Delay(1.0));
-    AddSequential(new SetArmPosition(7500));
-    AddSequential(new SetIntake(0.0));
-  }
+}
+
+bool SetArmPosConditional::IsFinished() {
+  if(Arm::getInstance()->GetPosition() >= mPosition)
+   {
+     return SetArmPosition::IsFinished();
+   }
   else
   {
-    AddSequential(new SetArmPosition(7000));
-    AddSequential(new SetArmPosition(0));
-    AddSequential(new DrawSling(3500));
-    AddSequential(new SetSlingDisengagement());
-    AddSequential(new DrawSling(7500));
-    AddSequential(new IntakeEngage);
-    AddSequential(new SetIntake(1.0));
-    AddSequential(new Delay(1.0));
-    AddSequential(new SetArmPosition(7500));
-    AddSequential(new SetIntake(0.0));
+    return true;
   }
-
-	// Add Commands here:
-	// e.g. AddSequential(new Command1());
-	//      AddSequential(new Command2());
-	// these will run in order.
-
-	// To run multiple commands at the same time,
-	// use AddParallel()
-	// e.g. AddParallel(new Command1());
-	//      AddSequential(new Command2());
-	// Command1 and Command2 will run in parallel.
-
-	// A command group will require all of the subsystems that each member
-	// would require.
-	// e.g. if Command1 requires chassis, and Command2 requires arm,
-	// a CommandGroup containing them would require both the chassis and the
-	// arm.
 }
+// Make this return true when this Command no longer needs to run execute()
+
