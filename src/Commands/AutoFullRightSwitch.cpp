@@ -14,8 +14,8 @@
 #include "SetIntake.h"
 
 AutoFullRightSwitch::AutoFullRightSwitch() {
-  AddSequential(new PrepSwitch);
   AddSequential(new AutoRightSwitch);
+  AddSequential(new PrepSwitch);
   AddSequential(new SetIntake(-1.0));
   AddSequential(new Delay(0.5));
   AddSequential(new AutoReverseSwitch);
