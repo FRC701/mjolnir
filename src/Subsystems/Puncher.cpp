@@ -68,7 +68,7 @@ void Puncher::SetUpTalon(){
 
 }
 
-double Puncher::GetPuncherLimit() {
+bool Puncher::GetPuncherLimit() {
   return pullSling.GetSensorCollection().IsFwdLimitSwitchClosed();
 }
 
@@ -129,7 +129,7 @@ double Puncher::GetCurrent(){
   return pullSling.GetOutputCurrent();
 }
 
-double Puncher::IsCubeIn() {
+bool Puncher::IsCubeIn() {
   return pullSling.GetSensorCollection().IsRevLimitSwitchClosed();
 }
 // Put methods for controlling this subsystem

@@ -118,7 +118,7 @@ OI::OI()
   SmartDashboard::PutData("Auto Right Switch", new AutoRightSwitch());
   SmartDashboard::PutData("Auto Left Switch", new AutoLeftSwitch());
   SmartDashboard::PutData("Auto Left Scale", new AutoLeftScale());
-  SmartDashboard::PutData("Auto Switch Side", new AutoSwitchSide());
+  //SmartDashboard::PutData("Auto Switch Side", new AutoSwitchSide());
   SmartDashboard::PutData("Auto Left Switch Full", new AutoFullLeftSwitch);
   SmartDashboard::PutData("Auto Right Switch Full", new AutoFullRightSwitch);
 
