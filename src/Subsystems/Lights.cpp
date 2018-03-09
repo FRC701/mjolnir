@@ -19,6 +19,7 @@ std::shared_ptr<Lights> Lights::getInstance() {
         }
         return self;
 }
+
 Lights::Lights() : Subsystem("Lights"), light(0) {
 
 }
@@ -26,7 +27,6 @@ Lights::Lights() : Subsystem("Lights"), light(0) {
 void Lights::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
-SetDefaultCommand(new LightsOn);
 }
 
 void Lights::SetLights(Relay::Value value)

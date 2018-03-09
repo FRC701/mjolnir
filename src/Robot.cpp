@@ -81,7 +81,7 @@ void Robot::RobotInit() {
  * You can use it to reset subsystems before shutting down.
  */
 void Robot::DisabledInit(){
-
+  Lights::getInstance()->SetLights(Relay::kOff);
 }
 
 void Robot::DisabledPeriodic() {
@@ -91,6 +91,7 @@ void Robot::DisabledPeriodic() {
 void Robot::AutonomousInit() {
 //	if (autonomousCommand.get() != nullptr)
 //		autonomousCommand->Start();
+  Lights::getInstance()->SetLights(Relay::kOn);
 
   autonomousCommand.reset(chooser->GetSelected());
   if (autonomousCommand.get() != nullptr)
@@ -112,7 +113,7 @@ void Robot::TeleopInit() {
 	// these lines or comment it out.
 	if (autonomousCommand.get() != nullptr) autonomousCommand->Cancel();
 
-
+  Lights::getInstance()->SetLights(Relay::kOn);
 }
 
 
