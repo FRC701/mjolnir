@@ -23,6 +23,8 @@
 #include "Commands/AutoFullLeftSwitch.h"
 #include "Commands/AutoFullRightSwitch.h"
 #include "Commands/AutoFullLeftScale.h"
+#include "Commands/AutoFullPostLeftSwitch.h"
+#include "Commands/AutoFullPostRightSwitch.h"
 
 using robovikes::GameData;
 
@@ -81,6 +83,7 @@ void Robot::RobotInit() {
 
 	chooser->AddObject("Twiddle Your Thumbs", new AutonomousCommand());
 	chooser->AddDefault("Switch", new AutoSwitchSelector(new AutoFullLeftSwitch(), new AutoFullRightSwitch()));
+  chooser->AddObject("Post Switch", new AutoSwitchSelector(new AutoFullPostLeftSwitch(), new AutoFullPostRightSwitch()));
 	chooser->AddObject("Left Scale", new AutoScaleSelector(
 	     new AutoFullLeftScale(), new AutoRun()));
 	chooser->AddObject("Auto Run", new AutoRun());
