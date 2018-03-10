@@ -7,8 +7,9 @@
 
 #include "LightsOn.h"
 #include "Subsystems/Lights.h"
+#include "Subsystems/Puncher.h"
 
-LightsOn::LightsOn() {
+LightsOn::LightsOn(): blink(&LightsOn::Notify, this), blinking(false) {
   Requires(Lights::getInstance().get());
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
@@ -16,17 +17,30 @@ LightsOn::LightsOn() {
 
 // Called just before this Command runs the first time
 void LightsOn::Initialize() {
-
+  Lights::getInstance()->SetLights(frc::Relay::kOn);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void LightsOn::Execute() {
-  Lights::getInstance()->SetLights(Relay::kOn);
+  if (Puncher::getInstance()->IsCubeIn())
+  {
+    if(! blinking)
+    {
+      blink.StartPeriodic(0.125);
+      blinking = true;
+    }
+  }
+  else
+  {
+    blink.Stop();
+    blinking = false;
+    Lights::getInstance()->SetLights(frc::Relay::kOn);
+  }
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool LightsOn::IsFinished() {
-	return true;
+	return false;
 }
 
 // Called once after isFinished returns true
@@ -38,4 +52,8 @@ void LightsOn::End() {
 // subsystems is scheduled to run
 void LightsOn::Interrupted() {
 
+}
+
+void LightsOn::Notify() {
+  Lights::getInstance()->ToggleLights();
 }

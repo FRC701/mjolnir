@@ -8,6 +8,7 @@
 #pragma once
 
 #include <Commands/Command.h>
+#include <Notifier.h>
 
 class LightsOn : public frc::Command {
 public:
@@ -17,5 +18,9 @@ public:
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
+private:
+	frc::Notifier blink;
+	bool blinking;
+	void Notify();
 };
 

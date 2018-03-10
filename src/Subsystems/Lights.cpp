@@ -27,11 +27,22 @@ Lights::Lights() : Subsystem("Lights"), light(0) {
 void Lights::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
+  SetDefaultCommand(new LightsOn());
 }
 
 void Lights::SetLights(Relay::Value value)
 {
   light.Set(static_cast<Relay::Value>(value));
+}
+
+bool Lights::IsLightsOn() {
+  return light.Get() == Relay::kOn;
+}
+
+void Lights::ToggleLights() {
+  Relay::Value value
+    = IsLightsOn() ? Relay::kOff: Relay::kOn;
+  SetLights(value);
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
