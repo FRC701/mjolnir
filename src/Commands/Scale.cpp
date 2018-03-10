@@ -13,7 +13,7 @@
 
 Scale::Scale() {
   AddParallel(new SetArmPosition(11000));//16000 too high & 13000 too low
-  AddSequential(new DrawSling(21156));
+  AddSequential(new DrawSling(24000));
   AddSequential(new IntakeDisengage());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

@@ -23,7 +23,7 @@ Intaking::Intaking() {
   AddParallel(new SetArmPosition(0));
   AddSequential(new SetIntake(1.0));
   AddSequential(new Delay(0.5));
-  AddParallel(new SetArmPosition(9500)); //7700
+  //AddParallel(new SetArmPosition(9500)); //7700
   AddSequential(new SetIntake(0.0));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
