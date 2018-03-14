@@ -5,17 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "ScaleBackwards.h"
-#include "SetArmPosition.h"
+#include "AutoFullLeftScale.h"
+#include "AutoLeftScale.h"
+#include "Delay.h"
 #include "DrawSling.h"
 #include "IntakeDisengage.h"
-#include "Delay.h"
+#include "SetArmPosition.h"
+#include "SetSlingDisengagement.h"
+#include "SetIntake.h"
+#include "SetSlingDisengagement.h"
 
-ScaleBackwards::ScaleBackwards() {
-  AddSequential(new SetArmPosition(6500));
-  //AddSequential(new DrawSling(28209/2));
-  //AddSequential(new Delay(0.25));
-  //AddSequential(new IntakeDisengage);
+AutoFullLeftScale::AutoFullLeftScale() {
+  AddSequential(new AutoLeftScale());
+  AddSequential(new SetArmPosition(11750));
+  AddSequential(new DrawSling(21156));
+  AddSequential(new IntakeDisengage());
+  AddSequential(new Delay(0.5));
+  AddSequential(new SetSlingDisengagement());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

@@ -10,20 +10,20 @@
 #include "IntakeEngage.h"
 #include "SetIntake.h"
 #include "DrawSling.h"
-#include "IntakingCondition.h"
 #include "Delay.h"
 #include "SetArmPosConditional.h"
 #include "SetPuncherPos.h"
 
 Intaking::Intaking() {
 
-  AddParallel(new SetPuncherPos(7000));
-  AddSequential(new IntakingCondition(6250));
-  AddParallel(new SetArmPosition(0));
+  //AddParallel(new SetPuncherPos(7000));
   AddParallel(new IntakeEngage());
+  AddSequential(new SetArmPosConditional(7500));
+  AddSequential(new Delay(0.25));
+  AddParallel(new SetArmPosition(0));
   AddSequential(new SetIntake(1.0));
-  AddSequential(new Delay(1.0));
-  AddSequential(new SetArmPosition(7700));
+  AddSequential(new Delay(0.5));
+  //AddParallel(new SetArmPosition(9500)); //7700
   AddSequential(new SetIntake(0.0));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

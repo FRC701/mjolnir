@@ -23,7 +23,7 @@ Intake::Intake() : Subsystem(kSubsystemName),
 {
     intakeSolenoid.Set(DoubleSolenoid::kForward);
     intakeMotorTop.SetInverted(true);
-    intakeMotorBottom.SetInverted(false);
+    intakeMotorBottom.SetInverted(true);
 }
 
 void Intake::InitDefaultCommand() {
@@ -33,7 +33,7 @@ void Intake::InitDefaultCommand() {
 }
 void Intake::SetIntake(double speed){
   intakeMotorTop.Set(speed);
-  intakeMotorBottom.Set(-1*speed);
+  intakeMotorBottom.Set(speed);
 }
 
 void Intake::IntakeEngage(){

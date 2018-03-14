@@ -24,6 +24,8 @@ public:
 	Lights();
 	void InitDefaultCommand() override;
 	void SetLights(Relay::Value value);
+	bool IsLightsOn();
+	void ToggleLights();
 
 };
 

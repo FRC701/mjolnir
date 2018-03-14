@@ -7,20 +7,16 @@
 
 #pragma once
 
-#include <Commands/Command.h>
-#include <Notifier.h>
+#include <Commands/InstantCommand.h>
 
-class LightsOn : public frc::Command {
-public:
-	LightsOn();
-	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
+class AutoScaleSelector : public frc::InstantCommand {
 private:
-	frc::Notifier blink;
-	bool blinking;
-	void Notify();
+    frc::Command* leftCommand;
+    frc::Command* rightCommand;
+public:
+	AutoScaleSelector(
+	    frc::Command* leftCommand,
+	    frc::Command* rightCommand);
+	void Initialize() override;
 };
 

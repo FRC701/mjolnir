@@ -17,8 +17,8 @@ public:
 //..........Motors..........
 
   //..........Chassis..........
-	  static const int kIDRight1Wheel = 1;
-	  static const int kIDRight2Wheel = 2;
+	  static const int kIDRight1Wheel = 2;//should be 1 on practice bot
+	  static const int kIDRight2Wheel = 1;//should be 2 on practice bot
 	  static const int kIDLeft1Wheel = 3;
 	  static const int kIDLeft2Wheel = 4;
 	//..........Intake..........

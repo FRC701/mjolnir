@@ -29,7 +29,7 @@ public:
 
   void InitDefaultCommand();
   void SetSlingShot(double speed);
-  double GetPuncherLimit();
+  bool GetPuncherLimit();
   void MotorDisengage();
   void MotorEngage();
   void SetUpTalon();
@@ -40,7 +40,7 @@ public:
   int GetPositionError();
   void ResetPuncherPos();
   double GetCurrent();
-  double IsCubeIn();
+  bool IsCubeIn();
 };
 
 

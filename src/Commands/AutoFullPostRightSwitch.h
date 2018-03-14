@@ -9,8 +9,8 @@
 
 #include <Commands/CommandGroup.h>
 
-class IntakingCondition : public frc::CommandGroup {
+class AutoFullPostRightSwitch : public frc::CommandGroup {
 public:
-	IntakingCondition(int position);
+	AutoFullPostRightSwitch();
 };
 

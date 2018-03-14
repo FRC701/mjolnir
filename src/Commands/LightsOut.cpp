@@ -5,22 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "LightsOut.h"
+#include "Subsystems/Lights.h"
 
-#include <Commands/Command.h>
-#include <Notifier.h>
+LightsOut::LightsOut() {
+	// Use Requires() here to declare subsystem dependencies
+	// eg. Requires(Robot::chassis.get());
+  Requires(Lights::getInstance().get());
+}
 
-class LightsOn : public frc::Command {
-public:
-	LightsOn();
-	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
-private:
-	frc::Notifier blink;
-	bool blinking;
-	void Notify();
-};
-
+// Called once when the command executes
+void LightsOut::Initialize() {
+  Lights::getInstance()->SetLights(Relay::kOff);
+}

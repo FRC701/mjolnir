@@ -13,8 +13,6 @@
 
 Vault::Vault() {
   AddParallel(new SetArmPosition(0.0));
-  AddParallel(new IntakeDisengage);
-  AddSequential(new DrawSling(28209/2));
 
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

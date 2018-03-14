@@ -7,20 +7,11 @@
 
 #pragma once
 
-#include <Commands/Command.h>
-#include <Notifier.h>
+#include "Commands/InstantCommand.h"
 
-class LightsOn : public frc::Command {
+class LightsOut : public frc::InstantCommand {
 public:
-	LightsOn();
+	LightsOut();
 	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
-private:
-	frc::Notifier blink;
-	bool blinking;
-	void Notify();
 };
 

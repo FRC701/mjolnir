@@ -5,23 +5,24 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "ScaleBackwards.h"
+#include "AutoFullPostLeftSwitch.h"
+#include "AutoFullLeftSwitch.h"
+#include "AutoPostLeftSwitch.h"
 #include "SetArmPosition.h"
-#include "DrawSling.h"
-#include "IntakeDisengage.h"
-#include "Delay.h"
 
-ScaleBackwards::ScaleBackwards() {
-  AddSequential(new SetArmPosition(6500));
-  //AddSequential(new DrawSling(28209/2));
-  //AddSequential(new Delay(0.25));
-  //AddSequential(new IntakeDisengage);
+
+AutoFullPostLeftSwitch::AutoFullPostLeftSwitch() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
 
-	// To run multiple commands at the same time,
+  AddSequential(new AutoFullLeftSwitch());
+  AddSequential(new SetArmPosition(9500));
+  AddSequential(new AutoPostLeftSwitch());
+
+
+  // To run multiple commands at the same time,
 	// use AddParallel()
 	// e.g. AddParallel(new Command1());
 	//      AddSequential(new Command2());

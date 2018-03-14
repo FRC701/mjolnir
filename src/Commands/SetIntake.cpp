@@ -20,7 +20,13 @@ void SetIntake::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool SetIntake::IsFinished() {
-	return Puncher::getInstance()->IsCubeIn();
+  if(mSpeed < 0){
+    return ! Puncher::getInstance()->IsCubeIn();
+  }
+  else{
+    return Puncher::getInstance()->IsCubeIn();
+  }
+
 
 }
 

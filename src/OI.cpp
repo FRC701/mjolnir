@@ -33,10 +33,10 @@
 #include "Commands/Scale.h"
 #include "Commands/Switch.h"
 #include "Commands/ScaleBackwards.h"
-#include "Commands/IntakingCondition.h"
 #include "Commands/SlingShot.h"
 #include "Commands/AutoFullLeftSwitch.h"
 #include "Commands/AutoFullRightSwitch.h"
+#include "Commands/ShootAll.h"
 
 #include "Commands/AutoRun.h"
 #include "Commands/AutoLeftScale.h"
@@ -75,6 +75,7 @@ OI::OI()
 , coLB(coDriver.get(), kButtonLB_ID)
 , coRB(coDriver.get(), kButtonRB_ID)
 , coStart(coDriver.get(), kButtonStart_ID)
+, coSelect(coDriver.get(), kButtonSelect_ID)
 
 {
   dX.WhenPressed(new SetClimber(1.0));
@@ -86,9 +87,10 @@ OI::OI()
   coB.WhenPressed(new Vault);
   coX.WhenPressed(new Intaking);
   coY.WhenPressed(new Scale);
-  coLB.WhenPressed(new SetIntake(0.0));
-  coRB.WhenPressed(new SetSlingDisengagement);
+  coLB.WhenPressed(new SetIntake(-1.0));
+  coRB.WhenPressed(new ShootAll);
   coStart.WhenPressed(new ScaleBackwards);
+  coSelect.WhenPressed(new SetIntake(0.0));
 
 
 
@@ -117,7 +119,7 @@ OI::OI()
   SmartDashboard::PutData("Auto Right Switch", new AutoRightSwitch());
   SmartDashboard::PutData("Auto Left Switch", new AutoLeftSwitch());
   SmartDashboard::PutData("Auto Left Scale", new AutoLeftScale());
-  SmartDashboard::PutData("Auto Switch Side", new AutoSwitchSide());
+  //SmartDashboard::PutData("Auto Switch Side", new AutoSwitchSide());
   SmartDashboard::PutData("Auto Left Switch Full", new AutoFullLeftSwitch);
   SmartDashboard::PutData("Auto Right Switch Full", new AutoFullRightSwitch);
 

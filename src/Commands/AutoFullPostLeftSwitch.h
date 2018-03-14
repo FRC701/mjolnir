@@ -7,20 +7,10 @@
 
 #pragma once
 
-#include <Commands/Command.h>
-#include <Notifier.h>
+#include <Commands/CommandGroup.h>
 
-class LightsOn : public frc::Command {
+class AutoFullPostLeftSwitch : public frc::CommandGroup {
 public:
-	LightsOn();
-	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
-private:
-	frc::Notifier blink;
-	bool blinking;
-	void Notify();
+	AutoFullPostLeftSwitch();
 };
 
