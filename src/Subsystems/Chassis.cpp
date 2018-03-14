@@ -110,6 +110,9 @@ void Chassis::SetUpTalons() {
 
   left2Wheel.Follow(left1Wheel);
   right2Wheel.Follow(right1Wheel);
+
+  left1Wheel.ConfigMotionAcceleration(50,500);
+  right1Wheel.ConfigMotionAcceleration(50,500);
 }
 
 int Chassis::getLeftVelocity()
