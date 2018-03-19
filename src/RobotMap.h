@@ -34,6 +34,9 @@ public:
 	//........Climber.............
 	  static const int kIDClimber = 6;
 
+	//........Lights..........
+	  static const int kIDLights = 0;
+
 //..........Solenoids..........
 
 	  static const int kIDRampForward = 0;

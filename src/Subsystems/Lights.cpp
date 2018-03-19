@@ -20,7 +20,7 @@ std::shared_ptr<Lights> Lights::getInstance() {
         return self;
 }
 
-Lights::Lights() : Subsystem("Lights"), light(0) {
+Lights::Lights() : Subsystem("Lights"), light(RobotMap::kIDLights) {
 
 }
 
