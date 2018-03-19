@@ -10,6 +10,7 @@
 #include <Commands/Subsystem.h>
 #include "DigitalOutput.h"
 #include "Relay.h"
+#include "../commands/LightsOn.h"
 
 class Lights : public frc::Subsystem {
 private:
@@ -18,7 +19,7 @@ private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
   DigitalOutput light;
-
+  LightsOn* defaultCommand;
 public:
   static std::shared_ptr<Lights> getInstance();
 	Lights();
@@ -26,6 +27,8 @@ public:
 	void SetLights(Relay::Value value);
 	bool IsLightsOn();
 	void ToggleLights();
+	LightsOn* GetLightsOnCommand();
+
 
 };
 

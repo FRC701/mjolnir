@@ -9,6 +9,7 @@
 
 #include <Commands/Command.h>
 #include <Notifier.h>
+#include <Timer.h>
 
 class LightsOn : public frc::Command {
 public:
@@ -18,9 +19,16 @@ public:
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
+	void SetTimeFlashing(double timeFlashing);
 private:
 	frc::Notifier blink;
 	bool blinking;
 	void Notify();
+	frc::Notifier flash;
+	bool flashed;
+	double mTimeFlashing;
+	frc::Timer timeToFlash;
+	bool shouldFlash;
+	void NotifyFlashing();
 };
 

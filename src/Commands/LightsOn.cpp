@@ -30,31 +30,11 @@ void LightsOn::Execute() {
       flash.StartPeriodic(0.125);
       flashed = true;
     }
+  }
     if (timeToFlash.HasPeriodPassed(mTimeFlashing)) {
       flash.Stop();
       flashed = false;
     }
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   if (Puncher::getInstance()->IsCubeIn())
   {
@@ -107,7 +87,7 @@ void LightsOn::Notify() {
 void LightsOn::SetTimeFlashing(double timeFlashing){
   mTimeFlashing = timeFlashing;
   timeToFlash.Start();
-  shouldFlash(true);
+  shouldFlash = true;
 }
 
 void LightsOn::NotifyFlashing() {
