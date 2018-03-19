@@ -37,6 +37,7 @@
 #include "Commands/AutoFullLeftSwitch.h"
 #include "Commands/AutoFullRightSwitch.h"
 #include "Commands/ShootAll.h"
+#include "Commands/SetLightFlash.h"
 
 #include "Commands/AutoRun.h"
 #include "Commands/AutoLeftScale.h"
@@ -80,6 +81,7 @@ OI::OI()
 {
   dX.WhenPressed(new SetClimber(1.0));
   dY.WhenPressed(new SetClimber(-1.0));
+  dRB.WhenPressed(new SetLightFlash(3));
   //dB is being used to stop Climber don't use!
 
 

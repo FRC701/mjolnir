@@ -20,14 +20,15 @@ std::shared_ptr<Lights> Lights::getInstance() {
         return self;
 }
 
-Lights::Lights() : Subsystem("Lights"), light(0) {
+Lights::Lights() : Subsystem("Lights"), light(RobotMap::kIDLights), defaultCommand(nullptr) {
 
 }
 
 void Lights::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
-  SetDefaultCommand(new LightsOn());
+  defaultCommand = new LightsOn();
+  SetDefaultCommand(defaultCommand);
 }
 
 void Lights::SetLights(Relay::Value value)
@@ -43,6 +44,10 @@ void Lights::ToggleLights() {
   Relay::Value value
     = IsLightsOn() ? Relay::kOff: Relay::kOn;
   SetLights(value);
+}
+
+LightsOn* Lights::GetLightsOnCommand() {
+  return defaultCommand;
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
