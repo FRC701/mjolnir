@@ -84,9 +84,9 @@ void Robot::RobotInit() {
 	CameraServer::GetInstance()->StartAutomaticCapture().SetFPS(20);
 
 	chooser->AddObject("Twiddle Your Thumbs", new AutonomousCommand());
-	chooser->AddDefault("Switch", new AutoSwitchSelector(new AutoFullLeftSwitch(), new AutoFullRightSwitch()));
+	chooser->AddObject("Switch", new AutoSwitchSelector(new AutoFullLeftSwitch(), new AutoFullRightSwitch()));//this is supposed to be default
   chooser->AddObject("Post Switch", new AutoSwitchSelector(new AutoFullPostLeftSwitch(), new AutoFullPostRightSwitch()));
-  chooser->AddObject("Double Switch", new AutoSwitchSelector(new AutoFullDoubleLeftSwitch(), new AutoFullDoubleRightSwitch()));
+  chooser->AddDefault("Double Switch", new AutoSwitchSelector(new AutoFullDoubleLeftSwitch(), new AutoFullDoubleRightSwitch()));
 	chooser->AddObject("Left Scale", new AutoScaleSelector(
 	     new AutoFullLeftScale(), new AutoRun()));
 	chooser->AddObject("Auto Run", new AutoRun());

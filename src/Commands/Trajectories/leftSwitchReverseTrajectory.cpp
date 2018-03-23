@@ -4,7 +4,7 @@ namespace LeftSwitchReverseTrajectories
 
 extern const unsigned int kTrajectoryLength = 190;
 
-extern const robovikes::TrajectoryPoint leftTrajectories[] = {
+extern const robovikes::TrajectoryPoint rightTrajectories[] = {
   // { position (R), velocity (RPM) },
   { -0.158261, -3.16522 },
   { -0.193643, -0.353826 },
@@ -197,7 +197,7 @@ extern const robovikes::TrajectoryPoint leftTrajectories[] = {
   { -48186.8, -1.57463 },
   { -48186.8, -0.00000 }
 };
-extern const robovikes::TrajectoryPoint rightTrajectories[] = {
+extern const robovikes::TrajectoryPoint leftTrajectories[] = {
   // { position (R), velocity (RPM) },
   { -0.158261, -3.16522 },
   { -0.487057, -3.28796 },
