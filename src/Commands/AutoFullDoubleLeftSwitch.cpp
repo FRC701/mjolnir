@@ -25,6 +25,7 @@ AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
   AddSequential(new SetIntake(-1.0));
   AddSequential(new Delay(0.5));
   AddSequential(new SetArmPosition(9500));
+  AddSequential(new Delay(0.5));
   AddSequential(new AutoLeftSwitchReverse());
 
 
