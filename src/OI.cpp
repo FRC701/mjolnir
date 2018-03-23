@@ -126,9 +126,9 @@ OI::OI()
 
   SmartDashboard::PutData("Auto Switch", new AutoSwitchSelector(new AutoFullLeftSwitch(), new AutoFullRightSwitch()));
 
-  static const double kMaxPuncher = 28209;//number used in group commands if changed here change in PrepSwitch
+  static const double kMaxPuncher = 3809;//number used in group commands if changed here change in PrepSwitch
   SmartDashboard::PutData("Quarter Puncher", new DrawSling(kMaxPuncher/4.0));
-  SmartDashboard::PutData("Half Puncher", new DrawSling(kMaxPuncher/2.0));
+  SmartDashboard::PutData("Half Puncher", new DrawSling((kMaxPuncher*7)/10));
   SmartDashboard::PutData("Full Puncher", new DrawSling(kMaxPuncher));
   SmartDashboard::PutData("Three Quarter Puncher", new DrawSling(kMaxPuncher* 3.0/4.0));
   SmartDashboard::PutData("Seventh Puncher", new DrawSling(kMaxPuncher* 7.0/8.0));

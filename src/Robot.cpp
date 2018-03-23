@@ -139,22 +139,22 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 
-  SmartDashboard::PutNumber("Left Velocity (u/100ms)", Chassis::getInstance()->getLeftVelocity());
+ /* SmartDashboard::PutNumber("Left Velocity (u/100ms)", Chassis::getInstance()->getLeftVelocity());
   SmartDashboard::PutNumber("Right Velocity (u/100ms)", Chassis::getInstance()->getRightVelocity());
   SmartDashboard::PutNumber("Left Position", Chassis::getInstance()->GetLeftPosition());
   SmartDashboard::PutNumber("Right Position", Chassis::getInstance()->GetRightPosition());
-
+*/
   SmartDashboard::PutNumber("Arm Velocity (u/100ms)", Arm::getInstance()->GetVelocity());
   SmartDashboard::PutNumber("Arm Position", Arm::getInstance()->GetPosition());
-  SmartDashboard::PutNumber("Pot Value", Arm::getInstance()->GetArmPotValue());
-  SmartDashboard::PutNumber("Arm Voltage", Arm::getInstance()->GetArmPotVoltage());
-  SmartDashboard::PutNumber("Encoder Position", Arm::getInstance()->CalculateEncoderPos());
-  SmartDashboard::PutNumber("Motion Magic Error", Arm::getInstance()->GetPositionError());
+  //SmartDashboard::PutNumber("Pot Value", Arm::getInstance()->GetArmPotValue());
+  //SmartDashboard::PutNumber("Arm Voltage", Arm::getInstance()->GetArmPotVoltage());
+  //SmartDashboard::PutNumber("Encoder Position", Arm::getInstance()->CalculateEncoderPos());
+  //SmartDashboard::PutNumber("Motion Magic Error", Arm::getInstance()->GetPositionError());
 
-  SmartDashboard::PutString("Our Switch", SideToString(robovikes::GameData::GetOurSwitchSide()));
+  /*SmartDashboard::PutString("Our Switch", SideToString(robovikes::GameData::GetOurSwitchSide()));
   SmartDashboard::PutString("Scale", SideToString(robovikes::GameData::GetScaleSide()));
   SmartDashboard::PutString("Their Switch", SideToString(robovikes::GameData::GetTheirSwitchSide()));
-
+*/
   SmartDashboard::PutNumber("Puncher velocity", Puncher::getInstance()->GetVelocity());
   SmartDashboard::PutNumber("Puncher Position", Puncher::getInstance()->GetPosition());
   SmartDashboard::PutNumber("Puncher Error", Puncher::getInstance()->GetPositionError());

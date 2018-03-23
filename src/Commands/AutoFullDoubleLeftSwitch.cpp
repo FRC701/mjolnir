@@ -17,6 +17,7 @@
 #include "AutoSwitchIntake.h"
 #include "AutoSwitchIntakeReverse.h"
 #include "AutoPostLeftSwitch.h"
+#include "DrawSling.h"
 
 
 AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
@@ -39,6 +40,7 @@ AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
   AddSequential(new Delay(0.25));
   AddSequential(new SetArmPosition(0));
   AddParallel(new AutoSwitchIntake);
+  AddParallel(new DrawSling(2666));
   AddSequential(new SetIntake(1.0));
   AddSequential(new SetArmPosition(9500));
   //Drive back
