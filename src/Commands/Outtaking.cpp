@@ -5,22 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "ShootAll.h"
-#include "SetSlingDisengagement.h"
-#include "SetArmPosition.h"
-#include "Delay.h"
-#include "DrawSling.h"
+#include "Outtaking.h"
+#include "IntakeEngage.h"
+#include "SetIntake.h"
 
-ShootAll::ShootAll() {
-  AddSequential(new SetSlingDisengagement());
-  AddSequential(new Delay(.40));
-  AddParallel(new SetArmPosition(8525));
-  AddSequential(new DrawSling(24000));
+Outtaking::Outtaking() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
-
+  AddSequential(new IntakeEngage());
+  AddSequential(new SetIntake(-1.0));
 	// To run multiple commands at the same time,
 	// use AddParallel()
 	// e.g. AddParallel(new Command1());

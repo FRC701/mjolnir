@@ -37,6 +37,7 @@
 #include "Commands/AutoFullLeftSwitch.h"
 #include "Commands/AutoFullRightSwitch.h"
 #include "Commands/ShootAll.h"
+#include "Commands/Outtaking.h"
 
 #include "Commands/AutoRun.h"
 #include "Commands/AutoLeftScale.h"
@@ -87,7 +88,7 @@ OI::OI()
   coB.WhenPressed(new Vault);
   coX.WhenPressed(new Intaking);
   coY.WhenPressed(new Scale);
-  coLB.WhenPressed(new SetIntake(-1.0));
+  coLB.WhenPressed(new Outtaking());
   coRB.WhenPressed(new ShootAll);
   coStart.WhenPressed(new ScaleBackwards);
   coSelect.WhenPressed(new SetIntake(0.0));
