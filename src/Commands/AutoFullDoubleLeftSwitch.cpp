@@ -12,6 +12,11 @@
 #include "SetIntake.h"
 #include "Delay.h"
 #include "AutoLeftSwitchReverse.h"
+#include "IntakeEngage.h"
+#include "SetArmPosConditional.h"
+#include "AutoSwitchIntake.h"
+#include "AutoSwitchIntakeReverse.h"
+#include "AutoPostLeftSwitch.h"
 
 
 AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
@@ -19,14 +24,35 @@ AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
-
+  //Go to switch and drop cube
   AddSequential(new AutoLeftSwitch);
   AddSequential(new PrepSwitch);
   AddSequential(new SetIntake(-1.0));
   AddSequential(new Delay(0.5));
   AddSequential(new SetArmPosition(9500));
   AddSequential(new Delay(0.5));
+  //Go back to start position
   AddSequential(new AutoLeftSwitchReverse());
+  //Intake cube
+  AddParallel(new IntakeEngage());
+  AddSequential(new SetArmPosConditional(7500));
+  AddSequential(new Delay(0.25));
+  AddSequential(new SetArmPosition(0));
+  AddParallel(new AutoSwitchIntake);
+  AddSequential(new SetIntake(1.0));
+  AddSequential(new SetArmPosition(9500));
+  //Drive back
+  AddSequential(new AutoSwitchIntakeReverse);
+  //Put new cube in switch
+  AddSequential(new AutoLeftSwitch);
+  AddSequential(new PrepSwitch);
+  AddSequential(new SetIntake(-1.0));
+  AddSequential(new Delay(0.5));
+  AddSequential(new SetArmPosition(9500));
+  AddSequential(new Delay(0.5));
+  //post switch
+  AddSequential(new AutoPostLeftSwitch());
+
 
 
   // To run multiple commands at the same time,
