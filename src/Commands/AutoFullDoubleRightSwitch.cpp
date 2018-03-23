@@ -19,6 +19,7 @@
 #include "SetArmPosConditional.h"
 #include "AutoRightSwitch.h"
 #include "AutoPostRightSwitch.h"
+#include "DrawSling.h"
 
 
 AutoFullDoubleRightSwitch::AutoFullDoubleRightSwitch() {
@@ -39,6 +40,7 @@ AutoFullDoubleRightSwitch::AutoFullDoubleRightSwitch() {
   AddSequential(new Delay(0.25));
   AddSequential(new SetArmPosition(0));
   AddParallel(new AutoSwitchIntake);
+  AddParallel(new DrawSling(2666));
   AddSequential(new SetIntake(1.0));
   AddSequential(new SetArmPosition(9500));
   //Drive back
