@@ -15,7 +15,8 @@ Outtaking::Outtaking() {
 	//      AddSequential(new Command2());
 	// these will run in order.
   AddSequential(new IntakeEngage());
-  AddSequential(new SetIntake(-1.0));
+  AddSequential(new SetIntake(-0.3));
+
 	// To run multiple commands at the same time,
 	// use AddParallel()
 	// e.g. AddParallel(new Command1());
