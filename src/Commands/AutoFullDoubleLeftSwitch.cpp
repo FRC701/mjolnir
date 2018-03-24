@@ -28,7 +28,7 @@ AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
   //Go to switch and drop cube
   AddSequential(new AutoLeftSwitch);
   AddSequential(new PrepSwitch);
-  AddSequential(new SetIntake(-1.0));
+  AddSequential(new SetIntake(-0.3));
   AddSequential(new Delay(0.5));
   AddSequential(new SetArmPosition(9500));
   AddSequential(new Delay(0.5));
@@ -40,7 +40,7 @@ AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
   AddSequential(new Delay(0.25));
   AddSequential(new SetArmPosition(0));
   AddParallel(new AutoSwitchIntake);
-  AddParallel(new DrawSling(2666));
+  AddParallel(new DrawSling(17809/2));
   AddSequential(new SetIntake(1.0));
   AddSequential(new SetArmPosition(9500));
   //Drive back
@@ -48,7 +48,7 @@ AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
   //Put new cube in switch
   AddSequential(new AutoLeftSwitch);
   AddSequential(new PrepSwitch);
-  AddSequential(new SetIntake(-1.0));
+  AddSequential(new SetIntake(-0.3));
   AddSequential(new Delay(0.5));
   AddSequential(new SetArmPosition(9500));
   AddSequential(new Delay(0.5));
