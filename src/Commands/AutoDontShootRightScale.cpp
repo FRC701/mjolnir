@@ -5,8 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "AutoFullLeftScale.h"
-#include "AutoLeftScale.h"
+#include "AutoDontShootRightScale.h"
+#include "AutoRightScale.h"
 #include "Delay.h"
 #include "DrawSling.h"
 #include "IntakeDisengage.h"
@@ -15,13 +15,13 @@
 #include "SetIntake.h"
 #include "SetSlingDisengagement.h"
 
-AutoFullLeftScale::AutoFullLeftScale() {
-  AddSequential(new AutoLeftScale());
+AutoDontShootRightScale::AutoDontShootRightScale() {
+  AddSequential(new AutoRightScale());
   AddSequential(new SetArmPosition(11750));
   AddSequential(new DrawSling(21156));
-  AddSequential(new IntakeDisengage());
-  AddSequential(new Delay(0.5));
-  AddSequential(new SetSlingDisengagement());
+  //AddSequential(new IntakeDisengage());
+  //AddSequential(new Delay(0.5));
+  //AddSequential(new SetSlingDisengagement());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

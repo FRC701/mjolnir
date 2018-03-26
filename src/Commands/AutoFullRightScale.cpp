@@ -5,8 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "AutoFullLeftScale.h"
-#include "AutoLeftScale.h"
+#include "AutoFullRightScale.h"
+#include "AutoRightScale.h"
 #include "Delay.h"
 #include "DrawSling.h"
 #include "IntakeDisengage.h"
@@ -15,8 +15,8 @@
 #include "SetIntake.h"
 #include "SetSlingDisengagement.h"
 
-AutoFullLeftScale::AutoFullLeftScale() {
-  AddSequential(new AutoLeftScale());
+AutoFullRightScale::AutoFullRightScale() {
+  AddSequential(new AutoRightScale());
   AddSequential(new SetArmPosition(11750));
   AddSequential(new DrawSling(21156));
   AddSequential(new IntakeDisengage());
