@@ -5,16 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Scale.h"
-#include "SetArmPosition.h"
-#include "SetPuncherPos.h"
+#include "AutoDontShootScale.h"
+#include "AutoLeftScale.h"
+#include "Delay.h"
 #include "DrawSling.h"
 #include "IntakeDisengage.h"
+#include "SetArmPosition.h"
+#include "SetSlingDisengagement.h"
+#include "SetIntake.h"
+#include "SetSlingDisengagement.h"
 
-Scale::Scale() {
-  AddParallel(new SetArmPosition(11750));//16000 too high & 13000 too low
-  AddSequential(new DrawSling(24000));
-  AddSequential(new IntakeDisengage());
+AutoDontShootScale::AutoDontShootScale() {
+  AddSequential(new AutoLeftScale());
+  AddSequential(new SetArmPosition(11750));
+  AddSequential(new DrawSling(21156));
+  //AddSequential(new IntakeDisengage());
+  //AddSequential(new Delay(0.5));
+  //AddSequential(new SetSlingDisengagement());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

@@ -37,6 +37,7 @@
 #include "Commands/AutoFullLeftSwitch.h"
 #include "Commands/AutoFullRightSwitch.h"
 #include "Commands/ShootAll.h"
+#include "Commands/Outtaking.h"
 
 #include "Commands/AutoRun.h"
 #include "Commands/AutoLeftScale.h"
@@ -80,6 +81,7 @@ OI::OI()
 {
   dX.WhenPressed(new SetClimber(1.0));
   dY.WhenPressed(new SetClimber(-1.0));
+  dRB.WhenPressed(new SetIntake(0.0));
   //dB is being used to stop Climber don't use!
 
 
@@ -87,7 +89,7 @@ OI::OI()
   coB.WhenPressed(new Vault);
   coX.WhenPressed(new Intaking);
   coY.WhenPressed(new Scale);
-  coLB.WhenPressed(new SetIntake(-1.0));
+  coLB.WhenPressed(new Outtaking());
   coRB.WhenPressed(new ShootAll);
   coStart.WhenPressed(new ScaleBackwards);
   coSelect.WhenPressed(new SetIntake(0.0));
@@ -125,9 +127,9 @@ OI::OI()
 
   SmartDashboard::PutData("Auto Switch", new AutoSwitchSelector(new AutoFullLeftSwitch(), new AutoFullRightSwitch()));
 
-  static const double kMaxPuncher = 28209;//number used in group commands if changed here change in PrepSwitch
+  static const double kMaxPuncher = 17809;//number used in group commands if changed here change in PrepSwitch
   SmartDashboard::PutData("Quarter Puncher", new DrawSling(kMaxPuncher/4.0));
-  SmartDashboard::PutData("Half Puncher", new DrawSling(kMaxPuncher/2.0));
+  SmartDashboard::PutData("Half Puncher", new DrawSling(kMaxPuncher/2));
   SmartDashboard::PutData("Full Puncher", new DrawSling(kMaxPuncher));
   SmartDashboard::PutData("Three Quarter Puncher", new DrawSling(kMaxPuncher* 3.0/4.0));
   SmartDashboard::PutData("Seventh Puncher", new DrawSling(kMaxPuncher* 7.0/8.0));
@@ -141,6 +143,9 @@ OI::OI()
   SmartDashboard::PutData("Intake on", new SetIntake(1.0));
   SmartDashboard::PutData("Inkaking", new Intaking);
   SmartDashboard::PutData("Puncher Move", new SlingShot(0.5));
+
+  SmartDashboard::PutData("Intake out", new SetIntake(-0.3));
+
 
 }
 

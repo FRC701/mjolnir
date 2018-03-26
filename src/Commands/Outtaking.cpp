@@ -5,20 +5,17 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "Scale.h"
-#include "SetArmPosition.h"
-#include "SetPuncherPos.h"
-#include "DrawSling.h"
-#include "IntakeDisengage.h"
+#include "Outtaking.h"
+#include "IntakeEngage.h"
+#include "SetIntake.h"
 
-Scale::Scale() {
-  AddParallel(new SetArmPosition(11750));//16000 too high & 13000 too low
-  AddSequential(new DrawSling(24000));
-  AddSequential(new IntakeDisengage());
+Outtaking::Outtaking() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
+  AddSequential(new IntakeEngage());
+  AddSequential(new SetIntake(-0.3));
 
 	// To run multiple commands at the same time,
 	// use AddParallel()

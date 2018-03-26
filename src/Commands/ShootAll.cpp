@@ -9,11 +9,13 @@
 #include "SetSlingDisengagement.h"
 #include "SetArmPosition.h"
 #include "Delay.h"
+#include "DrawSling.h"
 
 ShootAll::ShootAll() {
   AddSequential(new SetSlingDisengagement());
   AddSequential(new Delay(.40));
-  AddSequential(new SetArmPosition(5125));
+  AddParallel(new SetArmPosition(8525));
+  AddSequential(new DrawSling(24000));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
