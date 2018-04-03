@@ -164,6 +164,8 @@ void Robot::TeleopPeriodic() {
   SmartDashboard::PutNumber("Puncher Position", Puncher::getInstance()->GetPosition());
   SmartDashboard::PutNumber("Puncher Error", Puncher::getInstance()->GetPositionError());
   SmartDashboard::PutNumber("Puncher Current", Puncher::getInstance()->GetCurrent());
+  SmartDashboard::PutNumber("LeftDriveVoltage", Chassis::getInstance()->GetLeftVoltage());
+  SmartDashboard::PutNumber("RightDriveVoltage", Chassis::getInstance()->GetRightVoltage());
 
   SmartDashboard::PutNumber("Scale Factor", Arm::getInstance()->CalculateEncoderPos());
 
