@@ -46,6 +46,8 @@ public:
 	void ProcessMotionProfileBuffer();
 	void GetMotionProfileStatus(MotionProfileStatus* leftStatus,
 	                            MotionProfileStatus* rightStatus);
+	double GetLeftVoltage();
+	double GetRightVoltage();
 };
 
 

@@ -176,3 +176,14 @@ void Chassis::GetMotionProfileStatus(MotionProfileStatus* leftStatus,
   left1Wheel.GetMotionProfileStatus(*leftStatus);
   right1Wheel.GetMotionProfileStatus(*rightStatus);
 }
+
+double Chassis::GetLeftVoltage()
+{
+  return  left1Wheel.GetBusVoltage();
+}
+double Chassis::GetRightVoltage()
+{
+  return right1Wheel.GetBusVoltage();
+}
+
+
