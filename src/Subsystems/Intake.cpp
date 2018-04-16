@@ -33,7 +33,7 @@ void Intake::InitDefaultCommand() {
 }
 void Intake::SetIntake(double speed){
   intakeMotorTop.Set(speed);
-  intakeMotorBottom.Set(speed);
+  intakeMotorBottom.Set(speed * .9);
 }
 
 void Intake::IntakeEngage(){
