@@ -215,4 +215,5 @@ void Chassis::SetUpMotionMagic() {
  left1Wheel.Config_kD(kSlot1, kD, kTimeout_10Millis);
  left1Wheel.ConfigMotionCruiseVelocity(kCruiseVelocity, kTimeout_10Millis);
  left1Wheel.ConfigMotionAcceleration(kMotionAcceleration, kTimeout_10Millis);
+ left1Wheel.SelectProfileSlot(kSlot0, kPID_PrimaryClosedLoop);
 }
