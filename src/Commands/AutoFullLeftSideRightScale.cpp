@@ -5,15 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "PrepSwitch.h"
-#include "SetArmPosition.h"
-#include"SetPuncherPos.h"
-#include "IntakeDisengage.h"
+#include "AutoFullLeftSideRightScale.h"
+#include "AutoLeftSideRightScaleOne.h"
+#include "SetChassisMotionMagic.h"
+#include "AutoLeftSideRightScaleTwo.h"
+#include "AutoLeftSideRightScaleThree.h"
 
-PrepSwitch::PrepSwitch() {
-  AddSequential(new SetArmPosition(5125));
-  //AddSequential(new SetPuncherPos(28209 / 4));
-  //AddSequential(new IntakeDisengage());
+AutoFullLeftSideRightScale::AutoFullLeftSideRightScale() {
+  AddSequential(new AutoLeftSideRightScaleOne);
+  AddSequential(new SetChassisMotionMagic(0));
+  AddSequential(new AutoLeftSideRightScaleTwo);
+  AddSequential(new SetChassisMotionMagic(0));
+  AddSequential(new AutoLeftSideRightScaleThree);
+  AddSequential(new SetChassisMotionMagic(0));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

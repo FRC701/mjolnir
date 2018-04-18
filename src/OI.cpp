@@ -38,6 +38,10 @@
 #include "Commands/AutoFullRightSwitch.h"
 #include "Commands/ShootAll.h"
 #include "Commands/Outtaking.h"
+#include "Commands/AutoFullTripleLeftSwitch.h"
+#include "Commands/AutoFullTripleRightSwitch.h"
+#include "Commands/AutoFullDoubleRightSwitch.h"
+#include "Commands/AutoFullDoubleLeftSwitch.h"
 
 #include "Commands/AutoRun.h"
 #include "Commands/AutoLeftScale.h"
@@ -122,8 +126,8 @@ OI::OI()
   SmartDashboard::PutData("Auto Left Switch", new AutoLeftSwitch());
   SmartDashboard::PutData("Auto Left Scale", new AutoLeftScale());
   //SmartDashboard::PutData("Auto Switch Side", new AutoSwitchSide());
-  SmartDashboard::PutData("Auto Left Switch Full", new AutoFullLeftSwitch);
-  SmartDashboard::PutData("Auto Right Switch Full", new AutoFullRightSwitch);
+  SmartDashboard::PutData("Auto Left Switch Full", new AutoFullDoubleLeftSwitch);
+  SmartDashboard::PutData("Auto Right Switch Full", new AutoFullDoubleRightSwitch);
 
   SmartDashboard::PutData("Auto Switch", new AutoSwitchSelector(new AutoFullLeftSwitch(), new AutoFullRightSwitch()));
 
@@ -145,6 +149,10 @@ OI::OI()
   SmartDashboard::PutData("Puncher Move", new SlingShot(0.5));
 
   SmartDashboard::PutData("Intake out", new SetIntake(-0.3));
+
+  SmartDashboard::PutData("Auto Triple Left", new AutoFullTripleLeftSwitch);
+  SmartDashboard::PutData("Auto Triple Right", new AutoFullTripleRightSwitch);
+
 
 
 }

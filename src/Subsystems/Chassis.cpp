@@ -176,3 +176,44 @@ void Chassis::GetMotionProfileStatus(MotionProfileStatus* leftStatus,
   left1Wheel.GetMotionProfileStatus(*leftStatus);
   right1Wheel.GetMotionProfileStatus(*rightStatus);
 }
+
+void Chassis::SetMotionMagic(int position)
+{
+  left1Wheel.Set(ControlMode::MotionMagic, position);
+}
+
+int Chassis::GetLeftPosError()
+{
+  return left1Wheel.GetClosedLoopError(kSlot1);
+}
+static double calcP(){
+ static const double kEigthUnitsPerRev = 4096.0/ 1.0;
+ double pGain = 1* 1023.0/kEigthUnitsPerRev;
+ return pGain;
+}
+
+void Chassis::SetUpMotionMagic() {
+ left1Wheel.SetStatusFramePeriod(StatusFrameEnhanced::Status_13_Base_PIDF0, 10, kTimeout_10Millis);
+ left1Wheel.SetStatusFramePeriod(StatusFrameEnhanced::Status_10_MotionMagic, 10, kTimeout_10Millis);
+ left1Wheel.ConfigNominalOutputForward(0, kTimeout_10Millis);
+ left1Wheel.ConfigNominalOutputReverse(0, kTimeout_10Millis);
+ left1Wheel.ConfigPeakOutputForward(1, kTimeout_10Millis);
+ left1Wheel.ConfigPeakOutputReverse(-1, kTimeout_10Millis);
+
+ static const double kF = calcFeedforward();
+ static const double kP = calcP();
+ static const double kI = 0;
+ static const double kD = 0;
+ static const double kMaxVelocity = 3675;
+ static const int kCruiseVelocity = kMaxVelocity; //Sensor Units per 100ms
+ static const int kMotionAcceleration = kCruiseVelocity * 2; //Sensor Units per 100ms/sec
+
+ left1Wheel.SelectProfileSlot(kSlot1, kPID_PrimaryClosedLoop);
+ left1Wheel.Config_kF(kSlot1, kF, kTimeout_10Millis);
+ left1Wheel.Config_kP(kSlot1, kP, kTimeout_10Millis);
+ left1Wheel.Config_kI(kSlot1, kI, kTimeout_10Millis);
+ left1Wheel.Config_kD(kSlot1, kD, kTimeout_10Millis);
+ left1Wheel.ConfigMotionCruiseVelocity(kCruiseVelocity, kTimeout_10Millis);
+ left1Wheel.ConfigMotionAcceleration(kMotionAcceleration, kTimeout_10Millis);
+ left1Wheel.SelectProfileSlot(kSlot0, kPID_PrimaryClosedLoop);
+}

@@ -22,6 +22,8 @@ private:
   double p, i, d, f;
 
   void SetUpTalons();
+  void SetUpMotionMagic();
+
 
 public:
 	static std::shared_ptr<Chassis> getInstance();
@@ -46,6 +48,8 @@ public:
 	void ProcessMotionProfileBuffer();
 	void GetMotionProfileStatus(MotionProfileStatus* leftStatus,
 	                            MotionProfileStatus* rightStatus);
+	void SetMotionMagic(int position);
+	int GetLeftPosError();
 };
 
 

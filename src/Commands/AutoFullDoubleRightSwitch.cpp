@@ -32,12 +32,12 @@ AutoFullDoubleRightSwitch::AutoFullDoubleRightSwitch() {
   AddSequential(new PrepSwitch);
   AddSequential(new SetIntake(-0.3));
   AddSequential(new SetArmPosition(9500));
-  AddSequential(new Delay(0.5));
+  AddSequential(new Delay(0.15));
   AddSequential(new AutoRightSwitchReverse());
   //Intake cube
   AddParallel(new IntakeEngage());
   AddSequential(new SetArmPosConditional(7500));
-  AddSequential(new Delay(0.25));
+  AddSequential(new Delay(0.15));
   AddSequential(new SetArmPosition(0));
   AddParallel(new AutoSwitchIntake);
   AddParallel(new DrawSling(17809/2));
@@ -49,9 +49,9 @@ AutoFullDoubleRightSwitch::AutoFullDoubleRightSwitch() {
   AddSequential(new AutoRightSwitch);
   AddSequential(new PrepSwitch);
   AddSequential(new SetIntake(-0.3));
-  AddSequential(new Delay(0.5));
+  AddSequential(new Delay(0.15));
   AddSequential(new SetArmPosition(9500));
-  AddSequential(new Delay(0.5));
+  AddSequential(new Delay(0.15));
   //post switch
   AddSequential(new AutoPostRightSwitch());
 

@@ -29,15 +29,15 @@ AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
   AddSequential(new AutoLeftSwitch);
   AddSequential(new PrepSwitch);
   AddSequential(new SetIntake(-0.3));
-  AddSequential(new Delay(0.5));
+  AddSequential(new Delay(0.15));
   AddSequential(new SetArmPosition(9500));
-  AddSequential(new Delay(0.5));
+  AddSequential(new Delay(0.15));
   //Go back to start position
   AddSequential(new AutoLeftSwitchReverse());
   //Intake cube
   AddParallel(new IntakeEngage());
   AddSequential(new SetArmPosConditional(7500));
-  AddSequential(new Delay(0.25));
+  AddSequential(new Delay(0.15));
   AddSequential(new SetArmPosition(0));
   AddParallel(new AutoSwitchIntake);
   AddParallel(new DrawSling(17809/2));
@@ -49,9 +49,9 @@ AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
   AddSequential(new AutoLeftSwitch);
   AddSequential(new PrepSwitch);
   AddSequential(new SetIntake(-0.3));
-  AddSequential(new Delay(0.5));
+  AddSequential(new Delay(0.15));
   AddSequential(new SetArmPosition(9500));
-  AddSequential(new Delay(0.5));
+  AddSequential(new Delay(0.15));
   //post switch
   AddSequential(new AutoPostLeftSwitch());
 
