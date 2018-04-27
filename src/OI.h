@@ -57,6 +57,8 @@ public:
   static const int kRightYAxis_ID = 5;
   static const int kButtonStart_ID = 8;
   static const int kButtonSelect_ID = 7;
+
+  void SetRumble(double amount);
 };
 
 #endif

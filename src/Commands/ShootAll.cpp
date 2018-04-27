@@ -15,7 +15,7 @@ ShootAll::ShootAll() {
   AddSequential(new SetSlingDisengagement());
   AddSequential(new Delay(.40));
   AddParallel(new SetArmPosition(8525));
-  AddSequential(new DrawSling(24000));
+  //AddSequential(new DrawSling(24000));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

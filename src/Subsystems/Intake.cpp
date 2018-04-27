@@ -32,7 +32,7 @@ void Intake::InitDefaultCommand() {
 	SetDefaultCommand(new ::SetIntake(0.0));
 }
 void Intake::SetIntake(double speed){
-  intakeMotorTop.Set(speed);
+  intakeMotorTop.Set(speed*0.9);
   intakeMotorBottom.Set(speed);
 }
 
@@ -42,6 +42,10 @@ void Intake::IntakeEngage(){
 
 void Intake::IntakeDisengage(){
   intakeSolenoid.Set(kIntakeDisengage);
+}
+
+bool Intake::IsIntakeOn() {
+  return intakeMotorTop.GetMotorOutputVoltage();
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

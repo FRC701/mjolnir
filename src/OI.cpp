@@ -200,3 +200,7 @@ double OI::getCoDriverRightXAxis() const{
 double OI::getCoDriverRightYAxis() const{
 	return coDriver->GetRawAxis(kRightYAxis_ID);
 }
+
+void OI::SetRumble(double amount){
+  coDriver->SetRumble(GenericHID::kLeftRumble, amount);
+}

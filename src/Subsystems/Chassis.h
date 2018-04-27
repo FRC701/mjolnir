@@ -50,6 +50,7 @@ public:
 	                            MotionProfileStatus* rightStatus);
 	void SetMotionMagic(int position);
 	int GetLeftPosError();
+	int GetLeft1WheelVoltage();
 };
 
 

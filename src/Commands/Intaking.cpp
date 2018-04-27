@@ -21,9 +21,9 @@ Intaking::Intaking() {
   AddSequential(new SetArmPosConditional(7500));
   AddSequential(new Delay(0.25));
   AddParallel(new SetArmPosition(0));
-  AddParallel(new DrawSling(24000));
+  //AddParallel(new DrawSling(24000));
   AddSequential(new SetIntake(1.0));
-  AddSequential(new Delay(0.5));
+  AddSequential(new Delay(1.0));
   //AddParallel(new SetArmPosition(9500)); //7700
   AddSequential(new SetIntake(0.0));
 	// Add Commands here:

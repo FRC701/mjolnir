@@ -20,6 +20,7 @@
 #include "AutoRightSwitch.h"
 #include "AutoPostRightSwitch.h"
 #include "DrawSling.h"
+#include "BrakeOn.h"
 
 
 AutoFullDoubleRightSwitch::AutoFullDoubleRightSwitch() {
@@ -28,11 +29,13 @@ AutoFullDoubleRightSwitch::AutoFullDoubleRightSwitch() {
 	//      AddSequential(new Command2());
 	// these will run in order.
   //Drop cube in switch
+  //AddSequential(new BrakeOn);
   AddSequential(new AutoRightSwitch);
   AddSequential(new PrepSwitch);
-  AddSequential(new SetIntake(-0.3));
+  AddSequential(new SetIntake(-0.6));
   AddSequential(new SetArmPosition(9500));
   AddSequential(new Delay(0.15));
+  AddSequential(new SetIntake(0.0));
   AddSequential(new AutoRightSwitchReverse());
   //Intake cube
   AddParallel(new IntakeEngage());
@@ -40,18 +43,20 @@ AutoFullDoubleRightSwitch::AutoFullDoubleRightSwitch() {
   AddSequential(new Delay(0.15));
   AddSequential(new SetArmPosition(0));
   AddParallel(new AutoSwitchIntake);
-  AddParallel(new DrawSling(17809/2));
+  //AddParallel(new DrawSling(17809/2));
   AddSequential(new SetIntake(1.0));
   AddSequential(new SetArmPosition(9500));
+  AddSequential(new SetIntake(0.0));
   //Drive back
   AddSequential(new AutoSwitchIntakeReverse);
   //Put new cube in switch
   AddSequential(new AutoRightSwitch);
   AddSequential(new PrepSwitch);
-  AddSequential(new SetIntake(-0.3));
+  AddSequential(new SetIntake(-0.5));
   AddSequential(new Delay(0.15));
   AddSequential(new SetArmPosition(9500));
   AddSequential(new Delay(0.15));
+  AddSequential(new SetIntake(0.0));
   //post switch
   AddSequential(new AutoPostRightSwitch());
 

@@ -19,7 +19,7 @@ void SetArmPosition::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool SetArmPosition::IsFinished() {
- static const int kAcceptableError = 1000;
+ static const int kAcceptableError = 1500;
  std::shared_ptr<Arm> arm = Arm::getInstance();
  if((abs(arm->GetPositionError()) < kAcceptableError)
      || arm->IsForwardLimitSwitchClosed()

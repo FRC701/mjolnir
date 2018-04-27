@@ -217,3 +217,7 @@ void Chassis::SetUpMotionMagic() {
  left1Wheel.ConfigMotionAcceleration(kMotionAcceleration, kTimeout_10Millis);
  left1Wheel.SelectProfileSlot(kSlot0, kPID_PrimaryClosedLoop);
 }
+
+int Chassis::GetLeft1WheelVoltage() {
+  return left1Wheel.GetMotorOutputVoltage();
+}

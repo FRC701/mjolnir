@@ -22,6 +22,7 @@ public:
 	void SetIntake(double speed);
 	void IntakeEngage();
 	void IntakeDisengage();
+	bool IsIntakeOn();
 
 };
 

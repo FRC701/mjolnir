@@ -18,6 +18,7 @@
 #include "AutoSwitchIntakeReverse.h"
 #include "AutoPostLeftSwitch.h"
 #include "DrawSling.h"
+#include "BrakeOn.h"
 
 
 AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
@@ -26,12 +27,14 @@ AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
 	//      AddSequential(new Command2());
 	// these will run in order.
   //Go to switch and drop cube
+  //AddSequential(new BrakeOn());
   AddSequential(new AutoLeftSwitch);
   AddSequential(new PrepSwitch);
   AddSequential(new SetIntake(-0.3));
   AddSequential(new Delay(0.15));
   AddSequential(new SetArmPosition(9500));
   AddSequential(new Delay(0.15));
+  AddSequential(new SetIntake(0.0));
   //Go back to start position
   AddSequential(new AutoLeftSwitchReverse());
   //Intake cube
@@ -40,9 +43,10 @@ AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
   AddSequential(new Delay(0.15));
   AddSequential(new SetArmPosition(0));
   AddParallel(new AutoSwitchIntake);
-  AddParallel(new DrawSling(17809/2));
+  //AddParallel(new DrawSling(17809/2));
   AddSequential(new SetIntake(1.0));
   AddSequential(new SetArmPosition(9500));
+  AddSequential(new SetIntake(0.0));
   //Drive back
   AddSequential(new AutoSwitchIntakeReverse);
   //Put new cube in switch
@@ -52,6 +56,7 @@ AutoFullDoubleLeftSwitch::AutoFullDoubleLeftSwitch() {
   AddSequential(new Delay(0.15));
   AddSequential(new SetArmPosition(9500));
   AddSequential(new Delay(0.15));
+  AddSequential(new SetIntake(0.0));
   //post switch
   AddSequential(new AutoPostLeftSwitch());
 

@@ -22,7 +22,7 @@ void LightsOn::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void LightsOn::Execute() {
-  if (Puncher::getInstance()->IsCubeIn())
+  if (!Puncher::getInstance()->IsCubeIn())
   {
     if(! blinking)
     {
